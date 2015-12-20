@@ -1239,6 +1239,25 @@ Namespace Excel
         QualityMinimum
     End Enum
 
+    ''' <summary>
+    ''' セルの挿入時にセルをシフトする方向
+    ''' </summary>
+    ''' <remarks>https://msdn.microsoft.com/ja-jp/library/office/ff837618.aspx</remarks>
+    Public Enum XlInsertShiftDirection As Integer
+        ''' <summary>
+        ''' セルを下にシフト
+        ''' </summary>
+        xlShiftDown
+        ''' <summary>
+        ''' セルを右にシフト
+        ''' </summary>
+        xlShiftToRight
+        ''' <summary>
+        ''' 指定なし
+        ''' </summary>
+        none = 99
+    End Enum
+
 #End Region
 
 End Namespace

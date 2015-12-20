@@ -383,11 +383,37 @@ Namespace Excel
 			InvokeMethod(_range, "Copy", argsV.ToArray(), DirectCast(argsN.ToArray(GetType(String)), String()))
 		End Sub
 
-		''' <summary>
-		''' レンジ指定したセルを削除する
-		''' </summary>
-		''' <remarks></remarks>
-		Public Sub Delete()
+        ''' <summary>
+        ''' 指定された範囲に、空白のセルまたはセル範囲を挿入します。指定された範囲にあったセルはシフトされます。
+        ''' </summary>
+        ''' <param name="shift">セルをシフトする方向</param>
+        ''' <param name="copyOrigin">省略可能です。オブジェクト型 (Object) の値を指定します。コピー元を指定します。</param>
+        ''' <remarks></remarks>
+        Public Sub Insert(Optional ByVal shift As XlInsertShiftDirection = XlInsertShiftDirection.none, Optional ByVal copyOrigin As Object = Nothing)
+            Dim argsV As ArrayList
+            Dim argsN As ArrayList
+
+            argsV = New ArrayList()
+            argsN = New ArrayList()
+
+            If shift <> XlInsertShiftDirection.none Then
+                argsV.Add(shift)
+                argsN.Add("Shift")
+            End If
+
+            If copyOrigin IsNot Nothing Then
+                argsV.Add(copyOrigin)
+                argsN.Add("CopyOrigin")
+            End If
+
+            InvokeMethod(_range, "Insert", argsV.ToArray(), DirectCast(argsN.ToArray(GetType(String)), String()))
+        End Sub
+
+        ''' <summary>
+        ''' レンジ指定したセルを削除する
+        ''' </summary>
+        ''' <remarks></remarks>
+        Public Sub Delete()
 			InvokeMethod(_range, "Delete", Nothing)
 		End Sub
 

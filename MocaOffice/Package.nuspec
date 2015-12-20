@@ -8,11 +8,15 @@
     <owners>MiYABiS</owners>
     <description>
       Wrapper library of Excel. without the memory release of the Excel object .
+      References of excel library is not required .
+      we do not have wrapping all of the functions.
     </description>
     <releaseNotes>
     </releaseNotes>
     <summary>
       Wrapper library of Excel. without the memory release of the Excel object .
+      References of excel library is not required .
+      we do not have wrapping all of the functions.
     </summary>
     <language>en-US</language>
     <projectUrl>https://github.com/mocanet/MocaOffice</projectUrl>
