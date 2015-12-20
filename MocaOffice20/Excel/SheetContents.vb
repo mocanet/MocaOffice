@@ -1,8 +1,8 @@
-
+ï»¿
 Namespace Excel
 
 	''' <summary>
-	''' ƒV[ƒg“à—e‚ğ\¬
+	''' ã‚·ãƒ¼ãƒˆå†…å®¹ã‚’æ§‹æˆ
 	''' </summary>
 	''' <remarks></remarks>
 	Friend Class SheetContents
@@ -16,10 +16,10 @@ Namespace Excel
 		''' <summary>log4net logger</summary>
 		Private ReadOnly _mylog As log4net.ILog = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType)
 
-#Region " ƒRƒ“ƒXƒgƒ‰ƒNƒ^ "
+#Region " ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ "
 
 		''' <summary>
-		''' ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
 		''' <remarks></remarks>
 		Public Sub New(ByVal sheetContents As ISheetContents, ByVal sheet As SheetWrapper)
@@ -30,12 +30,12 @@ Namespace Excel
 #End Region
 
 		''' <summary>
-		''' o—Í“à—e‚ğƒZƒ‹‚Öİ’è‚·‚é
+		''' å‡ºåŠ›å†…å®¹ã‚’ã‚»ãƒ«ã¸è¨­å®šã™ã‚‹
 		''' </summary>
 		''' <remarks>
 		''' </remarks>
 		Public Overridable Sub WriteContents()
-			' ƒV[ƒg–¼İ’è
+			' ã‚·ãƒ¼ãƒˆåè¨­å®š
 			If contents.SaveSheetName.Length > 0 Then
 				Me.sheet.Name = contents.SaveSheetName
 			End If

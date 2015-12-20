@@ -1,17 +1,17 @@
-
+﻿
 Imports System.Reflection
 Imports System.Runtime.InteropServices
 
 Namespace Excel
 
 	''' <summary>
-	''' Excel.Worksheet �̃��b�p�[�N���X
+	''' Excel.Worksheet のラッパークラス
 	''' </summary>
 	''' <remarks></remarks>
 	Public Class SheetWrapper
 		Inherits AbstractExcelWrapper
 
-		''' <summary>�e��Excel.Workbook �̃��b�p�[</summary>
+		''' <summary>親のExcel.Workbook のラッパー</summary>
 		Private _book As BookWrapper
 
 		''' <summary>Excel.Worksheet</summary>
@@ -20,14 +20,14 @@ Namespace Excel
 		''' <summary>log4net logger</summary>
 		Private ReadOnly _mylog As log4net.ILog = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType)
 
-#Region " �R���X�g���N�^ "
+#Region " コンストラクタ "
 
 		''' <summary>
-		''' �R���X�g���N�^
+		''' コンストラクタ
 		''' </summary>
-		''' <param name="book">�e�̃u�b�N</param>
+		''' <param name="book">親のブック</param>
 		''' <remarks>
-		''' �V�[�g��V�K�Œǉ�����Ƃ��Ɏg��
+		''' シートを新規で追加するときに使う
 		''' </remarks>
 		Private Sub New(ByVal book As BookWrapper)
 			MyBase.New(book.ApplicationWrapper)
@@ -37,12 +37,12 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' �R���X�g���N�^
+		''' コンストラクタ
 		''' </summary>
-		''' <param name="book">�e�̃u�b�N</param>
-		''' <param name="sheetName">�J���V�[�g��</param>
+		''' <param name="book">親のブック</param>
+		''' <param name="sheetName">開くシート名</param>
 		''' <remarks>
-		''' �V�[�g�����w�肵�ĊJ���Ƃ��Ɏg���B
+		''' シート名を指定して開くときに使う。
 		''' </remarks>
 		Public Sub New(ByVal book As BookWrapper, ByVal sheetName As String)
 			MyBase.New(book.ApplicationWrapper)
@@ -52,12 +52,12 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' �R���X�g���N�^
+		''' コンストラクタ
 		''' </summary>
-		''' <param name="book">�e�̃u�b�N</param>
+		''' <param name="book">親のブック</param>
 		''' <param name="xlSheet">Excel.Worksheet</param>
 		''' <remarks>
-		''' ���ɊJ�����V�[�g���Ǘ�����Ƃ��Ɏg���B
+		''' 既に開いたシートを管理するときに使う。
 		''' </remarks>
 		Public Sub New(ByVal book As BookWrapper, ByVal xlSheet As Object)
 			MyBase.New(book.ApplicationWrapper)
@@ -71,7 +71,7 @@ Namespace Excel
 #Region " Overrides "
 
 		''' <summary>
-		''' �������g�ŊǗ����Ă���Excel�֌W�̃I�u�W�F�N�g�̃������J��
+		''' 自分自身で管理しているExcel関係のオブジェクトのメモリ開放
 		''' </summary>
 		''' <remarks></remarks>
 		Public Overrides Sub MyDispose()
@@ -79,7 +79,7 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' �擾���� Excel �C���X�^���X
+		''' 取得した Excel インスタンス
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -92,10 +92,10 @@ Namespace Excel
 
 #End Region
 
-#Region " �v���p�e�B "
+#Region " プロパティ "
 
 		''' <summary>
-		''' Excel.Application �̃��b�p�[
+		''' Excel.Application のラッパー
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -107,7 +107,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �e�̃u�b�N
+		''' 親のブック
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -119,7 +119,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �V�[�g��
+		''' シート名
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -134,7 +134,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �P��̃Z���܂��̓Z���͈͂�\�� Range �I�u�W�F�N�g���擾���܂��B
+		''' 単一のセルまたはセル範囲を表す Range オブジェクトを取得します。
 		''' </summary>
 		''' <param name="Cell1"></param>
 		''' <param name="Cell2"></param>
@@ -157,7 +157,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �P��̃Z���܂��̓Z���͈͂�\�� Range �I�u�W�F�N�g���擾���܂��B
+		''' 単一のセルまたはセル範囲を表す Range オブジェクトを取得します。
 		''' </summary>
 		''' <param name="Cell1"></param>
 		''' <param name="Cell2"></param>
@@ -180,7 +180,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �A�N�e�B�u�ȃ��[�N�V�[�g�ɂ��邷�ׂẴZ����\�� Range �I�u�W�F�N�g���擾���܂��B�A�N�e�B�u�ȕ��������[�N�V�[�g�łȂ��ꍇ�A���̃v���p�e�B�͎��s���܂��B
+		''' アクティブなワークシートにあるすべてのセルを表す Range オブジェクトを取得します。アクティブな文書がワークシートでない場合、このプロパティは失敗します。
 		''' </summary>
 		''' <param name="row"></param>
 		''' <param name="col"></param>
@@ -199,7 +199,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �V�[�g���폜����Ă��邩
+		''' シートが削除されているか
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -211,7 +211,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' ���[�N�V�[�g��̂��ׂĂ̗��\�� Range �I�u�W�F�N�g���擾���܂��B
+		''' ワークシート上のすべての列を表す Range オブジェクトを取得します。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -228,7 +228,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' ���[�N�V�[�g�̂��ׂẴy�[�W�ݒ���܂� <see cref="PageSetupWrapper"/>  ���擾���܂��B
+		''' ワークシートのすべてのページ設定を含む <see cref="PageSetupWrapper"/>  を取得します。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -245,7 +245,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' ���[�N�V�[�g��̂��ׂĂ̐}�`��\�� <see cref="ShapesWrapper"/> �I�u�W�F�N�g���擾���܂��B
+		''' ワークシート上のすべての図形を表す <see cref="ShapesWrapper"/> オブジェクトを取得します。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -262,7 +262,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' ���[�N�V�[�g��̐��������̉��y�[�W��\�� <see cref="HPageBreaksWrapper"/> �R���N�V�������擾���܂��B
+		''' ワークシート上の水平方向の改ページを表す <see cref="HPageBreaksWrapper"/> コレクションを取得します。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -279,7 +279,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' ���[�N�V�[�g��̐��������̉��y�[�W��\�� <see cref="VPageBreaksWrapper"/> �R���N�V�������擾���܂��B
+		''' ワークシート上の垂直方向の改ページを表す <see cref="VPageBreaksWrapper"/> コレクションを取得します。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -298,16 +298,16 @@ Namespace Excel
 #End Region
 
 		''' <summary>
-		''' ������
+		''' 初期化
 		''' </summary>
-		''' <param name="book">�e�̃u�b�N</param>
+		''' <param name="book">親のブック</param>
 		''' <remarks></remarks>
 		Private Sub _init(ByVal book As BookWrapper)
 			_book = book
 		End Sub
 
 		''' <summary>
-		''' �V�[�g���A�N�e�B�u�ɂ���
+		''' シートをアクティブにする
 		''' </summary>
 		''' <remarks></remarks>
 		Public Sub Activate()
@@ -315,7 +315,7 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' �V�[�g�S�̂�I���ɂ���
+		''' シート全体を選択にする
 		''' </summary>
 		''' <remarks></remarks>
 		Public Sub [Select]()
@@ -323,7 +323,7 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' �V�[�g���폜����
+		''' シートを削除する
 		''' </summary>
 		''' <remarks></remarks>
 		Public Sub Delete()
@@ -332,7 +332,7 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' �N���b�v�{�[�h����\�t��
+		''' クリップボードから貼付け
 		''' </summary>
 		''' <remarks></remarks>
 		Public Sub Paste()
@@ -340,11 +340,11 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' �V�[�g���u�b�N���̑��̏ꏊ�ɃR�s�[���܂��B
+		''' シートをブック内の他の場所にコピーします。
 		''' </summary>
-		''' <param name="Before">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B�R�s�[����V�[�g�����̃V�[�g�̒��O�̈ʒu�ɑ}������Ƃ��ɁA���̃V�[�g���w�肵�܂��BAfter ���w�肳��Ă���ꍇ�ABefore �͎w��ł��܂���B</param>
-		''' <param name="After">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B�R�s�[����V�[�g�����̃V�[�g�̒���̈ʒu�ɑ}������Ƃ��ɁA���̃V�[�g���w�肵�܂��BBefore ���w�肳��Ă���ꍇ�AAfter �͎w��ł��܂���B</param>
-		''' <remarks>���� Before �ƈ��� After �����ɏȗ������ꍇ�́A�V�K�u�b�N�������I�ɍ쐬����A�V�[�g�͂��̃u�b�N���ɑ}������܂��B</remarks>
+		''' <param name="Before">省略可能です。オブジェクト型 (Object) の値を指定します。コピーするシートを特定のシートの直前の位置に挿入するときに、そのシートを指定します。After が指定されている場合、Before は指定できません。</param>
+		''' <param name="After">省略可能です。オブジェクト型 (Object) の値を指定します。コピーするシートを特定のシートの直後の位置に挿入するときに、そのシートを指定します。Before が指定されている場合、After は指定できません。</param>
+		''' <remarks>引数 Before と引数 After を共に省略した場合は、新規ブックが自動的に作成され、シートはそのブック内に挿入されます。</remarks>
 		Public Sub Copy(<InAttribute()> Optional ByVal Before As SheetWrapper = Nothing, <InAttribute()> Optional ByVal After As SheetWrapper = Nothing)
 			Dim argsV As ArrayList
 			Dim argsN As ArrayList

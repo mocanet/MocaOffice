@@ -1,10 +1,10 @@
-
+﻿
 Namespace Excel
 
-#Region " �񋓌^ �錾 "
+#Region " 列挙型 宣言 "
 
 	''' <summary>
-	''' �e�L�X�g �t�@�C���̃v���b�g�t�H�[�����w�肵�܂��B
+	''' テキスト ファイルのプラットフォームを指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum XlPlatform As Integer
@@ -17,132 +17,132 @@ Namespace Excel
 	End Enum
 
 	''' <summary>
-	''' �N�G�� �e�[�u���ɃC���|�[�g����e�L�X�g �t�@�C���ł̃f�[�^�̗�`�����w�肵�܂��B
+	''' クエリ テーブルにインポートするテキスト ファイルでのデータの列形式を指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum XlTextParsingType As Integer
-		''' <summary>����l�B��؂蕶���ɂ���ăt�@�C������؂��܂��B</summary>
+		''' <summary>既定値。区切り文字によってファイルが区切られます。</summary>
 		xlDelimited = 1
-		''' <summary>�t�@�C���̃f�[�^���Œ蕝�̗�ɔz�u����܂��B</summary>
+		''' <summary>ファイルのデータが固定幅の列に配置されます。</summary>
 		xlFixedWidth = 2
 	End Enum
 
 	''' <summary>
-	''' ��������w�肷�邽�߂Ɏg�p�����؂蕶�����w�肵�܂��B
+	''' 文字列を指定するために使用する区切り文字を指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum XlTextQualifier As Integer
-		''' <summary>��d���p�� (")</summary>
+		''' <summary>二重引用符 (")</summary>
 		xlTextQualifierDoubleQuote = 1
-		''' <summary>��؂蕶���Ȃ�</summary>
+		''' <summary>区切り文字なし</summary>
 		xlTextQualifierNone = -4142
-		''' <summary>��d���p�� (')</summary>
+		''' <summary>一重引用符 (')</summary>
 		xlTextQualifierSingleQuote = 2
 	End Enum
 
 	''' <summary>
-	''' �����؂���@���w�肵�܂��B
+	''' 列を区切る方法を指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum XlColumnDataType As Integer
 		xlNone = 0
-		''' <summary>���</summary>
+		''' <summary>一般</summary>
 		xlGeneralFormat = 1
-		''' <summary>�e�L�X�g</summary>
+		''' <summary>テキスト</summary>
 		xlTextFormat = 2
-		''' <summary>MDY (�����N) �`���̓��t</summary>
+		''' <summary>MDY (月日年) 形式の日付</summary>
 		xlMDYFormat = 3
-		''' <summary>DMY (�����N) �`���̓��t</summary>
+		''' <summary>DMY (日月年) 形式の日付</summary>
 		xlDMYFormat = 4
-		''' <summary>YMD (�N����) �`���̓��t</summary>
+		''' <summary>YMD (年月日) 形式の日付</summary>
 		xlYMDFormat = 5
-		''' <summary>MYD (���N��) �`���̓��t</summary>
+		''' <summary>MYD (月年日) 形式の日付</summary>
 		xlMYDFormat = 6
-		''' <summary>DYM (���N��) �`���̓��t</summary>
+		''' <summary>DYM (日年月) 形式の日付</summary>
 		xlDYMFormat = 7
-		''' <summary>YDM (�N����) �`���̓��t</summary>
+		''' <summary>YDM (年日月) 形式の日付</summary>
 		xlYDMFormat = 8
-		''' <summary>��͋�؂��܂���B</summary>
+		''' <summary>列は区切られません。</summary>
 		xlSkipColumn = 9
-		''' <summary>EMD (��p�N����) �`���̓��t</summary>
+		''' <summary>EMD (台湾年月日) 形式の日付</summary>
 		xlEMDFormat = 10
 	End Enum
 
 	''' <summary>
-	''' �w�肵�� Range �I�u�W�F�N�g�̃f�[�^�^
+	''' 指定した Range オブジェクトのデータ型
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum XlRangeValueDataType As Integer
 		xlNone = 0
-		''' <summary>(����l)  �w�肵�� Range �I�u�W�F�N�g����̏ꍇ�AEmpty �l���擾���܂��B����𒲂ׂ�ɂ́AIsEmpty �֐����g�p���܂��BRange �I�u�W�F�N�g�ɕ����̃Z�����܂܂�Ă���ꍇ�́A�l�̔z����擾���܂��B����𒲂ׂ�ɂ́AIsArray �֐����g�p���܂��B</summary>
+		''' <summary>(既定値)  指定した Range オブジェクトが空の場合、Empty 値を取得します。これを調べるには、IsEmpty 関数を使用します。Range オブジェクトに複数のセルが含まれている場合は、値の配列を取得します。これを調べるには、IsArray 関数を使用します。</summary>
 		xlRangeValueDefault = 10
-		''' <summary>�w�肵�� Range �I�u�W�F�N�g�� XML �`���ŕ\�����R�[�h�Z�b�g���擾���܂��B</summary>
+		''' <summary>指定した Range オブジェクトを XML 形式で表すレコードセットを取得します。</summary>
 		xlRangeValueMSPersistXML = 12
-		''' <summary>�w�肵�� Range �I�u�W�F�N�g�̒l�A�����A�����A����і��O�� XML �X�v���b�h�V�[�g�`���Ŏ擾���܂��B</summary>
+		''' <summary>指定した Range オブジェクトの値、書式、数式、および名前を XML スプレッドシート形式で取得します。</summary>
 		xlRangeValueXMLSpreadsheet = 11
 	End Enum
 
 	''' <summary>
-	''' �ړ��������w�肵�܂��B
+	''' 移動方向を指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum XlDirection
-		''' <summary>���Ɉړ����܂��B</summary>
+		''' <summary>下に移動します。</summary>
 		xlDown = -4121 ' (&HFFFFEFE7)
-		''' <summary>���Ɉړ����܂��B</summary>
+		''' <summary>左に移動します。</summary>
 		xlToLeft = -4159 ' (&HFFFFEFC1)
-		''' <summary>�E�Ɉړ����܂��B</summary>
+		''' <summary>右に移動します。</summary>
 		xlToRight = -4161 ' (&HFFFFEFBF)
-		''' <summary>��Ɉړ����܂��B</summary>
+		''' <summary>上に移動します。</summary>
 		xlUp = -4162 ' (&HFFFFEFBE)
 	End Enum
 
 	''' <summary>
-	''' ���l�f�[�^�����[�N�V�[�g�̃R�s�[��Z���łǂ̂悤�Ɍv�Z���邩���w�肵�܂��B
+	''' 数値データをワークシートのコピー先セルでどのように計算するかを指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum XlPasteSpecialOperation As Integer
-		''' <summary>�R�s�[�����f�[�^�ɃR�s�[��Z���̒l�������܂��B</summary>
+		''' <summary>コピーしたデータにコピー先セルの値を加えます。</summary>
 		xlPasteSpecialOperationAdd = 2
-		''' <summary>�R�s�[�����f�[�^���R�s�[��Z���̒l�Ŋ���܂��B</summary>
+		''' <summary>コピーしたデータをコピー先セルの値で割ります。</summary>
 		xlPasteSpecialOperationDivide = 5
-		''' <summary>�R�s�[�����f�[�^�ɃR�s�[��Z���̒l���|���܂��B</summary>
+		''' <summary>コピーしたデータにコピー先セルの値を掛けます。</summary>
 		xlPasteSpecialOperationMultiply = 4
-		''' <summary>�\��t������Ōv�Z�����s���܂���B</summary>
+		''' <summary>貼り付け操作で計算を実行しません。</summary>
 		xlPasteSpecialOperationNone = -4142
-		''' <summary>�R�s�[�����f�[�^����R�s�[��Z���̒l�������܂��B</summary>
+		''' <summary>コピーしたデータからコピー先セルの値を引きます。</summary>
 		xlPasteSpecialOperationSubtract = 3
 	End Enum
 
 	''' <summary>
-	''' �\��t����͈͂̑������w�肵�܂��B
+	''' 貼り付ける範囲の属性を指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum XlPasteType As Integer
-		''' <summary>���ׂẴI�u�W�F�N�g��\��t���܂��B</summary>
+		''' <summary>すべてのオブジェクトを貼り付けます。</summary>
 		xlPasteAll = -4104
-		''' <summary>�r�����������ׂẴI�u�W�F�N�g��\��t���܂��B</summary>
+		''' <summary>罫線を除くすべてのオブジェクトを貼り付けます。</summary>
 		xlPasteAllExceptBorders = 7
-		''' <summary>�\��t�����̃Z���̗񕝂�\��t����̃Z���ɓK�p���܂��B</summary>
+		''' <summary>貼り付け元のセルの列幅を貼り付け先のセルに適用します。</summary>
 		xlPasteColumnWidths = 8
-		''' <summary>�R�����g��\��t���܂��B</summary>
+		''' <summary>コメントを貼り付けます。</summary>
 		xlPasteComments = -4144
-		''' <summary>������\��t���܂��B</summary>
+		''' <summary>書式を貼り付けます。</summary>
 		xlPasteFormats = -4122
-		''' <summary>������\��t���܂��B</summary>
+		''' <summary>数式を貼り付けます。</summary>
 		xlPasteFormulas = -4123
-		''' <summary>�����Ɛ��l������\��t���܂��B</summary>
+		''' <summary>数式と数値書式を貼り付けます。</summary>
 		xlPasteFormulasAndNumberFormats = 11
-		''' <summary>�\��t�����Z���̓��͋K����\��t����Z���ɓK�p���܂��B</summary>
+		''' <summary>貼り付け元セルの入力規則を貼り付け先セルに適用します。</summary>
 		xlPasteValidation = 6
-		''' <summary>�l������\��t���܂��B</summary>
+		''' <summary>値だけを貼り付けます。</summary>
 		xlPasteValues = -4163
-		''' <summary>���l����������\��t���܂��B</summary>
+		''' <summary>数値書式だけを貼り付けます。</summary>
 		xlPasteValuesAndNumberFormats = 12
 	End Enum
 
 	''' <summary>
-	''' Microsoft Excel �Ŏg�p����O���[�o���萔���w�肵�܂��B
+	''' Microsoft Excel で使用するグローバル定数を指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum Constants As Integer
@@ -316,85 +316,85 @@ Namespace Excel
 	End Enum
 
 	''' <summary>
-	''' �r���̐��̎�ނ��w�肵�܂��B
+	''' 罫線の線の種類を指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum XlLineStyle
-		''' <summary>����</summary>
+		''' <summary>実線</summary>
 		xlContinuous = 1
-		''' <summary>�j��</summary>
+		''' <summary>破線</summary>
 		xlDash = -4115 ' (&HFFFFEFED)
-		''' <summary>��_����</summary>
+		''' <summary>一点鎖線</summary>
 		xlDashDot = 4
-		''' <summary>��_����</summary>
+		''' <summary>二点鎖線</summary>
 		xlDashDotDot = 5
-		''' <summary>�_��</summary>
+		''' <summary>点線</summary>
 		xlDot = -4118 ' (&HFFFFEFEA)
-		''' <summary>��d��</summary>
+		''' <summary>二重線</summary>
 		xlDouble = -4119 ' (&HFFFFEFE9)
-		''' <summary>���Ȃ�</summary>
+		''' <summary>線なし</summary>
 		xlLineStyleNone = -4142	' (&HFFFFEFD2)
-		''' <summary>�ΐ�</summary>
+		''' <summary>斜線</summary>
 		xlSlantDashDot = 13
 	End Enum
 
 	''' <summary>
-	''' �Z���͈͂��͂ތr���̑������w�肵�܂��B
+	''' セル範囲を囲む罫線の太さを指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum XlBorderWeight
-		''' <summary>�ɍ�(�ł��ׂ��r��)</summary>
+		''' <summary>極細(最も細い罫線)</summary>
 		xlHairline
-		''' <summary>��</summary>
+		''' <summary>中</summary>
 		xlMedium
-		''' <summary>���� (�ł������r��)</summary>
+		''' <summary>太い (最も太い罫線)</summary>
 		xlThick
-		''' <summary>�ׂ�</summary>
+		''' <summary>細い</summary>
 		xlThin
 	End Enum
 
 	''' <summary>
-	''' �擾����r�����w�肵�܂��B
+	''' 取得する罫線を指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum XlBordersIndex
-		''' <summary>�Z���͈͂̊e�Z���̍��������E�����ւ̌r��</summary>
+		''' <summary>セル範囲の各セルの左上隅から右下隅への罫線</summary>
 		xlDiagonalDown = 5
-		''' <summary>�Z���͈͂̊e�Z���̍���������E����ւ̌r��</summary>
+		''' <summary>セル範囲の各セルの左下隅から右上隅への罫線</summary>
 		xlDiagonalUp = 6
-		''' <summary>�Z���͈͂̉����̌r��</summary>
+		''' <summary>セル範囲の下側の罫線</summary>
 		xlEdgeBottom = 9
-		''' <summary>�Z���͈͂̍����̌r��</summary>
+		''' <summary>セル範囲の左側の罫線</summary>
 		xlEdgeLeft = 7
-		''' <summary>�Z���͈͂̉E���̌r��</summary>
+		''' <summary>セル範囲の右側の罫線</summary>
 		xlEdgeRight = 10
-		''' <summary>�Z���͈͂̏㑤�̌r��</summary>
+		''' <summary>セル範囲の上側の罫線</summary>
 		xlEdgeTop = 8
-		''' <summary>�Z���͈͂̊O�g�������A���ׂẴZ���̐��������̌r��</summary>
+		''' <summary>セル範囲の外枠を除く、すべてのセルの水平方向の罫線</summary>
 		xlInsideHorizontal = 12
-		''' <summary>�Z���͈͂̊O�g�������A���ׂẴZ���̐��������̌r��</summary>
+		''' <summary>セル範囲の外枠を除く、すべてのセルの垂直方向の罫線</summary>
 		xlInsideVertical = 11
 	End Enum
 
 	''' <summary>
-	''' �p���ɍ��킹�ăO���t�̃T�C�Y�𒲐�������@���w�肵�܂��B
+	''' 用紙に合わせてグラフのサイズを調整する方法を指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum XlObjectSize
-		''' <summary>��ʂɕ\������Ă���O���t�̏c�����ς����ɁA�p���̗]�����ŏ��ɂȂ�悤�O���t���g�債�Ĉ�����܂��B</summary>
+		''' <summary>画面に表示されているグラフの縦横比を変えずに、用紙の余白が最小になるようグラフを拡大して印刷します。</summary>
 		xlFitToPage = 2
-		''' <summary>�O���t�̏c�����K�v�ɉ����Ē������A�p���̗]�����ŏ��ɂȂ�悤�O���t���g�債�Ĉ�����܂��B</summary>
+		''' <summary>グラフの縦横比を必要に応じて調整し、用紙の余白が最小になるようグラフを拡大して印刷します。</summary>
 		xlFullPage = 3
-		''' <summary>��ʂɕ\������Ă���T�C�Y�ŃO���t��������܂��B</summary>
+		''' <summary>画面に表示されているサイズでグラフを印刷します。</summary>
 		xlScreenSize = 1
 	End Enum
 
 	''' <summary>
-	''' Macintosh �� Excel �� 32 �r�b�g �N���G�[�^ �R�[�h���w�肵�܂��B1480803660 (10 �i)�A5843454C (16 �i)�A�܂��� XCEL (������) ���w�肵�܂��B
+	''' Macintosh 版 Excel の 32 ビット クリエータ コードを指定します。1480803660 (10 進)、5843454C (16 進)、または XCEL (文字列) を指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum XlCreator
-		''' <summary>Macintosh �� Excel �̃N���G�[�^ �R�[�h</summary>
+		''' <summary>Macintosh 版 Excel のクリエータ コード</summary>
 		xlCreatorCode = 1480803660 ' (&H5843454C)
 	End Enum
 
@@ -404,30 +404,30 @@ Namespace Excel
 	End Enum
 
 	''' <summary>
-	''' ���[�N�V�[�g���������Ƃ��̃y�[�W�̌������w�肵�܂��B
+	''' ワークシートを印刷するときのページの向きを指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum XlPageOrientation
-		''' <summary>�����[�h���w�肵�܂��B</summary>
+		''' <summary>横モードを指定します。</summary>
 		xlLandscape = 2
-		''' <summary>�c���[�h���w�肵�܂��B</summary>
+		''' <summary>縦モードを指定します。</summary>
 		xlPortrait = 1
 	End Enum
 
 	''' <summary>
-	''' �p���̃T�C�Y���w�肵�܂��B
+	''' 用紙のサイズを指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum XlPaperSize
-		''' <summary>10 x 14 �C���`</summary>
+		''' <summary>10 x 14 インチ</summary>
 		xlPaper10x14 = 16 ' (&H10)
-		''' <summary>11 x 17 �C���`</summary>
+		''' <summary>11 x 17 インチ</summary>
 		xlPaper11x17 = 17 ' (&H11)
 		''' <summary>A3 (297 mm x 420 mm)</summary>
 		xlPaperA3 = 8
 		''' <summary>A4 (210 mm x 297 mm)</summary>
 		xlPaperA4 = 9
-		''' <summary>A4 (���^) (210 mm x 297 mm)</summary>
+		''' <summary>A4 (小型) (210 mm x 297 mm)</summary>
 		xlPaperA4Small = 10
 		''' <summary>A5 (148 mm x 210 mm)</summary>
 		xlPaperA5 = 11
@@ -435,541 +435,541 @@ Namespace Excel
 		xlPaperB4 = 12
 		''' <summary>A5 (148 mm x 210 mm)</summary>
 		xlPaperB5 = 13
-		''' <summary>C (17 �C���` x 22 �C���`)</summary>
+		''' <summary>C (17 インチ x 22 インチ)</summary>
 		xlPaperCsheet = 24 ' (&H18)
-		''' <summary>D (22 �C���` x 34 �C���`)</summary>
+		''' <summary>D (22 インチ x 34 インチ)</summary>
 		xlPaperDsheet = 25 ' (&H19)
-		''' <summary>���� 10 �� (4 1/8 x 9 1/2 �C���`)</summary>
+		''' <summary>封筒 10 号 (4 1/8 x 9 1/2 インチ)</summary>
 		xlPaperEnvelope10 = 20 ' (&H14)
-		''' <summary>���� 11 �� (4 1/2 x 10 3/8 �C���`)</summary>
+		''' <summary>封筒 11 号 (4 1/2 x 10 3/8 インチ)</summary>
 		xlPaperEnvelope11 = 21 ' (&H15)
-		''' <summary>���� 12 �� (4 1/2 x 11 �C���`)</summary>
+		''' <summary>封筒 12 号 (4 1/2 x 11 インチ)</summary>
 		xlPaperEnvelope12 = 22 ' (&H16)
-		''' <summary>���� 14 �� (5 x 11 1/2 �C���`)</summary>
+		''' <summary>封筒 14 号 (5 x 11 1/2 インチ)</summary>
 		xlPaperEnvelope14 = 23 ' (&H17)
-		''' <summary>���� 9 �� (3 7/8 x 8 7/8 �C���`)</summary>
+		''' <summary>封筒 9 号 (3 7/8 x 8 7/8 インチ)</summary>
 		xlPaperEnvelope9 = 19 ' (&H13)
-		''' <summary>���� B4 (250 mm x 353 mm)</summary>
+		''' <summary>封筒 B4 (250 mm x 353 mm)</summary>
 		xlPaperEnvelopeB4 = 33 ' (&H21)
-		''' <summary>���� B5 (176 mm x 250 mm)</summary>
+		''' <summary>封筒 B5 (176 mm x 250 mm)</summary>
 		xlPaperEnvelopeB5 = 34 ' (&H22)
-		''' <summary>���� B6 (176 mm x 125 mm)</summary>
+		''' <summary>封筒 B6 (176 mm x 125 mm)</summary>
 		xlPaperEnvelopeB6 = 35 ' (&H23)
-		''' <summary>���� C3 (324 mm x 458 mm)</summary>
+		''' <summary>封筒 C3 (324 mm x 458 mm)</summary>
 		xlPaperEnvelopeC3 = 29 ' (&H1D)
-		''' <summary>���� C4 (229 mm x 324 mm)</summary>
+		''' <summary>封筒 C4 (229 mm x 324 mm)</summary>
 		xlPaperEnvelopeC4 = 30 ' (&H1E)
-		''' <summary>���� C5 (162 mm x 229 mm)</summary>
+		''' <summary>封筒 C5 (162 mm x 229 mm)</summary>
 		xlPaperEnvelopeC5 = 28 ' (&H1C)
-		''' <summary>���� C6 (114 mm x 162 mm)</summary>
+		''' <summary>封筒 C6 (114 mm x 162 mm)</summary>
 		xlPaperEnvelopeC6 = 31 ' (&H1F)
-		''' <summary>���� C65 (114 mm x 229 mm)</summary>
+		''' <summary>封筒 C65 (114 mm x 229 mm)</summary>
 		xlPaperEnvelopeC65 = 32	' (&H20)
-		''' <summary>���� DL (110 x 220 mm)</summary>
+		''' <summary>封筒 DL (110 x 220 mm)</summary>
 		xlPaperEnvelopeDL = 27 ' (&H1B)
-		''' <summary>���� (110 mm x 230 mm)</summary>
+		''' <summary>封筒 (110 mm x 230 mm)</summary>
 		xlPaperEnvelopeItaly = 36 ' (&H24)
-		''' <summary>�������i�[�N (3 7/8 x 7 1/2 �C���`)</summary>
+		''' <summary>封筒モナーク (3 7/8 x 7 1/2 インチ)</summary>
 		xlPaperEnvelopeMonarch = 37	' (&H25)
-		''' <summary>���� (3 5/8 x 6 1/2 �C���`)</summary>
+		''' <summary>封筒 (3 5/8 x 6 1/2 インチ)</summary>
 		xlPaperEnvelopePersonal = 38 ' (&H26)
-		''' <summary>E (34 �C���` x 44 �C���`)</summary>
+		''' <summary>E (34 インチ x 44 インチ)</summary>
 		xlPaperEsheet = 26 ' (&H1A)
-		''' <summary>�G�O�[�N�e�B�u (7 1/2 x 10 1/2 �C���`)</summary>
+		''' <summary>エグゼクティブ (7 1/2 x 10 1/2 インチ)</summary>
 		xlPaperExecutive = 7
-		''' <summary>�h�C�c ���[�K�����ʎ� (8 1/2 x 13 �C���`)</summary>
+		''' <summary>ドイツ リーガル複写紙 (8 1/2 x 13 インチ)</summary>
 		xlPaperFanfoldLegalGerman = 41 ' (&H29)
-		''' <summary>�h�C�c ���[�K�����ʎ� (8 1/2 x 13 �C���`)</summary>
+		''' <summary>ドイツ リーガル複写紙 (8 1/2 x 13 インチ)</summary>
 		xlPaperFanfoldStdGerman = 40 ' (&H28)
-		''' <summary>�č��W���t�@���t�H�[���h (14 7/8 x 11 �C���`)</summary>
+		''' <summary>米国標準ファンフォールド (14 7/8 x 11 インチ)</summary>
 		xlPaperFanfoldUS = 39 ' (&H27)
-		''' <summary>�t�H���I (8 1/2 x 13 �C���`)</summary>
+		''' <summary>フォリオ (8 1/2 x 13 インチ)</summary>
 		xlPaperFolio = 14
-		''' <summary>Ledger (17 x 11 �C���`)</summary>
+		''' <summary>Ledger (17 x 11 インチ)</summary>
 		xlPaperLedger = 4
-		''' <summary>���[�K�� (8 1/2 x 14 �C���`)</summary>
+		''' <summary>リーガル (8 1/2 x 14 インチ)</summary>
 		xlPaperLegal = 5
-		''' <summary>���^�[ (8 1/2 x 11 �C���`)</summary>
+		''' <summary>レター (8 1/2 x 11 インチ)</summary>
 		xlPaperLetter = 1
-		''' <summary>���^�[ (���^) (8 1/2 x 11 �C���`)</summary>
+		''' <summary>レター (小型) (8 1/2 x 11 インチ)</summary>
 		xlPaperLetterSmall = 2
-		''' <summary>�m�[�g (8 1/2 x 11 �C���`)</summary>
+		''' <summary>ノート (8 1/2 x 11 インチ)</summary>
 		xlPaperNote = 18 ' (&H12)
-		''' <summary>�J�[�g (215 mm x 275 mm)</summary>
+		''' <summary>カート (215 mm x 275 mm)</summary>
 		xlPaperQuarto = 15
-		''' <summary>�X�e�[�g�����g (5 1/2 x 8 1/2 �C���`)</summary>
+		''' <summary>ステートメント (5 1/2 x 8 1/2 インチ)</summary>
 		xlPaperStatement = 6
-		''' <summary>�^�u���C�h (11 x 17 �C���`)</summary>
+		''' <summary>タブロイド (11 x 17 インチ)</summary>
 		xlPaperTabloid = 3
-		''' <summary>���[�U�[�ݒ�</summary>
+		''' <summary>ユーザー設定</summary>
 		xlPaperUser = 256 ' (&H100)
 	End Enum
 
 	''' <summary>
-	''' �V�[�g�ւ̃R�����g�̈�����@���w�肵�܂��B
+	''' シートへのコメントの印刷方法を指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum XlPrintLocation
-		''' <summary>���[�N�V�[�g���̑}���ʒu�ɃR�����g��������܂��B</summary>
+		''' <summary>ワークシート内の挿入位置にコメントを印刷します。</summary>
 		xlPrintInPlace = 16	' (&H10)
-		''' <summary>�R�����g��������܂���B</summary>
+		''' <summary>コメントを印刷しません。</summary>
 		xlPrintNoComments = -4142 ' (&HFFFFEFD2)
-		''' <summary>���[�N�V�[�g�̍Ō�ɁA�����r���Ƃ��ăR�����g��������܂��B</summary>
+		''' <summary>ワークシートの最後に、文末脚注としてコメントを印刷します。</summary>
 		xlPrintSheetEnd = 1
 	End Enum
 
 	''' <summary>
-	''' �\���������G���[�̎�ނ��w�肵�܂��B
+	''' 表示する印刷エラーの種類を指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum XlPrintErrors
-		''' <summary>����G���[�͋󔒂ɂȂ�܂��B</summary>
+		''' <summary>印刷エラーは空白になります。</summary>
 		xlPrintErrorsBlank = 1
-		''' <summary>����G���[�̓_�b�V���ŕ\������܂��B</summary>
+		''' <summary>印刷エラーはダッシュで表示されます。</summary>
 		xlPrintErrorsDash = 2
-		''' <summary>����G���[�����ׂĕ\�����܂��B</summary>
+		''' <summary>印刷エラーをすべて表示します。</summary>
 		xlPrintErrorsDisplayed = 0
-		''' <summary>����G���[���g�p�s�Ƃ��ĕ\�����܂��B</summary>
+		''' <summary>印刷エラーを使用不可として表示します。</summary>
 		xlPrintErrorsNA = 3
 	End Enum
 
 	''' <summary>
-	''' �}�`�ɓK�p����F�̕ϊ����w�肵�܂��B
+	''' 図形に適用する色の変換を指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum MsoPictureColorType
-		''' <summary>����</summary>
+		''' <summary>既定</summary>
 		msoPictureAutomatic = 1
-		''' <summary>����</summary>
+		''' <summary>白黒</summary>
 		msoPictureBlackAndWhite = 3
-		''' <summary>�O���[�X�P�[��</summary>
+		''' <summary>グレースケール</summary>
 		msoPictureGrayscale = 2
-		''' <summary>����</summary>
+		''' <summary>混合</summary>
 		msoPictureMixed = -2 ' (&HFFFFFFFE)
-		''' <summary>������</summary>
+		''' <summary>透かし</summary>
 		msoPictureWatermark = 4
 	End Enum
 
 	''' <summary>
-	''' 3 �X�e�[�g�̃u�[���^ (Boolean) �̒l���w�肵�܂��B
+	''' 3 ステートのブール型 (Boolean) の値を指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum MsoTriState
-		''' <summary>�T�|�[�g����Ă��܂���B</summary>
+		''' <summary>サポートされていません。</summary>
 		msoCTrue = 1
-		''' <summary>�U (False)</summary>
+		''' <summary>偽 (False)</summary>
 		msoFalse = 0
-		''' <summary>�T�|�[�g����Ă��܂���B</summary>
+		''' <summary>サポートされていません。</summary>
 		msoTriStateMixed = -2 ' (&HFFFFFFFE)
-		''' <summary>�T�|�[�g����Ă��܂���B</summary>
+		''' <summary>サポートされていません。</summary>
 		msoTriStateToggle = -3 ' (&HFFFFFFFD)
-		''' <summary>�^ (True)</summary>
+		''' <summary>真 (True)</summary>
 		msoTrue = -1 ' (&HFFFFFFFF)
 	End Enum
 
 	''' <summary>
-	''' �}���̃e�L�X�g�ɓK�p����w�i�̎�ނ��w�肵�܂��B
+	''' 図中のテキストに適用する背景の種類を指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum XlBackground
-		''' <summary>Excel �Ŕw�i�𐧌䂵�܂��B</summary>
+		''' <summary>Excel で背景を制御します。</summary>
 		xlBackgroundAutomatic = -4105 ' (&HFFFFEFF7)
-		''' <summary>�s����</summary>
+		''' <summary>不透明</summary>
 		xlBackgroundOpaque = 3
-		''' <summary>����</summary>
+		''' <summary>透明</summary>
 		xlBackgroundTransparent = 2
 	End Enum
 
 	''' <summary>
-	''' �t�H���g�ɓK�p����鉺���̎�ނ��w�肵�܂��B
+	''' フォントに適用される下線の種類を指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum XlUnderlineStyle
-		''' <summary>������d����</summary>
+		''' <summary>太い二重下線</summary>
 		xlUnderlineStyleDouble = -4119 ' (&HFFFFEFE9)
-		''' <summary>�݂��ɋߐڂ���ׂ���d����</summary>
+		''' <summary>互いに近接する細い二重下線</summary>
 		xlUnderlineStyleDoubleAccounting = 5
-		''' <summary>�����Ȃ�</summary>
+		''' <summary>下線なし</summary>
 		xlUnderlineStyleNone = -4142 ' (&HFFFFEFD2)
-		''' <summary>��d����</summary>
+		''' <summary>一重下線</summary>
 		xlUnderlineStyleSingle = 2
-		''' <summary>�T�|�[�g����Ă��܂���B</summary>
+		''' <summary>サポートされていません。</summary>
 		xlUnderlineStyleSingleAccounting = 4
 	End Enum
 
 	''' <summary>
-	''' AutoShape �I�u�W�F�N�g�̐}�`�̎�ނ��w�肵�܂��B
+	''' AutoShape オブジェクトの図形の種類を指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum MsoAutoShapeType
-		''' <summary>�� 16</summary>
+		''' <summary>星 16</summary>
 		msoShape16pointStar = 94
-		''' <summary>�� 24</summary>
+		''' <summary>星 24</summary>
 		msoShape24pointStar = 95
-		''' <summary>�� 32</summary>
+		''' <summary>星 32</summary>
 		msoShape32pointStar = 96
-		''' <summary>�� 4</summary>
+		''' <summary>星 4</summary>
 		msoShape4pointStar = 91
-		''' <summary>�� 5</summary>
+		''' <summary>星 5</summary>
 		msoShape5pointStar = 92
-		''' <summary>�� 8</summary>
+		''' <summary>星 8</summary>
 		msoShape8pointStar = 93
-		''' <summary>[�߂�] �{�^���܂��� [�O��] �{�^���B�}�E�X�N���b�N�ƃ}�E�X�I�[�o�[�̑�����T�|�[�g���܂��B</summary>
+		''' <summary>[戻る] ボタンまたは [前へ] ボタン。マウスクリックとマウスオーバーの操作をサポートします。</summary>
 		msoShapeActionButtonBackorPrevious = 129
-		''' <summary>[�擪] �{�^���B�}�E�X�N���b�N�ƃ}�E�X�I�[�o�[�̑�����T�|�[�g���܂��B</summary>
+		''' <summary>[先頭] ボタン。マウスクリックとマウスオーバーの操作をサポートします。</summary>
 		msoShapeActionButtonBeginning = 131
-		''' <summary>����̉摜��e�L�X�g�̂Ȃ��{�^���B�}�E�X�N���b�N�ƃ}�E�X�I�[�o�[�̑�����T�|�[�g���܂��B</summary>
+		''' <summary>既定の画像やテキストのないボタン。マウスクリックとマウスオーバーの操作をサポートします。</summary>
 		msoShapeActionButtonCustom = 125
-		''' <summary>[�h�L�������g] �{�^���B�}�E�X�N���b�N�ƃ}�E�X�I�[�o�[�̑�����T�|�[�g���܂��B</summary>
+		''' <summary>[ドキュメント] ボタン。マウスクリックとマウスオーバーの操作をサポートします。</summary>
 		msoShapeActionButtonDocument = 134
-		''' <summary>[�s��] �{�^���B�}�E�X�N���b�N�ƃ}�E�X�I�[�o�[�̑�����T�|�[�g���܂��B</summary>
+		''' <summary>[行末] ボタン。マウスクリックとマウスオーバーの操作をサポートします。</summary>
 		msoShapeActionButtonEnd = 132
-		''' <summary>[�i��] �{�^���܂��� [����] �{�^���B�}�E�X�N���b�N�ƃ}�E�X�I�[�o�[�̑�����T�|�[�g���܂��B</summary>
+		''' <summary>[進む] ボタンまたは [次へ] ボタン。マウスクリックとマウスオーバーの操作をサポートします。</summary>
 		msoShapeActionButtonForwardorNext = 130
-		''' <summary>[�w���v] �{�^���B�}�E�X�N���b�N�ƃ}�E�X�I�[�o�[�̑�����T�|�[�g���܂��B</summary>
+		''' <summary>[ヘルプ] ボタン。マウスクリックとマウスオーバーの操作をサポートします。</summary>
 		msoShapeActionButtonHelp = 127
-		''' <summary>[�z�[��] �{�^���B�}�E�X�N���b�N�ƃ}�E�X�I�[�o�[�̑�����T�|�[�g���܂��B</summary>
+		''' <summary>[ホーム] ボタン。マウスクリックとマウスオーバーの操作をサポートします。</summary>
 		msoShapeActionButtonHome = 126
-		''' <summary>[���] �{�^���B�}�E�X�N���b�N�ƃ}�E�X�I�[�o�[�̑�����T�|�[�g���܂��B</summary>
+		''' <summary>[情報] ボタン。マウスクリックとマウスオーバーの操作をサポートします。</summary>
 		msoShapeActionButtonInformation = 128
-		''' <summary>[�r�f�I] �{�^���B�}�E�X�N���b�N�ƃ}�E�X�I�[�o�[�̑�����T�|�[�g���܂��B</summary>
+		''' <summary>[ビデオ] ボタン。マウスクリックとマウスオーバーの操作をサポートします。</summary>
 		msoShapeActionButtonMovie = 136
-		''' <summary>[�߂�] �{�^���B�}�E�X�N���b�N�ƃ}�E�X�I�[�o�[�̑�����T�|�[�g���܂��B</summary>
+		''' <summary>[戻る] ボタン。マウスクリックとマウスオーバーの操作をサポートします。</summary>
 		msoShapeActionButtonReturn = 133
-		''' <summary>[�T�E���h] �{�^���B�}�E�X�N���b�N�ƃ}�E�X�I�[�o�[�̑�����T�|�[�g���܂��B</summary>
+		''' <summary>[サウンド] ボタン。マウスクリックとマウスオーバーの操作をサポートします。</summary>
 		msoShapeActionButtonSound = 135
-		''' <summary>�~��</summary>
+		''' <summary>円弧</summary>
 		msoShapeArc = 25
-		''' <summary>�o���[��</summary>
+		''' <summary>バルーン</summary>
 		msoShapeBalloon = 137
-		''' <summary>�Ȑܖ��</summary>
+		''' <summary>曲折矢印</summary>
 		msoShapeBentArrow = 41
-		''' <summary>���ܖ�� (����ł͏���)</summary>
+		''' <summary>屈折矢印 (既定では上矢印)</summary>
 		msoShapeBentUpArrow = 44
-		''' <summary>�z��</summary>
+		''' <summary>額縁</summary>
 		msoShapeBevel = 15
-		''' <summary>�A�[�`</summary>
+		''' <summary>アーチ</summary>
 		msoShapeBlockArc = 20
-		''' <summary>�~��</summary>
+		''' <summary>円柱</summary>
 		msoShapeCan = 13
-		''' <summary>�R�`</summary>
+		''' <summary>山形</summary>
 		msoShapeChevron = 52
-		''' <summary>����</summary>
+		''' <summary>環状矢印</summary>
 		msoShapeCircularArrow = 60
-		''' <summary>�_�`�����o��</summary>
+		''' <summary>雲形吹き出し</summary>
 		msoShapeCloudCallout = 108
-		''' <summary>�\���`</summary>
+		''' <summary>十字形</summary>
 		msoShapeCross = 11
-		''' <summary>������</summary>
+		''' <summary>直方体</summary>
 		msoShapeCube = 14
-		''' <summary>���J�[�u���</summary>
+		''' <summary>下カーブ矢印</summary>
 		msoShapeCurvedDownArrow = 48
-		''' <summary>���J�[�u ���{��</summary>
+		''' <summary>下カーブ リボン</summary>
 		msoShapeCurvedDownRibbon = 100
-		''' <summary>���J�[�u���</summary>
+		''' <summary>左カーブ矢印</summary>
 		msoShapeCurvedLeftArrow = 46
-		''' <summary>�E�J�[�u���</summary>
+		''' <summary>右カーブ矢印</summary>
 		msoShapeCurvedRightArrow = 45
-		''' <summary>��J�[�u���</summary>
+		''' <summary>上カーブ矢印</summary>
 		msoShapeCurvedUpArrow = 47
-		''' <summary>��J�[�u ���{��</summary>
+		''' <summary>上カーブ リボン</summary>
 		msoShapeCurvedUpRibbon = 99
-		''' <summary>�Ђ��`</summary>
+		''' <summary>ひし形</summary>
 		msoShapeDiamond = 4
-		''' <summary>�h�[�i�c</summary>
+		''' <summary>ドーナツ</summary>
 		msoShapeDonut = 18
-		''' <summary>��������</summary>
+		''' <summary>中かっこ</summary>
 		msoShapeDoubleBrace = 27
-		''' <summary>�傩����</summary>
+		''' <summary>大かっこ</summary>
 		msoShapeDoubleBracket = 26
-		''' <summary>���g</summary>
+		''' <summary>小波</summary>
 		msoShapeDoubleWave = 104
-		''' <summary>�����</summary>
+		''' <summary>下矢印</summary>
 		msoShapeDownArrow = 36
-		''' <summary>����󐁂��o��</summary>
+		''' <summary>下矢印吹き出し</summary>
 		msoShapeDownArrowCallout = 56
-		''' <summary>�����{��</summary>
+		''' <summary>下リボン</summary>
 		msoShapeDownRibbon = 98
-		''' <summary>���� 1</summary>
+		''' <summary>爆発 1</summary>
 		msoShapeExplosion1 = 89
-		''' <summary>���� 2</summary>
+		''' <summary>爆発 2</summary>
 		msoShapeExplosion2 = 90
-		''' <summary>�t���[�`���[�g : ��֏���</summary>
+		''' <summary>フローチャート : 代替処理</summary>
 		msoShapeFlowchartAlternateProcess = 62
-		''' <summary>�t���[�`���[�g : �J�[�h</summary>
+		''' <summary>フローチャート : カード</summary>
 		msoShapeFlowchartCard = 75
-		''' <summary>�t���[�`���[�g : �ƍ�</summary>
+		''' <summary>フローチャート : 照合</summary>
 		msoShapeFlowchartCollate = 79
-		''' <summary>�t���[�`���[�g : �����q</summary>
+		''' <summary>フローチャート : 結合子</summary>
 		msoShapeFlowchartConnector = 73
-		''' <summary>�t���[�`���[�g : �f�[�^</summary>
+		''' <summary>フローチャート : データ</summary>
 		msoShapeFlowchartData = 64
-		''' <summary>�t���[�`���[�g : ���f</summary>
+		''' <summary>フローチャート : 判断</summary>
 		msoShapeFlowchartDecision = 63
-		''' <summary>�t���[�`���[�g : �_���σQ�[�g</summary>
+		''' <summary>フローチャート : 論理積ゲート</summary>
 		msoShapeFlowchartDelay = 84
-		''' <summary>�t���[�`���[�g : ���ڃA�N�Z�X�L��</summary>
+		''' <summary>フローチャート : 直接アクセス記憶</summary>
 		msoShapeFlowchartDirectAccessStorage = 87
-		''' <summary>�t���[�`���[�g : �\��</summary>
+		''' <summary>フローチャート : 表示</summary>
 		msoShapeFlowchartDisplay = 88
-		''' <summary>�t���[�`���[�g : ����</summary>
+		''' <summary>フローチャート : 書類</summary>
 		msoShapeFlowchartDocument = 67
-		''' <summary>�t���[�`���[�g : ���o��</summary>
+		''' <summary>フローチャート : 抜出し</summary>
 		msoShapeFlowchartExtract = 81
-		''' <summary>�t���[�`���[�g : �����L��</summary>
+		''' <summary>フローチャート : 内部記憶</summary>
 		msoShapeFlowchartInternalStorage = 66
-		''' <summary>�t���[�`���[�g : ���C�f�B�X�N</summary>
+		''' <summary>フローチャート : 磁気ディスク</summary>
 		msoShapeFlowchartMagneticDisk = 86
-		''' <summary>�t���[�`���[�g : �葀�����</summary>
+		''' <summary>フローチャート : 手操作入力</summary>
 		msoShapeFlowchartManualInput = 71
-		''' <summary>�t���[�`���[�g : ����</summary>
+		''' <summary>フローチャート : 手作業</summary>
 		msoShapeFlowchartManualOperation = 72
-		''' <summary>�t���[�`���[�g : �g����</summary>
+		''' <summary>フローチャート : 組合せ</summary>
 		msoShapeFlowchartMerge = 82
-		''' <summary>�t���[�`���[�g : ��������</summary>
+		''' <summary>フローチャート : 複数書類</summary>
 		msoShapeFlowchartMultidocument = 68
-		''' <summary>�t���[�`���[�g : ���y�[�W�����q</summary>
+		''' <summary>フローチャート : 他ページ結合子</summary>
 		msoShapeFlowchartOffpageConnector = 74
-		''' <summary>�t���[�`���[�g : �_���a</summary>
+		''' <summary>フローチャート : 論理和</summary>
 		msoShapeFlowchartOr = 78
-		''' <summary>�t���[�`���[�g : ��`�ςݏ���</summary>
+		''' <summary>フローチャート : 定義済み処理</summary>
 		msoShapeFlowchartPredefinedProcess = 65
-		''' <summary>�t���[�`���[�g : ����</summary>
+		''' <summary>フローチャート : 準備</summary>
 		msoShapeFlowchartPreparation = 70
-		''' <summary>�t���[�`���[�g : ����</summary>
+		''' <summary>フローチャート : 処理</summary>
 		msoShapeFlowchartProcess = 61
-		''' <summary>�t���[�`���[�g : ����E�e�[�v</summary>
+		''' <summary>フローチャート : せん孔テープ</summary>
 		msoShapeFlowchartPunchedTape = 76
-		''' <summary>�t���[�`���[�g : �����A�N�Z�X�L��</summary>
+		''' <summary>フローチャート : 順次アクセス記憶</summary>
 		msoShapeFlowchartSequentialAccessStorage = 85
-		''' <summary>�t���[�`���[�g : ����</summary>
+		''' <summary>フローチャート : 分類</summary>
 		msoShapeFlowchartSort = 80
-		''' <summary>�t���[�`���[�g : �L���f�[�^</summary>
+		''' <summary>フローチャート : 記憶データ</summary>
 		msoShapeFlowchartStoredData = 83
-		''' <summary>�t���[�`���[�g : �a�ڍ�</summary>
+		''' <summary>フローチャート : 和接合</summary>
 		msoShapeFlowchartSummingJunction = 77
-		''' <summary>�t���[�`���[�g : �[�q</summary>
+		''' <summary>フローチャート : 端子</summary>
 		msoShapeFlowchartTerminator = 69
-		''' <summary>����</summary>
+		''' <summary>メモ</summary>
 		msoShapeFoldedCorner = 16
-		''' <summary>�n�[�g</summary>
+		''' <summary>ハート</summary>
 		msoShapeHeart = 21
-		''' <summary>�Z�p�`</summary>
+		''' <summary>六角形</summary>
 		msoShapeHexagon = 10
-		''' <summary>������</summary>
+		''' <summary>横巻き</summary>
 		msoShapeHorizontalScroll = 102
-		''' <summary>�񓙕ӎO�p�`</summary>
+		''' <summary>二等辺三角形</summary>
 		msoShapeIsoscelesTriangle = 7
-		''' <summary>�����</summary>
+		''' <summary>左矢印</summary>
 		msoShapeLeftArrow = 34
-		''' <summary>����󐁂��o��</summary>
+		''' <summary>左矢印吹き出し</summary>
 		msoShapeLeftArrowCallout = 54
-		''' <summary>����������</summary>
+		''' <summary>左中かっこ</summary>
 		msoShapeLeftBrace = 31
-		''' <summary>���傩����</summary>
+		''' <summary>左大かっこ</summary>
 		msoShapeLeftBracket = 29
-		''' <summary>���E���</summary>
+		''' <summary>左右矢印</summary>
 		msoShapeLeftRightArrow = 37
-		''' <summary>���E��󐁂��o��</summary>
+		''' <summary>左右矢印吹き出し</summary>
 		msoShapeLeftRightArrowCallout = 57
-		''' <summary>�O�������</summary>
+		''' <summary>三方向矢印</summary>
 		msoShapeLeftRightUpArrow = 40
-		''' <summary>��������</summary>
+		''' <summary>二方向矢印</summary>
 		msoShapeLeftUpArrow = 43
-		''' <summary>���</summary>
+		''' <summary>稲妻</summary>
 		msoShapeLightningBolt = 22
-		''' <summary>�������o�� 1 (�g�t��)</summary>
+		''' <summary>線吹き出し 1 (枠付き)</summary>
 		msoShapeLineCallout1 = 109
-		''' <summary>�����������o�� 1</summary>
+		''' <summary>強調線吹き出し 1</summary>
 		msoShapeLineCallout1AccentBar = 113
-		''' <summary>�����������o�� 1 (�g�t��)</summary>
+		''' <summary>強調線吹き出し 1 (枠付き)</summary>
 		msoShapeLineCallout1BorderandAccentBar = 121
-		''' <summary>�������o�� 1</summary>
+		''' <summary>線吹き出し 1</summary>
 		msoShapeLineCallout1NoBorder = 117
-		''' <summary>�������o�� 2 (�g�t��)</summary>
+		''' <summary>線吹き出し 2 (枠付き)</summary>
 		msoShapeLineCallout2 = 110
-		''' <summary>�����������o�� 2</summary>
+		''' <summary>強調線吹き出し 2</summary>
 		msoShapeLineCallout2AccentBar = 114
-		''' <summary>�����������o�� 2 (�g�t��)</summary>
+		''' <summary>強調線吹き出し 2 (枠付き)</summary>
 		msoShapeLineCallout2BorderandAccentBar = 122
-		''' <summary>�������o�� 2</summary>
+		''' <summary>線吹き出し 2</summary>
 		msoShapeLineCallout2NoBorder = 118
-		''' <summary>�������o�� 3 (�g�t��)</summary>
+		''' <summary>線吹き出し 3 (枠付き)</summary>
 		msoShapeLineCallout3 = 111
-		''' <summary>�����������o�� 3</summary>
+		''' <summary>強調線吹き出し 3</summary>
 		msoShapeLineCallout3AccentBar = 115
-		''' <summary>�����������o�� 3 (�g�t��)</summary>
+		''' <summary>強調線吹き出し 3 (枠付き)</summary>
 		msoShapeLineCallout3BorderandAccentBar = 123
-		''' <summary>�������o�� 3</summary>
+		''' <summary>線吹き出し 3</summary>
 		msoShapeLineCallout3NoBorder = 119
-		''' <summary>�������o�� 4 (�g�t��)</summary>
+		''' <summary>線吹き出し 4 (枠付き)</summary>
 		msoShapeLineCallout4 = 112
-		''' <summary>�����������o�� 4</summary>
+		''' <summary>強調線吹き出し 4</summary>
 		msoShapeLineCallout4AccentBar = 116
-		''' <summary>�����������o�� 4 (�g�t��)</summary>
+		''' <summary>強調線吹き出し 4 (枠付き)</summary>
 		msoShapeLineCallout4BorderandAccentBar = 124
-		''' <summary>�������o�� 4</summary>
+		''' <summary>線吹き出し 4</summary>
 		msoShapeLineCallout4NoBorder = 120
-		''' <summary>�l�̎擾�̂݉\�ł��B���̏�Ԃ̑g�ݍ��킹�������܂��B</summary>
+		''' <summary>値の取得のみ可能です。他の状態の組み合わせを示します。</summary>
 		msoShapeMixed = -2
-		''' <summary>��</summary>
+		''' <summary>月</summary>
 		msoShapeMoon = 24
-		''' <summary>�֎~</summary>
+		''' <summary>禁止</summary>
 		msoShapeNoSymbol = 19
-		''' <summary>V ���`���</summary>
+		''' <summary>V 字形矢印</summary>
 		msoShapeNotchedRightArrow = 50
-		''' <summary>�T�|�[�g����Ă��܂���B</summary>
+		''' <summary>サポートされていません。</summary>
 		msoShapeNotPrimitive = 138
-		''' <summary>���p�`</summary>
+		''' <summary>八角形</summary>
 		msoShapeOctagon = 6
-		''' <summary>�ȉ~</summary>
+		''' <summary>楕円</summary>
 		msoShapeOval = 9
-		''' <summary>�~�`�����o��</summary>
+		''' <summary>円形吹き出し</summary>
 		msoShapeOvalCallout = 107
-		''' <summary>���s�l�p�`</summary>
+		''' <summary>平行四角形</summary>
 		msoShapeParallelogram = 2
-		''' <summary>�z�[���x�[�X</summary>
+		''' <summary>ホームベース</summary>
 		msoShapePentagon = 51
-		''' <summary>�u���[�`</summary>
+		''' <summary>ブローチ</summary>
 		msoShapePlaque = 28
-		''' <summary>�l�������</summary>
+		''' <summary>四方向矢印</summary>
 		msoShapeQuadArrow = 39
-		''' <summary>�l������󐁂��o��</summary>
+		''' <summary>四方向矢印吹き出し</summary>
 		msoShapeQuadArrowCallout = 59
-		''' <summary>�l�p�`</summary>
+		''' <summary>四角形</summary>
 		msoShapeRectangle = 1
-		''' <summary>�l�p�`�����o��</summary>
+		''' <summary>四角形吹き出し</summary>
 		msoShapeRectangularCallout = 105
-		''' <summary>�܊p�`</summary>
+		''' <summary>五角形</summary>
 		msoShapeRegularPentagon = 12
-		''' <summary>�E���</summary>
+		''' <summary>右矢印</summary>
 		msoShapeRightArrow = 33
-		''' <summary>�E��󐁂��o��</summary>
+		''' <summary>右矢印吹き出し</summary>
 		msoShapeRightArrowCallout = 53
-		''' <summary>�E��������</summary>
+		''' <summary>右中かっこ</summary>
 		msoShapeRightBrace = 32
-		''' <summary>�E�傩����</summary>
+		''' <summary>右大かっこ</summary>
 		msoShapeRightBracket = 30
-		''' <summary>���p�O�p�`</summary>
+		''' <summary>直角三角形</summary>
 		msoShapeRightTriangle = 8
-		''' <summary>�p�ێl�p�`</summary>
+		''' <summary>角丸四角形</summary>
 		msoShapeRoundedRectangle = 5
-		''' <summary>�p�ێl�p�`�����o��</summary>
+		''' <summary>角丸四角形吹き出し</summary>
 		msoShapeRoundedRectangularCallout = 106
-		''' <summary>�X�}�C��</summary>
+		''' <summary>スマイル</summary>
 		msoShapeSmileyFace = 17
-		''' <summary>�X�g���C�v���</summary>
+		''' <summary>ストライプ矢印</summary>
 		msoShapeStripedRightArrow = 49
-		''' <summary>���z</summary>
+		''' <summary>太陽</summary>
 		msoShapeSun = 23
-		''' <summary>��`</summary>
+		''' <summary>台形</summary>
 		msoShapeTrapezoid = 3
-		''' <summary>����</summary>
+		''' <summary>上矢印</summary>
 		msoShapeUpArrow = 35
-		''' <summary>���󐁂��o��</summary>
+		''' <summary>上矢印吹き出し</summary>
 		msoShapeUpArrowCallout = 55
-		''' <summary>�㉺���</summary>
+		''' <summary>上下矢印</summary>
 		msoShapeUpDownArrow = 38
-		''' <summary>�㉺��󐁂��o��</summary>
+		''' <summary>上下矢印吹き出し</summary>
 		msoShapeUpDownArrowCallout = 58
-		''' <summary>�ナ�{��</summary>
+		''' <summary>上リボン</summary>
 		msoShapeUpRibbon = 97
-		''' <summary>U �^�[�����</summary>
+		''' <summary>U ターン矢印</summary>
 		msoShapeUTurnArrow = 42
-		''' <summary>�c����</summary>
+		''' <summary>縦巻き</summary>
 		msoShapeVerticalScroll = 101
-		''' <summary>��g</summary>
+		''' <summary>大波</summary>
 		msoShapeWave = 103
 	End Enum
 
 	''' <summary>
-	''' XML �f�[�^ �t�@�C�����J�����@���w�肵�܂��B
+	''' XML データ ファイルを開く方法を指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum XlXmlLoadOption
-		''' <summary>XML �f�[�^ �t�@�C���̓��e�� XML ���X�g�ɔz�u���܂��B</summary>
+		''' <summary>XML データ ファイルの内容を XML リストに配置します。</summary>
 		xlXmlLoadImportToList = 2
-		''' <summary>XML �f�[�^ �t�@�C���̃X�L�[�}�� [XML �f�[�^�\��] ��ƃE�B���h�E�ɕ\�����܂��B</summary>
+		''' <summary>XML データ ファイルのスキーマを [XML データ構造] 作業ウィンドウに表示します。</summary>
 		xlXmlLoadMapXml = 3
-		''' <summary>XML �f�[�^ �t�@�C�����J���܂��B�t�@�C���̓��e�̓t���b�g������܂��B</summary>
+		''' <summary>XML データ ファイルを開きます。ファイルの内容はフラット化されます。</summary>
 		xlXmlLoadOpenXml = 1
-		''' <summary>�t�@�C�����J�����@��I������悤���߂郁�b�Z�[�W���\������܂��B	</summary>
+		''' <summary>ファイルを開く方法を選択するよう求めるメッセージが表示されます。	</summary>
 		xlXmlLoadPromptUser = 0
 	End Enum
 
 	''' <summary>
-	''' �S��ʕ\���ŉ��y�[�W���邩�A����̈�݂̂ŉ��y�[�W���邩���w�肵�܂��B
+	''' 全画面表示で改ページするか、印刷領域のみで改ページするかを指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum XlPageBreakExtent
-		''' <summary>�S���</summary>
+		''' <summary>全画面</summary>
 		xlPageBreakFull = 1
-		''' <summary>����̈�̂�</summary>
+		''' <summary>印刷領域のみ</summary>
 		xlPageBreakPartial = 2
 	End Enum
 
 	''' <summary>
-	''' ���[�N�V�[�g�̉��y�[�W�ʒu���w�肵�܂��B
+	''' ワークシートの改ページ位置を指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum XlPageBreak
-		''' <summary>�����I�ɉ��y�[�W��ǉ����܂��B</summary>
+		''' <summary>自動的に改ページを追加します。</summary>
 		xlPageBreakAutomatic = -4105 ' (&HFFFFEFF7)
-		''' <summary>�蓮�ŉ��y�[�W��}�����܂��B</summary>
+		''' <summary>手動で改ページを挿入します。</summary>
 		xlPageBreakManual = -4135 ' (&HFFFFEFD9)
-		''' <summary>���[�N�V�[�g�ɉ��y�[�W��}�����܂���B</summary>
+		''' <summary>ワークシートに改ページを挿入しません。</summary>
 		xlPageBreakNone = -4142 ' (&HFFFFEFD2)
 	End Enum
 
 	''' <summary>
-	''' ���[�N�V�[�g�̎�ނ��w�肵�܂��B
+	''' ワークシートの種類を指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum XlSheetType
-		''' <summary>�O���t</summary>
+		''' <summary>グラフ</summary>
 		xlChart = -4109	' (&HFFFFEFF3)
-		''' <summary>�_�C�A���O �V�[�g</summary>
+		''' <summary>ダイアログ シート</summary>
 		xlDialogSheet = -4116 ' (&HFFFFEFEC)
-		''' <summary>Excel 4.0 �C���^�[�i�V���i�� �}�N�� �V�[�g</summary>
+		''' <summary>Excel 4.0 インターナショナル マクロ シート</summary>
 		xlExcel4IntlMacroSheet = 4
-		''' <summary>Excel 4.0 �}�N�� �V�[�g</summary>
+		''' <summary>Excel 4.0 マクロ シート</summary>
 		xlExcel4MacroSheet = 3
-		''' <summary>���[�N�V�[�g</summary>
+		''' <summary>ワークシート</summary>
 		xlWorksheet = -4167 ' (&HFFFFEFB9)
 	End Enum
 
 	''' <summary>
-	''' �Z���͈͂��R�s�[������@���w�肵�܂��B
+	''' セル範囲をコピーする方法を指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum XlFillWith
-		''' <summary>���e�Ə������R�s�[���܂��B</summary>
+		''' <summary>内容と書式をコピーします。</summary>
 		xlFillWithAll = -4104 ' (&HFFFFEFF8)
-		''' <summary>���e�݂̂��R�s�[���܂��B</summary>
+		''' <summary>内容のみをコピーします。</summary>
 		xlFillWithContents = 2
-		''' <summary>�����݂̂��R�s�[���܂��B</summary>
+		''' <summary>書式のみをコピーします。</summary>
 		xlFillWithFormats = -4122 ' (&HFFFFEFE6)
 	End Enum
 
 	''' <summary>
-	''' �����o�����̎�ގw�肵�܂��B
+	''' 引き出し線の種類指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum MsoCalloutType
-		''' <summary>�����܂��͐����̒P��Z�O�����g�̈����o����</summary>
+		''' <summary>水平または垂直の単一セグメントの引き出し線</summary>
 		msoCalloutOne = 1
-		''' <summary>���R�ɉ�]����P��Z�O�����g�̈����o����</summary>
+		''' <summary>自由に回転する単一セグメントの引き出し線</summary>
 		msoCalloutTwo = 2
 		''' <summary></summary>
 		msoCalloutMixed = -2 ' (&HFFFFFFFE)
-		''' <summary>2 �̃Z�O�����g���琬������o����</summary>
+		''' <summary>2 つのセグメントから成る引き出し線</summary>
 		msoCalloutThree = 3
-		''' <summary>3 �̃Z�O�����g���琬������o����</summary>
+		''' <summary>3 つのセグメントから成る引き出し線</summary>
 		msoCalloutFour = 4
 	End Enum
 
 	''' <summary>
-	''' �R�l�N�^�̎�ނ��w�肵�܂��B
+	''' コネクタの種類を指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum MsoConnectorType
@@ -980,260 +980,260 @@ Namespace Excel
 	End Enum
 
 	''' <summary>
-	''' �}�\�̎�ނ��w�肵�܂��B
+	''' 図表の種類を指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum MsoDiagramType
-		''' <summary>�A�������h�[�i�c�^�}�\�����A�v���Z�X��\���}�\�B</summary>
+		''' <summary>連続したドーナツ型図表を持つ、プロセスを表す図表。</summary>
 		msoDiagramCycle = 2
-		''' <summary>�����^�̐}�\�B</summary>
+		''' <summary>混合型の図表。</summary>
 		msoDiagramMixed = -2 ' (&HFFFFFFFE)
-		''' <summary>�K�w�\���̊֌W��\���}�\�B</summary>
+		''' <summary>階層構造の関係を表す図表。</summary>
 		msoDiagramOrgChart = 1
-		''' <summary>��b�\���I�Ȋ֌W��\���}�\�B</summary>
+		''' <summary>基礎構造的な関係を表す図表。</summary>
 		msoDiagramPyramid = 4
-		''' <summary>���j�ƂȂ�v�f�Ƃ̊֌W��\���}�\�B</summary>
+		''' <summary>中核となる要素との関係を表す図表。</summary>
 		msoDiagramRadial = 3
-		''' <summary>�S�[���܂ł̃X�e�b�v��\���}�\�B</summary>
+		''' <summary>ゴールまでのステップを表す図表。</summary>
 		msoDiagramTarget = 6
-		''' <summary>�v�f�Ԃŏd�Ȃ荇���̈��\���}�\�B</summary>
+		''' <summary>要素間で重なり合う領域を表す図表。</summary>
 		msoDiagramVenn = 5
 	End Enum
 
 	''' <summary>
-	''' �t�H�[�� �R���g���[���̎�ނ��w�肵�܂��B
+	''' フォーム コントロールの種類を指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum XlFormControl
-		''' <summary>�{�^��</summary>
+		''' <summary>ボタン</summary>
 		xlButtonControl = 0
-		''' <summary>�`�F�b�N �{�b�N�X</summary>
+		''' <summary>チェック ボックス</summary>
 		xlCheckBox = 1
-		''' <summary>�R���{ �{�b�N�X</summary>
+		''' <summary>コンボ ボックス</summary>
 		xlDropDown = 2
-		''' <summary>�e�L�X�g �{�b�N�X</summary>
+		''' <summary>テキスト ボックス</summary>
 		xlEditBox = 3
-		''' <summary>�O���[�v �{�b�N�X</summary>
+		''' <summary>グループ ボックス</summary>
 		xlGroupBox = 4
-		''' <summary>���x��</summary>
+		''' <summary>ラベル</summary>
 		xlLabel = 5
-		''' <summary>���X�g �{�b�N�X</summary>
+		''' <summary>リスト ボックス</summary>
 		xlListBox = 6
-		''' <summary>�I�v�V���� �{�^��</summary>
+		''' <summary>オプション ボタン</summary>
 		xlOptionButton = 7
-		''' <summary>�X�N���[�� �o�[</summary>
+		''' <summary>スクロール バー</summary>
 		xlScrollBar = 8
-		''' <summary>�X�s�� �{�^��</summary>
+		''' <summary>スピン ボタン</summary>
 		xlSpinner = 9
 	End Enum
 
 	''' <summary>
-	''' ������̌������w�肵�܂��B
+	''' 文字列の向きを指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum MsoTextOrientation
-		''' <summary>�E������B</summary>
+		''' <summary>右下がり。</summary>
 		msoTextOrientationDownward = 3
-		''' <summary>�������B</summary>
+		''' <summary>横書き。</summary>
 		msoTextOrientationHorizontal = 1
-		''' <summary>���A�W�A����̃T�|�[�g�p�̉���������щ�]�B</summary>
+		''' <summary>東アジア言語のサポート用の横書きおよび回転。</summary>
 		msoTextOrientationHorizontalRotatedFarEast = 6
-		''' <summary>�T�|�[�g����Ă��܂���B</summary>
+		''' <summary>サポートされていません。</summary>
 		msoTextOrientationMixed = -2 ' (&HFFFFFFFE)
-		''' <summary>�E�オ��B</summary>
+		''' <summary>右上がり。</summary>
 		msoTextOrientationUpward = 2
-		''' <summary>�c�����B</summary>
+		''' <summary>縦書き。</summary>
 		msoTextOrientationVertical = 5
-		''' <summary>���A�W�A����̃T�|�[�g�p�̏c�����B</summary>
+		''' <summary>東アジア言語のサポート用の縦書き。</summary>
 		msoTextOrientationVerticalFarEast = 4
 	End Enum
 
 	''' <summary>
-	''' WordArt �I�u�W�F�N�g�Ŏg�p���������ʃe�L�X�g���w�肵�܂��B
+	''' WordArt オブジェクトで使用する特殊効果テキストを指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum MsoPresetTextEffect
-		''' <summary>1 �Ԗڂ̓������</summary>
+		''' <summary>1 番目の特殊効果</summary>
 		msoTextEffect1 = 0
-		''' <summary>10 �Ԗڂ̓������</summary>
+		''' <summary>10 番目の特殊効果</summary>
 		msoTextEffect10 = 9
-		''' <summary>11 �Ԗڂ̓������</summary>
+		''' <summary>11 番目の特殊効果</summary>
 		msoTextEffect11 = 10
-		''' <summary>12 �Ԗڂ̓������</summary>
+		''' <summary>12 番目の特殊効果</summary>
 		msoTextEffect12 = 11
-		''' <summary>13 �Ԗڂ̓������</summary>
+		''' <summary>13 番目の特殊効果</summary>
 		msoTextEffect13 = 12
-		''' <summary>14 �Ԗڂ̓������</summary>
+		''' <summary>14 番目の特殊効果</summary>
 		msoTextEffect14 = 13
-		''' <summary>15 �Ԗڂ̓������</summary>
+		''' <summary>15 番目の特殊効果</summary>
 		msoTextEffect15 = 14
-		''' <summary>16 �Ԗڂ̓������</summary>
+		''' <summary>16 番目の特殊効果</summary>
 		msoTextEffect16 = 15
-		''' <summary>17 �Ԗڂ̓������</summary>
+		''' <summary>17 番目の特殊効果</summary>
 		msoTextEffect17 = 16
-		''' <summary>18 �Ԗڂ̓������</summary>
+		''' <summary>18 番目の特殊効果</summary>
 		msoTextEffect18 = 17
-		''' <summary>19 �Ԗڂ̓������</summary>
+		''' <summary>19 番目の特殊効果</summary>
 		msoTextEffect19 = 18
-		''' <summary>2 �Ԗڂ̓������</summary>
+		''' <summary>2 番目の特殊効果</summary>
 		msoTextEffect2 = 1
-		''' <summary>20 �Ԗڂ̓������</summary>
+		''' <summary>20 番目の特殊効果</summary>
 		msoTextEffect20 = 19
-		''' <summary>21 �Ԗڂ̓������</summary>
+		''' <summary>21 番目の特殊効果</summary>
 		msoTextEffect21 = 20
-		''' <summary>22 �Ԗڂ̓������</summary>
+		''' <summary>22 番目の特殊効果</summary>
 		msoTextEffect22 = 21
-		''' <summary>23 �Ԗڂ̓������</summary>
+		''' <summary>23 番目の特殊効果</summary>
 		msoTextEffect23 = 22
-		''' <summary>24 �Ԗڂ̓������</summary>
+		''' <summary>24 番目の特殊効果</summary>
 		msoTextEffect24 = 23
-		''' <summary>25 �Ԗڂ̓������</summary>
+		''' <summary>25 番目の特殊効果</summary>
 		msoTextEffect25 = 24
-		''' <summary>26 �Ԗڂ̓������</summary>
+		''' <summary>26 番目の特殊効果</summary>
 		msoTextEffect26 = 25
-		''' <summary>27 �Ԗڂ̓������</summary>
+		''' <summary>27 番目の特殊効果</summary>
 		msoTextEffect27 = 26
-		''' <summary>28 �Ԗڂ̓������</summary>
+		''' <summary>28 番目の特殊効果</summary>
 		msoTextEffect28 = 27
-		''' <summary>29 �Ԗڂ̓������</summary>
+		''' <summary>29 番目の特殊効果</summary>
 		msoTextEffect29 = 28
-		''' <summary>3 �Ԗڂ̓������</summary>
+		''' <summary>3 番目の特殊効果</summary>
 		msoTextEffect3 = 2
-		''' <summary>30 �Ԗڂ̓������</summary>
+		''' <summary>30 番目の特殊効果</summary>
 		msoTextEffect30 = 29
-		''' <summary>4 �Ԗڂ̓������</summary>
+		''' <summary>4 番目の特殊効果</summary>
 		msoTextEffect4 = 3
-		''' <summary>5 �Ԗڂ̓������</summary>
+		''' <summary>5 番目の特殊効果</summary>
 		msoTextEffect5 = 4
-		''' <summary>6 �Ԗڂ̓������</summary>
+		''' <summary>6 番目の特殊効果</summary>
 		msoTextEffect6 = 5
-		''' <summary>7 �Ԗڂ̓������</summary>
+		''' <summary>7 番目の特殊効果</summary>
 		msoTextEffect7 = 6
-		''' <summary>8 �Ԗڂ̓������</summary>
+		''' <summary>8 番目の特殊効果</summary>
 		msoTextEffect8 = 7
-		''' <summary>9 �Ԗڂ̓������</summary>
+		''' <summary>9 番目の特殊効果</summary>
 		msoTextEffect9 = 8
-		''' <summary>���g�p</summary>
+		''' <summary>未使用</summary>
 		msoTextEffectMixed = -2 ' (&HFFFFFFFE)
 	End Enum
 
 	''' <summary>
-	''' �Z�O�����g�̎�ނ��w�肵�܂��B
+	''' セグメントの種類を指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum MsoSegmentType
-		''' <summary>�Ȑ�</summary>
+		''' <summary>曲線</summary>
 		msoSegmentCurve = 1
-		''' <summary>����</summary>
+		''' <summary>直線</summary>
 		msoSegmentLine = 0
 	End Enum
 
 	''' <summary>
-	''' �ߓ_�̕ҏW�̎�ނ��w�肵�܂��B
+	''' 節点の編集の種類を指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum MsoEditingType
-		''' <summary>�ҏW�̎�ނ́A�ڑ����Ă���Z�O�����g�̎�ނɑΉ����܂��B</summary>
+		''' <summary>編集の種類は、接続しているセグメントの種類に対応します。</summary>
 		msoEditingAuto = 0
-		''' <summary>�R�[�i�[�̐ߓ_</summary>
+		''' <summary>コーナーの節点</summary>
 		msoEditingCorner = 1
-		''' <summary>�X���[�Y�Ȑߓ_</summary>
+		''' <summary>スムーズな節点</summary>
 		msoEditingSmooth = 2
-		''' <summary>�Ώ̓I�Ȑߓ_</summary>
+		''' <summary>対称的な節点</summary>
 		msoEditingSymmetric = 3
 	End Enum
 
 	''' <summary>
-	''' �O���t�̓h��Ԃ��̃p�^�[���܂��͓h��Ԃ��̃I�u�W�F�N�g���w�肵�܂��B
+	''' グラフの塗りつぶしのパターンまたは塗りつぶしのオブジェクトを指定します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum XlPattern
-		''' <summary>�p�^�[���� Excel �ɂ���Đ��䂳��܂��B</summary>
+		''' <summary>パターンは Excel によって制御されます。</summary>
 		xlPatternAutomatic = -4105
-		''' <summary>�s���͗l�̃p�^�[���ł��B</summary>
+		''' <summary>市松模様のパターンです。</summary>
 		xlPatternChecker = 9
-		''' <summary>�Ԗږ͗l�̃p�^�[���ł��B</summary>
+		''' <summary>網目模様のパターンです。</summary>
 		xlPatternCrissCross = 16
-		''' <summary>�E������̔Z���Ίp���̃p�^�[���ł��B</summary>
+		''' <summary>右下がりの濃い対角線のパターンです。</summary>
 		xlPatternDown = -4121
-		''' <summary>16% �̊D�F�ł��B</summary>
+		''' <summary>16% の灰色です。</summary>
 		xlPatternGray16 = 17
-		''' <summary>25% �̊D�F�ł��B</summary>
+		''' <summary>25% の灰色です。</summary>
 		xlPatternGray25 = -4124
-		''' <summary>50% �̊D�F�ł��B</summary>
+		''' <summary>50% の灰色です。</summary>
 		xlPatternGray50 = -4125
-		''' <summary>75% �̊D�F�ł��B</summary>
+		''' <summary>75% の灰色です。</summary>
 		xlPatternGray75 = -4126
-		''' <summary>8% �̊D�F�ł��B</summary>
+		''' <summary>8% の灰色です。</summary>
 		xlPatternGray8 = 18
-		''' <summary>�i�q�͗l�̃p�^�[���ł��B</summary>
+		''' <summary>格子模様のパターンです。</summary>
 		xlPatternGrid = 15
-		''' <summary>�Z�������̃p�^�[���ł��B</summary>
+		''' <summary>濃い横線のパターンです。</summary>
 		xlPatternHorizontal = -4128
-		''' <summary>�E������̔����Ίp���̃p�^�[���ł��B</summary>
+		''' <summary>右下がりの薄い対角線のパターンです。</summary>
 		xlPatternLightDown = 13
-		''' <summary>���������̃p�^�[���ł��B</summary>
+		''' <summary>薄い横線のパターンです。</summary>
 		xlPatternLightHorizontal = 11
-		''' <summary>�E�オ��̔����Ίp���̃p�^�[���ł��B</summary>
+		''' <summary>右上がりの薄い対角線のパターンです。</summary>
 		xlPatternLightUp = 14
-		''' <summary>�����c���̃p�^�[���ł��B</summary>
+		''' <summary>薄い縦線のパターンです。</summary>
 		xlPatternLightVertical = 12
-		''' <summary>�p�^�[���͂���܂���B</summary>
+		''' <summary>パターンはありません。</summary>
 		xlPatternNone = -4142
-		''' <summary>75% �̔Z�����A�� �p�^�[���ł��B</summary>
+		''' <summary>75% の濃いモアレ パターンです。</summary>
 		xlPatternSemiGray75 = 10
-		''' <summary>���F�ł��B</summary>
+		''' <summary>純色です。</summary>
 		xlPatternSolid = 1
-		''' <summary>�E�オ��̔Z���Ίp���̃p�^�[���ł��B</summary>
+		''' <summary>右上がりの濃い対角線のパターンです。</summary>
 		xlPatternUp = -4162
-		''' <summary>�Z���c���̃p�^�[���ł��B</summary>
+		''' <summary>濃い縦線のパターンです。</summary>
 		xlPatternVertical = -4166
 	End Enum
 
 	''' <summary>
-	''' ���s����ׂ������}�N��
+	''' 実行するべき自動マクロ
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum XlRunAutoMacro
-		''' <summary>Auto_Activate�}�N��</summary>
+		''' <summary>Auto_Activateマクロ</summary>
 		xlAutoActivate = 3
-		''' <summary>Auto_Close�}�N��</summary>
+		''' <summary>Auto_Closeマクロ</summary>
 		xlAutoClose = 2
-		''' <summary>Auto_Deactivate�}�N��</summary>
+		''' <summary>Auto_Deactivateマクロ</summary>
 		xlAutoDeactivate = 4
-		''' <summary>Auto_Open�}�N��</summary>
+		''' <summary>Auto_Openマクロ</summary>
 		xlAutoOpen = 1
 	End Enum
 
     ''' <summary>
-    ''' �ϊ�����t�@�C���t�H�[�}�b�g
+    ''' 変換するファイルフォーマット
     ''' </summary>
     ''' <remarks>https://msdn.microsoft.com/JA-JP/library/office/ff195006.aspx</remarks>
     Public Enum FixedFormatType As Integer
         ''' <summary>
-        ''' PDF�t�@�C��
+        ''' PDFファイル
         ''' </summary>
         ''' <remarks></remarks>
         PDF
         ''' <summary>
-        ''' XPS�t�@�C��
+        ''' XPSファイル
         ''' </summary>
         ''' <remarks></remarks>
         XPS
     End Enum
 
     ''' <summary>
-    ''' �ϊ��i��
+    ''' 変換品質
     ''' </summary>
     ''' <remarks>https://msdn.microsoft.com/ja-jp/library/office/ff838396.aspx</remarks>
     Public Enum FixedFormatQuality As Integer
         ''' <summary>
-        ''' �W���i��
+        ''' 標準品質
         ''' </summary>
         ''' <remarks></remarks>
         QualityStandard
         ''' <summary>
-        ''' �ŏ����i��
+        ''' 最小限品質
         ''' </summary>
         ''' <remarks></remarks>
         QualityMinimum

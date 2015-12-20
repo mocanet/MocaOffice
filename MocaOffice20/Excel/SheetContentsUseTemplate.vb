@@ -1,9 +1,9 @@
-
+ï»¿
 Namespace Excel
 
 	''' <summary>
-	''' ˆê——Œ`®‚Ìƒeƒ“ƒvƒŒ[ƒgƒV[ƒg‚ğg—p‚µ‚½‚Æ‚«‚ÉA
-	''' ƒf[ƒ^‚ğ‘½ŸŒ³”z—ñ‚É•ÏŠ·‚µ’l‚ğİ’è‚·‚éè–@B
+	''' ä¸€è¦§å½¢å¼ã®ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‚·ãƒ¼ãƒˆã‚’ä½¿ç”¨ã—ãŸã¨ãã«ã€
+	''' ãƒ‡ãƒ¼ã‚¿ã‚’å¤šæ¬¡å…ƒé…åˆ—ã«å¤‰æ›ã—å€¤ã‚’è¨­å®šã™ã‚‹æ‰‹æ³•ã€‚
 	''' </summary>
 	''' <remarks></remarks>
 	Friend Class SheetContentsUseTemplate
@@ -12,10 +12,10 @@ Namespace Excel
 		''' <summary>log4net logger</summary>
 		Private ReadOnly _mylog As log4net.ILog = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType)
 
-#Region " ƒRƒ“ƒXƒgƒ‰ƒNƒ^ "
+#Region " ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ "
 
 		''' <summary>
-		''' ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
 		''' <remarks></remarks>
 		Public Sub New(ByVal sheetContents As ISheetContents, ByVal sheet As SheetWrapper)
@@ -25,7 +25,7 @@ Namespace Excel
 #End Region
 
 		''' <summary>
-		''' ƒV[ƒgƒRƒ“ƒeƒ“ƒc‚ğ“–ƒNƒ‰ƒX‚Åg—p‚·‚éƒNƒ‰ƒX‚ÖƒLƒƒƒXƒg‚·‚é
+		''' ã‚·ãƒ¼ãƒˆã‚³ãƒ³ãƒ†ãƒ³ãƒ„ã‚’å½“ã‚¯ãƒ©ã‚¹ã§ä½¿ç”¨ã™ã‚‹ã‚¯ãƒ©ã‚¹ã¸ã‚­ãƒ£ã‚¹ãƒˆã™ã‚‹
 		''' </summary>
 		''' <returns></returns>
 		''' <remarks></remarks>
@@ -34,7 +34,7 @@ Namespace Excel
 		End Function
 
 		''' <summary>
-		''' o—Í“à—e‚ğƒZƒ‹‚Öİ’è‚·‚é
+		''' å‡ºåŠ›å†…å®¹ã‚’ã‚»ãƒ«ã¸è¨­å®šã™ã‚‹
 		''' </summary>
 		''' <remarks>
 		''' </remarks>
@@ -45,7 +45,7 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' ˆê——•”•ª‚Ìİ’è
+		''' ä¸€è¦§éƒ¨åˆ†ã®è¨­å®š
 		''' </summary>
 		''' <remarks></remarks>
 		Protected Overridable Sub writeContentsTemplate()
@@ -53,7 +53,7 @@ Namespace Excel
 				Exit Sub
 			End If
 
-			' æ“ªs‚ğƒf[ƒ^”•ªƒRƒs[
+			' å…ˆé ­è¡Œã‚’ãƒ‡ãƒ¼ã‚¿æ•°åˆ†ã‚³ãƒ”ãƒ¼
 			rowCopy(_cType.DataCount _
 			 , MyBase.sheet.Cells(_cType.StartRow, _cType.StartCol) _
 			 , MyBase.sheet.Cells(_cType.StartRow, _cType.StartCol) _
@@ -65,29 +65,29 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' ƒeƒ“ƒvƒŒ[ƒg‚Æ‚È‚és‚ğw’è‚³‚ê‚½“à—e‚ÅƒRƒs[‚·‚é
+		''' ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã¨ãªã‚‹è¡Œã‚’æŒ‡å®šã•ã‚ŒãŸå†…å®¹ã§ã‚³ãƒ”ãƒ¼ã™ã‚‹
 		''' </summary>
 		''' <remarks>
 		''' </remarks>
 		Protected Sub rowCopy(ByVal dataCount As Integer, ByVal rangeF1 As RangeWrapper, ByVal rangeF2 As RangeWrapper, ByVal rangeT1 As RangeWrapper, ByVal rangeT2 As RangeWrapper)
-			' ƒf[ƒ^‚ª‚PŒ‚Ìê‡‚ÍƒRƒs[•s—v
+			' ãƒ‡ãƒ¼ã‚¿ãŒï¼‘ä»¶ã®å ´åˆã¯ã‚³ãƒ”ãƒ¼ä¸è¦
 			If dataCount <= 1 Then
 				Exit Sub
 			End If
 
-			' ƒRƒs[Œ³‚Ìs‚ğƒRƒs[
+			' ã‚³ãƒ”ãƒ¼å…ƒã®è¡Œã‚’ã‚³ãƒ”ãƒ¼
 			MyBase.sheet.Range(rangeF1, rangeF2).EntireRow.Select()
 			MyBase.sheet.App.Selection.Copy()
 
-			' ƒRƒs[æ‚Ìs‚ğ‘I‘ğ
+			' ã‚³ãƒ”ãƒ¼å…ˆã®è¡Œã‚’é¸æŠ
 			MyBase.sheet.Range(rangeT1, rangeT2).EntireRow.Select()
 
-			' o—Í—\’è‚Ìs”‚ğƒCƒ“ƒT[ƒg
+			' å‡ºåŠ›äºˆå®šã®è¡Œæ•°ã‚’ã‚¤ãƒ³ã‚µãƒ¼ãƒˆ
 			MyBase.sheet.App.Selection.Insert()
 		End Sub
 
 		''' <summary>
-		''' ƒŠƒXƒg•”o—Í
+		''' ãƒªã‚¹ãƒˆéƒ¨å‡ºåŠ›
 		''' </summary>
 		''' <remarks>
 		''' </remarks>

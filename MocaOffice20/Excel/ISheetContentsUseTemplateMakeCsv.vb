@@ -1,38 +1,38 @@
-
+﻿
 Imports System.IO
 
 Namespace Excel
 
 	''' <summary>
-	''' �ꗗ�`���̃e���v���[�g�V�[�g���g�p�����Ƃ��ɁA
-	''' �f�[�^����xCSV�t�@�C���֏o�͂��ACSV�t�@�C����Ǎ����Excel�֓\��t�����@�̃C���^�t�F�[�X
+	''' 一覧形式のテンプレートシートを使用したときに、
+	''' データを一度CSVファイルへ出力し、CSVファイルを読込んでExcelへ貼り付ける手法のインタフェース
 	''' </summary>
 	''' <remarks></remarks>
 	Public Interface ISheetContentsUseTemplateMakeCsv
 		Inherits ISheetContents
 
 		''' <summary>
-		''' ���ו��̏o�͊J�n�s
+		''' 明細部の出力開始行
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
 		''' <remarks>
-		''' �e���v���[�g�V�[�g��̈ꗗ�o�͂����ŏ��̍s��Ԃ��悤�ɂ���B
+		''' テンプレートシート上の一覧出力される最初の行を返すようにする。
 		''' </remarks>
 		ReadOnly Property StartRow() As Integer
 
 		''' <summary>
-		''' ���ו��̏o�͊J�n��
+		''' 明細部の出力開始列
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
 		''' <remarks>
-		''' �e���v���[�g�V�[�g��̈ꗗ�o�͂����ŏ��̗��Ԃ��悤�ɂ���B
+		''' テンプレートシート上の一覧出力される最初の列を返すようにする。
 		''' </remarks>
 		ReadOnly Property StartCol() As Integer
 
 		''' <summary>
-		''' ���ו��̏o�͗�
+		''' 明細部の出力列数
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -40,7 +40,7 @@ Namespace Excel
 		ReadOnly Property ColumnLength() As Integer
 
 		''' <summary>
-		''' �o�͂���f�[�^����
+		''' 出力するデータ件数
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -48,21 +48,21 @@ Namespace Excel
 		ReadOnly Property DataCount() As Integer
 
 		''' <summary>
-		''' �f�[�^��CSV���ԃt�@�C���Ƃ��ďo�͂���
+		''' データをCSV中間ファイルとして出力する
 		''' </summary>
 		''' <param name="csv"></param>
 		''' <remarks>
-		''' �u�C�v�i�J���}�j��؂�̕�������o�͂��Ă��������B<br/>
+		''' 「，」（カンマ）区切りの文字列を出力してください。<br/>
 		''' </remarks>
 		Sub CsvWrite(ByRef csv As StreamWriter)
 
 		''' <summary>
-		''' CSV�t�@�C����Excel�ɂĊJ�����̃t�H�[�}�b�g���w�肷��
+		''' CSVファイルをExcelにて開く時のフォーマットを指定する
 		''' </summary>
 		''' <param name="columnIndex"></param>
 		''' <remarks>
-		''' CSV�t�@�C����Excel�ɂĊJ�����̃t�H�[�}�b�g���w�肷��ꍇ�͎w�肵�Ă��������B<br/>
-		''' �f�t�H���g�ł́u��ʁv�̃t�H�[�}�b�g�ɂēǂݍ��݂܂��B
+		''' CSVファイルをExcelにて開く時のフォーマットを指定する場合は指定してください。<br/>
+		''' デフォルトでは「一般」のフォーマットにて読み込みます。
 		''' </remarks>
 		Function SetCsvOpenFormat(ByVal columnIndex As Integer) As XlColumnDataType
 

@@ -1,31 +1,31 @@
-
+ï»¿
 Imports System.Reflection
 
 Namespace Excel
 
 	''' <summary>
-	''' Excel‘€ìŠÖŒW‚Ì’ŠÛƒNƒ‰ƒX
+	''' Excelæ“ä½œé–¢ä¿‚ã®æŠ½è±¡ã‚¯ãƒ©ã‚¹
 	''' </summary>
 	''' <remarks></remarks>
 	Public MustInherit Class AbstractExcelWrapper
 		Implements IDisposable
 
-		''' <summary>Excel.Application ‚Ìƒ^ƒCƒv</summary>
+		''' <summary>Excel.Application ã®ã‚¿ã‚¤ãƒ—</summary>
 		Protected typApplication As Type
-		''' <summary>ExcelƒAƒvƒŠƒP[ƒVƒ‡ƒ“</summary>
+		''' <summary>Excelã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³</summary>
 		Protected xlsApp As Object
-		''' <summary>ExcelƒAƒvƒŠƒP[ƒVƒ‡ƒ“ƒ‰ƒbƒp[</summary>
+		''' <summary>Excelã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ãƒ©ãƒƒãƒ‘ãƒ¼</summary>
 		Protected xlsWrapper As AbstractExcelWrapper
-		''' <summary>ˆêŽž“I‚ÉƒCƒ“ƒXƒ^ƒ“ƒX‰»‚³‚ê‚½ExcelŠÖŒW‚ÌƒIƒuƒWƒFƒNƒg’B</summary>
+		''' <summary>ä¸€æ™‚çš„ã«ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã•ã‚ŒãŸExcelé–¢ä¿‚ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆé”</summary>
 		Private _xlsObjects As IList(Of Object)
 
 		''' <summary>log4net logger</summary>
 		Private ReadOnly _mylog As log4net.ILog = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType)
 
-#Region " ƒRƒ“ƒXƒgƒ‰ƒNƒ^ "
+#Region " ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ "
 
 		''' <summary>
-		''' ƒfƒtƒHƒ‹ƒgƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
 		''' <remarks></remarks>
 		Protected Sub New()
@@ -33,9 +33,9 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
-		''' <param name="xls">ExcelƒAƒvƒŠƒP[ƒVƒ‡ƒ“</param>
+		''' <param name="xls">Excelã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³</param>
 		''' <remarks></remarks>
 		Protected Sub New(ByVal xls As AbstractExcelWrapper)
 			Me.New()
@@ -47,28 +47,28 @@ Namespace Excel
 
 #Region " IDisposable Support "
 
-		Private disposedValue As Boolean = False		' d•¡‚·‚éŒÄ‚Ño‚µ‚ðŒŸo‚·‚é‚É‚Í
+		Private disposedValue As Boolean = False		' é‡è¤‡ã™ã‚‹å‘¼ã³å‡ºã—ã‚’æ¤œå‡ºã™ã‚‹ã«ã¯
 
 		' IDisposable
 		Protected Overridable Sub Dispose(ByVal disposing As Boolean)
 			If Not Me.disposedValue Then
 				If disposing Then
-					' TODO: –¾Ž¦“I‚ÉŒÄ‚Ño‚³‚ê‚½‚Æ‚«‚Éƒ}ƒl[ƒW ƒŠƒ\[ƒX‚ð‰ð•ú‚µ‚Ü‚·
+					' TODO: æ˜Žç¤ºçš„ã«å‘¼ã³å‡ºã•ã‚ŒãŸã¨ãã«ãƒžãƒãƒ¼ã‚¸ ãƒªã‚½ãƒ¼ã‚¹ã‚’è§£æ”¾ã—ã¾ã™
 				End If
 
-				' TODO: ‹¤—L‚ÌƒAƒ“ƒ}ƒl[ƒW ƒŠƒ\[ƒX‚ð‰ð•ú‚µ‚Ü‚·
+				' TODO: å…±æœ‰ã®ã‚¢ãƒ³ãƒžãƒãƒ¼ã‚¸ ãƒªã‚½ãƒ¼ã‚¹ã‚’è§£æ”¾ã—ã¾ã™
 
-				' ˆêŽž“I‚ÉƒCƒ“ƒXƒ^ƒ“ƒX‰»‚³‚ê‚½ExcelŠÖŒW‚ÌƒIƒuƒWƒFƒNƒg‚Ìƒƒ‚ƒŠŠJ•ú
+				' ä¸€æ™‚çš„ã«ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã•ã‚ŒãŸExcelé–¢ä¿‚ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ¡ãƒ¢ãƒªé–‹æ”¾
 				AllDispose()
-				' Ž©•ªŽ©g‚ÅŠÇ—‚µ‚Ä‚¢‚éExcelŠÖŒW‚ÌƒIƒuƒWƒFƒNƒg‚Ìƒƒ‚ƒŠŠJ•ú
+				' è‡ªåˆ†è‡ªèº«ã§ç®¡ç†ã—ã¦ã„ã‚‹Excelé–¢ä¿‚ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ¡ãƒ¢ãƒªé–‹æ”¾
 				MyDispose()
 			End If
 			Me.disposedValue = True
 		End Sub
 
-		' ‚±‚ÌƒR[ƒh‚ÍA”jŠü‰Â”\‚Èƒpƒ^[ƒ“‚ð³‚µ‚­ŽÀ‘•‚Å‚«‚é‚æ‚¤‚É Visual Basic ‚É‚æ‚Á‚Ä’Ç‰Á‚³‚ê‚Ü‚µ‚½B
+		' ã“ã®ã‚³ãƒ¼ãƒ‰ã¯ã€ç ´æ£„å¯èƒ½ãªãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’æ­£ã—ãå®Ÿè£…ã§ãã‚‹ã‚ˆã†ã« Visual Basic ã«ã‚ˆã£ã¦è¿½åŠ ã•ã‚Œã¾ã—ãŸã€‚
 		Public Sub Dispose() Implements IDisposable.Dispose
-			' ‚±‚ÌƒR[ƒh‚ð•ÏX‚µ‚È‚¢‚Å‚­‚¾‚³‚¢BƒNƒŠ[ƒ“ƒAƒbƒv ƒR[ƒh‚ðã‚Ì Dispose(ByVal disposing As Boolean) ‚É‹Lq‚µ‚Ü‚·B
+			' ã“ã®ã‚³ãƒ¼ãƒ‰ã‚’å¤‰æ›´ã—ãªã„ã§ãã ã•ã„ã€‚ã‚¯ãƒªãƒ¼ãƒ³ã‚¢ãƒƒãƒ— ã‚³ãƒ¼ãƒ‰ã‚’ä¸Šã® Dispose(ByVal disposing As Boolean) ã«è¨˜è¿°ã—ã¾ã™ã€‚
 			Dispose(True)
 			GC.SuppressFinalize(Me)
 		End Sub
@@ -78,13 +78,13 @@ Namespace Excel
 #Region " MustOverride "
 
 		''' <summary>
-		''' Ž©•ªŽ©g‚ÅŠÇ—‚µ‚Ä‚¢‚éExcelŠÖŒW‚ÌƒIƒuƒWƒFƒNƒg‚Ìƒƒ‚ƒŠŠJ•ú
+		''' è‡ªåˆ†è‡ªèº«ã§ç®¡ç†ã—ã¦ã„ã‚‹Excelé–¢ä¿‚ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ¡ãƒ¢ãƒªé–‹æ”¾
 		''' </summary>
 		''' <remarks></remarks>
 		Public MustOverride Sub MyDispose()
 
 		''' <summary>
-		''' Žæ“¾‚µ‚½ Excel ƒCƒ“ƒXƒ^ƒ“ƒX
+		''' å–å¾—ã—ãŸ Excel ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -93,10 +93,10 @@ Namespace Excel
 
 #End Region
 
-#Region " ƒvƒƒpƒeƒB "
+#Region " ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ "
 
 		''' <summary>
-		''' ExcelƒAƒvƒŠƒP[ƒVƒ‡ƒ“
+		''' Excelã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -111,7 +111,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' ExcelƒAƒvƒŠƒP[ƒVƒ‡ƒ“ƒ‰ƒbƒp[
+		''' Excelã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ãƒ©ãƒƒãƒ‘ãƒ¼
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -129,7 +129,7 @@ Namespace Excel
 #End Region
 
 		''' <summary>
-		''' ƒCƒ“ƒXƒ^ƒ“ƒX‰»‚µ‚½ Excel ƒIƒuƒWƒFƒNƒg‚ð’Ç‰Á‚·‚é
+		''' ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã—ãŸ Excel ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿½åŠ ã™ã‚‹
 		''' </summary>
 		''' <param name="obj"></param>
 		''' <remarks></remarks>
@@ -138,7 +138,7 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' ƒCƒ“ƒXƒ^ƒ“ƒX‰»‚µ‚½ Excel ƒIƒuƒWƒFƒNƒg
+		''' ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã—ãŸ Excel ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 		''' </summary>
 		''' <returns></returns>
 		''' <remarks></remarks>
@@ -147,7 +147,7 @@ Namespace Excel
 		End Function
 
 		''' <summary>
-		''' ˆêŽž“I‚ÉƒCƒ“ƒXƒ^ƒ“ƒX‰»‚³‚ê‚½ExcelŠÖŒW‚ÌƒIƒuƒWƒFƒNƒg‚Ìƒƒ‚ƒŠŠJ•ú
+		''' ä¸€æ™‚çš„ã«ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã•ã‚ŒãŸExcelé–¢ä¿‚ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ¡ãƒ¢ãƒªé–‹æ”¾
 		''' </summary>
 		''' <remarks></remarks>
 		Private Sub AllDispose()
@@ -161,7 +161,7 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' ƒŠƒtƒŒƒNƒVƒ‡ƒ“‚É‚æ‚éƒƒ\ƒbƒh‚ÌŽÀs
+		''' ãƒªãƒ•ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã«ã‚ˆã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ã®å®Ÿè¡Œ
 		''' </summary>
 		''' <param name="target"></param>
 		''' <param name="name"></param>
@@ -178,7 +178,7 @@ Namespace Excel
 		End Function
 
 		''' <summary>
-		''' ƒŠƒtƒŒƒNƒVƒ‡ƒ“‚É‚æ‚éƒvƒƒpƒeƒBŽæ“¾‚ÌŽÀs
+		''' ãƒªãƒ•ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã«ã‚ˆã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å–å¾—ã®å®Ÿè¡Œ
 		''' </summary>
 		''' <param name="target"></param>
 		''' <param name="name"></param>
@@ -195,7 +195,7 @@ Namespace Excel
 		End Function
 
 		''' <summary>
-		''' ƒŠƒtƒŒƒNƒVƒ‡ƒ“‚É‚æ‚éƒvƒƒpƒeƒBÝ’è‚ÌŽÀs
+		''' ãƒªãƒ•ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã«ã‚ˆã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£è¨­å®šã®å®Ÿè¡Œ
 		''' </summary>
 		''' <param name="target"></param>
 		''' <param name="name"></param>
@@ -212,10 +212,10 @@ Namespace Excel
 		End Function
 
 		''' <summary>
-		''' ExcelƒIƒuƒWƒFƒNƒg‚ðŠJ•ú‚·‚é
+		''' Excelã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’é–‹æ”¾ã™ã‚‹
 		''' </summary>
-		''' <param name="excelObject">ComƒIƒuƒWƒFƒNƒg</param>
-		''' <param name="quitExcelApplication">ExcelƒAƒvƒŠƒP[ƒVƒ‡ƒ“Ž©‘Ì‚ðI—¹‚·‚é‚©‚Ç‚¤‚©</param>
+		''' <param name="excelObject">Comã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ</param>
+		''' <param name="quitExcelApplication">Excelã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³è‡ªä½“ã‚’çµ‚äº†ã™ã‚‹ã‹ã©ã†ã‹</param>
 		''' <remarks>
 		''' </remarks>
 		Protected Sub ReleaseExcelObject(ByRef excelObject As Object, Optional ByVal quitExcelApplication As Boolean = False)
@@ -223,16 +223,16 @@ Namespace Excel
 				Exit Sub
 			End If
 
-			' ExcelƒAƒvƒŠƒP[ƒVƒ‡ƒ“Ž©‘Ì‚ðI—¹
+			' Excelã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³è‡ªä½“ã‚’çµ‚äº†
 			If quitExcelApplication Then
 				If excelObject.GetType.Equals(typApplication) Then
 					InvokeMethod(excelObject, "Quit", Nothing)
 				End If
 			End If
 
-			'COM ƒIƒuƒWƒFƒNƒg‚ÌŽg—pŒãA–¾Ž¦“I‚É COM ƒIƒuƒWƒFƒNƒg‚Ö‚ÌŽQÆ‚ð‰ð•ú‚·‚é
+			'COM ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ä½¿ç”¨å¾Œã€æ˜Žç¤ºçš„ã« COM ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¸ã®å‚ç…§ã‚’è§£æ”¾ã™ã‚‹
 			Try
-				'’ñ‹Ÿ‚³‚ê‚½ƒ‰ƒ“ƒ^ƒCƒ€ŒÄ‚Ño‚µ‰Â”\ƒ‰ƒbƒp[‚ÌŽQÆƒJƒEƒ“ƒg‚ðƒfƒNƒŠƒƒ“ƒg‚µ‚Ü‚·
+				'æä¾›ã•ã‚ŒãŸãƒ©ãƒ³ã‚¿ã‚¤ãƒ å‘¼ã³å‡ºã—å¯èƒ½ãƒ©ãƒƒãƒ‘ãƒ¼ã®å‚ç…§ã‚«ã‚¦ãƒ³ãƒˆã‚’ãƒ‡ã‚¯ãƒªãƒ¡ãƒ³ãƒˆã—ã¾ã™
 				If System.Runtime.InteropServices.Marshal.IsComObject(excelObject) Then
 					System.Runtime.InteropServices.Marshal.FinalReleaseComObject(excelObject)
 				End If
@@ -244,15 +244,15 @@ Namespace Excel
 				'	Loop Until ii <= 0
 				'End If
 			Finally
-				'ŽQÆ‚ð‰ðœ‚·‚é
+				'å‚ç…§ã‚’è§£é™¤ã™ã‚‹
 				excelObject = Nothing
 			End Try
 		End Sub
 
 		''' <summary>
-		''' ’ŠÛƒNƒ‰ƒX‚ÖƒLƒƒƒXƒg
+		''' æŠ½è±¡ã‚¯ãƒ©ã‚¹ã¸ã‚­ãƒ£ã‚¹ãƒˆ
 		''' </summary>
-		''' <param name="wrapper">‘ÎÛ‚Æ‚È‚éƒIƒuƒWƒFƒNƒg</param>
+		''' <param name="wrapper">å¯¾è±¡ã¨ãªã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Protected Function castAbstractExcelWrapper(ByVal wrapper As Object) As AbstractExcelWrapper
@@ -260,7 +260,7 @@ Namespace Excel
 		End Function
 
 		''' <summary>
-		''' InvokeŽž‚ÌƒƒbƒZ[ƒWì¬
+		''' Invokeæ™‚ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ä½œæˆ
 		''' </summary>
 		''' <param name="binding"></param>
 		''' <param name="target"></param>
@@ -274,7 +274,7 @@ Namespace Excel
 		End Function
 
 		''' <summary>
-		''' ˆø”‚Ì”‚ð•Ô‚·
+		''' å¼•æ•°ã®æ•°ã‚’è¿”ã™
 		''' </summary>
 		''' <param name="args"></param>
 		''' <returns></returns>
@@ -288,7 +288,7 @@ Namespace Excel
 		End Function
 
 		''' <summary>
-		''' ˆø”‚Ìƒ^ƒCƒv”z—ñ‚ðì¬
+		''' å¼•æ•°ã®ã‚¿ã‚¤ãƒ—é…åˆ—ã‚’ä½œæˆ
 		''' </summary>
 		''' <param name="args"></param>
 		''' <param name="propertyArgs"></param>
@@ -310,7 +310,7 @@ Namespace Excel
 		End Function
 
 		''' <summary>
-		''' ˆø”‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚½‚¿‚ÌŒ^‚ðƒJƒ“ƒ}‹æØ‚è‚Å•¶Žš—ñ‚É‚·‚é
+		''' å¼•æ•°ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŸã¡ã®åž‹ã‚’ã‚«ãƒ³ãƒžåŒºåˆ‡ã‚Šã§æ–‡å­—åˆ—ã«ã™ã‚‹
 		''' </summary>
 		''' <param name="args"></param>
 		''' <returns></returns>
@@ -332,7 +332,7 @@ Namespace Excel
 		End Function
 
 		''' <summary>
-		''' ˆø”‚Ì–¼Ì”z—ñ‚ðì¬
+		''' å¼•æ•°ã®åç§°é…åˆ—ã‚’ä½œæˆ
 		''' </summary>
 		''' <param name="args"></param>
 		''' <returns></returns>

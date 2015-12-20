@@ -1,14 +1,14 @@
-
+﻿
 Namespace Excel
 
 	''' <summary>
-	''' �I�u�W�F�N�g�̃t�H���g���� (�t�H���g���A�t�H���g �T�C�Y�A�F�Ȃ�) �̑S�̂�\���܂��B
+	''' オブジェクトのフォント属性 (フォント名、フォント サイズ、色など) の全体を表します。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Class FontWrapper
 		Inherits AbstractExcelWrapper
 
-		''' <summary>�e��Excel.Range</summary>
+		''' <summary>親のExcel.Range</summary>
 		Private _range As RangeWrapper
 
 		''' <summary>Excel.Font</summary>
@@ -17,12 +17,12 @@ Namespace Excel
 		''' <summary>log4net logger</summary>
 		Private ReadOnly _mylog As log4net.ILog = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType)
 
-#Region " �R���X�g���N�^ "
+#Region " コンストラクタ "
 
 		''' <summary>
-		''' �R���X�g���N�^
+		''' コンストラクタ
 		''' </summary>
-		''' <param name="range">�e��range</param>
+		''' <param name="range">親のrange</param>
 		''' <param name="font">Excel.font</param>
 		''' <remarks></remarks>
 		Public Sub New(ByVal range As RangeWrapper, ByVal font As Object)
@@ -35,7 +35,7 @@ Namespace Excel
 #Region " Overrides "
 
 		''' <summary>
-		''' �������g�ŊǗ����Ă���Excel�֌W�̃I�u�W�F�N�g�̃������J��
+		''' 自分自身で管理しているExcel関係のオブジェクトのメモリ開放
 		''' </summary>
 		''' <remarks></remarks>
 		Public Overrides Sub MyDispose()
@@ -43,7 +43,7 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' �擾���� Excel �C���X�^���X
+		''' 取得した Excel インスタンス
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -55,10 +55,10 @@ Namespace Excel
 		End Property
 
 #End Region
-#Region " �v���p�e�B "
+#Region " プロパティ "
 
 		''' <summary>
-		''' �O���t�Ŏg�p���镶����̔w�i�̎�ނ�ݒ肵�܂��BXlBackground �񋓌^�̒萔�̂����ꂩ���g�p�ł��܂��B
+		''' グラフで使用する文字列の背景の種類を設定します。XlBackground 列挙型の定数のいずれかを使用できます。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -73,7 +73,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' True ��ݒ肷��ƁA�t�H���g�������ɂȂ�܂��B
+		''' True を設定すると、フォントが太字になります。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -88,7 +88,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �t�H���g�̊�{�F��ݒ肵�܂��B
+		''' フォントの基本色を設定します。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -103,7 +103,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �t�H���g�̐F��ݒ肵�܂��B
+		''' フォントの色を設定します。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -118,7 +118,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �w�肵���I�u�W�F�N�g�̍쐬���̃A�v���P�[�V���������� 32 �r�b�g�̐����l���擾���܂��B
+		''' 指定したオブジェクトの作成元のアプリケーションを示す 32 ビットの整数値を取得します。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -130,7 +130,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �t�H���g �X�^�C����ݒ肵�܂��B
+		''' フォント スタイルを設定します。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -145,7 +145,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' True ��ݒ肷��ƁA�t�H���g���Α̂ɂȂ�܂��B
+		''' True を設定すると、フォントが斜体になります。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -160,7 +160,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �I�u�W�F�N�g�̖��O��ݒ肵�܂��B
+		''' オブジェクトの名前を設定します。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -175,7 +175,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' True ��ݒ肷��ƁA�t�H���g���A�E�g���C�� �t�H���g�ɂȂ�܂��B
+		''' True を設定すると、フォントがアウトライン フォントになります。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -190,7 +190,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' True ��ݒ肷��ƁA�t�H���g���e�t���t�H���g�ɁA�܂��͎w�肵���I�u�W�F�N�g���e�t���ɐݒ肳��܂��B
+		''' True を設定すると、フォントが影付きフォントに、または指定したオブジェクトが影付きに設定されます。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -205,7 +205,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �t�H���g �T�C�Y��ݒ肵�܂��B
+		''' フォント サイズを設定します。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -220,7 +220,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' True ��ݒ肷��ƁA�t�H���g�Ɏ����������t�����܂��B
+		''' True を設定すると、フォントに取り消し線が付けられます。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -235,7 +235,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' True ��ݒ肷��ƁA�w�肵���t�H���g�����t�������ɂȂ�܂��B����l�� False �ł��B
+		''' True を設定すると、指定したフォントが下付き文字になります。既定値は False です。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -250,7 +250,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' True ��ݒ肷��ƁA�w�肵���t�H���g����t�������ɂȂ�܂��B����l�� False �ł��B
+		''' True を設定すると、指定したフォントが上付き文字になります。既定値は False です。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -265,7 +265,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �t�H���g�ɓK�p���鉺���̎�ނ�ݒ肵�܂��B
+		''' フォントに適用する下線の種類を設定します。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>

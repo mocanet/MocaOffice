@@ -1,21 +1,21 @@
-
+ï»¿
 Imports System.IO
 
 Namespace Excel
 
 	''' <summary>
-	''' ƒuƒbƒN‘€ì—p‚ÌƒCƒxƒ“ƒgˆø”
+	''' ãƒ–ãƒƒã‚¯æ“ä½œç”¨ã®ã‚¤ãƒ™ãƒ³ãƒˆå¼•æ•°
 	''' </summary>
 	''' <remarks></remarks>
 	Public Class BookContentsEventArgs
 		Inherits EventArgs
 
-		''' <summary>‘€ì’†‚ÌƒV[ƒg–¼</summary>
+		''' <summary>æ“ä½œä¸­ã®ã‚·ãƒ¼ãƒˆå</summary>
 		Public SheetName As String
 	End Class
 
 	''' <summary>
-	''' i’»
+	''' é€²æ—
 	''' </summary>
 	''' <param name="sender"></param>
 	''' <param name="e"></param>
@@ -23,47 +23,47 @@ Namespace Excel
 	Public Delegate Sub PerformStep(ByVal sender As AbstractBookContents, ByVal e As BookContentsEventArgs)
 
 	''' <summary>
-	''' ExcelƒuƒbƒN‚ğ‘€ì‚·‚éˆ×‚Ì‹¤’Êˆ—‚ğ•Û‚·‚é’ŠÛƒNƒ‰ƒX
+	''' Excelãƒ–ãƒƒã‚¯ã‚’æ“ä½œã™ã‚‹ç‚ºã®å…±é€šå‡¦ç†ã‚’ä¿æŒã™ã‚‹æŠ½è±¡ã‚¯ãƒ©ã‚¹
 	''' </summary>
 	''' <remarks>
-	''' “–’ŠÛƒNƒ‰ƒX‚Å‚ÍAExcelo—Í‚·‚éÛ‚Ì‚¨Œˆ‚Ü‚è‚ÌƒuƒbƒN‘€ì‚ğŠù‚ÉÀ‘•‚µ‚Ä‚ ‚è‚Ü‚·B<br/>
-	''' “–ƒNƒ‰ƒX‚ğŒp³‚µƒTƒuƒNƒ‰ƒX‰»‚µ‚ÄAƒuƒbƒNƒtƒ@ƒCƒ‹–¼i<see cref="AbstractBookContents.SaveFilename"/>A<see cref="AbstractBookContents.TemplateFilename"/>j‚ğİ’è‚µA
-	''' <see cref="AbstractBookContents.Add"/> ‚É‚ÄŠeƒV[ƒgo—ÍƒNƒ‰ƒX‚ğ’Ç‰Á‚·‚é‚±‚Æ‚ÅA”äŠr“IŠÈ’P‚É Excel o—Í‹@”\‚ğÀ‘•o—ˆ‚é‚æ‚¤‚É‚È‚Á‚Ä‚Ü‚·B<br/>
-	''' ƒV[ƒgo—ÍƒNƒ‰ƒX‚Í <seealso cref="ISheetContents"/>, <seealso cref="ISheetContentsUseTemplate"/>, <seealso cref="ISheetContentsUseTemplateMakeCsv"/>
-	''' ‚ğÀ‘•‚µ‚Ä‚­‚¾‚³‚¢B<br/>
+	''' å½“æŠ½è±¡ã‚¯ãƒ©ã‚¹ã§ã¯ã€Excelå‡ºåŠ›ã™ã‚‹éš›ã®ãŠæ±ºã¾ã‚Šã®ãƒ–ãƒƒã‚¯æ“ä½œã‚’æ—¢ã«å®Ÿè£…ã—ã¦ã‚ã‚Šã¾ã™ã€‚<br/>
+	''' å½“ã‚¯ãƒ©ã‚¹ã‚’ç¶™æ‰¿ã—ã‚µãƒ–ã‚¯ãƒ©ã‚¹åŒ–ã—ã¦ã€ãƒ–ãƒƒã‚¯ãƒ•ã‚¡ã‚¤ãƒ«åï¼ˆ<see cref="AbstractBookContents.SaveFilename"/>ã€<see cref="AbstractBookContents.TemplateFilename"/>ï¼‰ã‚’è¨­å®šã—ã€
+	''' <see cref="AbstractBookContents.Add"/> ã«ã¦å„ã‚·ãƒ¼ãƒˆå‡ºåŠ›ã‚¯ãƒ©ã‚¹ã‚’è¿½åŠ ã™ã‚‹ã“ã¨ã§ã€æ¯”è¼ƒçš„ç°¡å˜ã« Excel å‡ºåŠ›æ©Ÿèƒ½ã‚’å®Ÿè£…å‡ºæ¥ã‚‹ã‚ˆã†ã«ãªã£ã¦ã¾ã™ã€‚<br/>
+	''' ã‚·ãƒ¼ãƒˆå‡ºåŠ›ã‚¯ãƒ©ã‚¹ã¯ <seealso cref="ISheetContents"/>, <seealso cref="ISheetContentsUseTemplate"/>, <seealso cref="ISheetContentsUseTemplateMakeCsv"/>
+	''' ã‚’å®Ÿè£…ã—ã¦ãã ã•ã„ã€‚<br/>
 	''' </remarks>
 	Public MustInherit Class AbstractBookContents
 
 		'Public Event PerformStep As PerformStep
 
-		''' <summary>ExcelƒAƒvƒŠƒP[ƒVƒ‡ƒ“</summary>
+		''' <summary>Excelã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³</summary>
 		Private _app As ExcelWrapper
 
-		''' <summary>ƒtƒ@ƒCƒ‹–¼</summary>
+		''' <summary>ãƒ•ã‚¡ã‚¤ãƒ«å</summary>
 		Private _saveFilename As String
 
-		''' <summary>ƒeƒ“ƒvƒŒ[ƒg‚Æ‚È‚éExcelƒtƒ@ƒCƒ‹–¼</summary>
+		''' <summary>ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã¨ãªã‚‹Excelãƒ•ã‚¡ã‚¤ãƒ«å</summary>
 		Protected myTemplateFilename As String
 
-		''' <summary>Excel‚ğ‰æ–Ê•\¦‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é•Ï”</summary>
+		''' <summary>Excelã‚’ç”»é¢è¡¨ç¤ºã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹å¤‰æ•°</summary>
 		Private _display As Boolean
-		''' <summary>Excel‚ğ•Û‘¶‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é•Ï”</summary>
+		''' <summary>Excelã‚’ä¿å­˜ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹å¤‰æ•°</summary>
 		Private _save As Boolean
-		''' <summary>Excel‚ğˆóü‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é•Ï”</summary>
+		''' <summary>Excelã‚’å°åˆ·ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹å¤‰æ•°</summary>
 		Private _print As Boolean
 
 		Private _performStep As PerformStep
 
-		''' <summary>ƒV[ƒg“à—e</summary>
+		''' <summary>ã‚·ãƒ¼ãƒˆå†…å®¹</summary>
 		Protected sheetContents As IList(Of ISheetContents)
 
 		''' <summary>log4net logger</summary>
 		Private ReadOnly _mylog As log4net.ILog = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType)
 
-#Region " ƒRƒ“ƒXƒgƒ‰ƒNƒ^ "
+#Region " ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ "
 
 		''' <summary>
-		''' ƒfƒtƒHƒ‹ƒgƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
 		''' <remarks></remarks>
 		Public Sub New()
@@ -72,10 +72,10 @@ Namespace Excel
 
 #End Region
 
-#Region " ƒvƒƒpƒeƒB "
+#Region " ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ "
 
 		''' <summary>
-		''' ExcelƒAƒvƒŠƒP[ƒVƒ‡ƒ“
+		''' Excelã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -86,7 +86,7 @@ Namespace Excel
 			End Get
 		End Property
 
-		''' <summary>ƒtƒ@ƒCƒ‹–¼</summary>
+		''' <summary>ãƒ•ã‚¡ã‚¤ãƒ«å</summary>
 		Public Property SaveFilename() As String
 			Get
 				Return _saveFilename
@@ -96,7 +96,7 @@ Namespace Excel
 			End Set
 		End Property
 
-		''' <summary>ƒeƒ“ƒvƒŒ[ƒg‚Æ‚È‚éExcelƒtƒ@ƒCƒ‹–¼</summary>
+		''' <summary>ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã¨ãªã‚‹Excelãƒ•ã‚¡ã‚¤ãƒ«å</summary>
 		Public Property TemplateFilename() As String
 			Get
 				Return myTemplateFilename
@@ -106,7 +106,7 @@ Namespace Excel
 			End Set
 		End Property
 
-		''' <summary>Excel‚ğ‰æ–Ê•\¦‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é•Ï”</summary>
+		''' <summary>Excelã‚’ç”»é¢è¡¨ç¤ºã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹å¤‰æ•°</summary>
 		Public Property Display() As Boolean
 			Get
 				Return _display
@@ -116,7 +116,7 @@ Namespace Excel
 			End Set
 		End Property
 
-		''' <summary>Excel‚ğ•Û‘¶‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é•Ï”</summary>
+		''' <summary>Excelã‚’ä¿å­˜ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹å¤‰æ•°</summary>
 		Public Property Save() As Boolean
 			Get
 				Return _save
@@ -126,7 +126,7 @@ Namespace Excel
 			End Set
 		End Property
 
-		''' <summary>Excel‚ğˆóü‚·‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é•Ï”</summary>
+		''' <summary>Excelã‚’å°åˆ·ã™ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹å¤‰æ•°</summary>
 		Public Property Print() As Boolean
 			Get
 				Return _print
@@ -139,18 +139,18 @@ Namespace Excel
 #End Region
 
 		''' <summary>
-		''' ƒV[ƒg‚ğ’Ç‰Á‚·‚é
+		''' ã‚·ãƒ¼ãƒˆã‚’è¿½åŠ ã™ã‚‹
 		''' </summary>
-		''' <param name="sheet">ƒV[ƒgƒRƒ“ƒeƒ“ƒc</param>
+		''' <param name="sheet">ã‚·ãƒ¼ãƒˆã‚³ãƒ³ãƒ†ãƒ³ãƒ„</param>
 		''' <remarks></remarks>
 		Public Sub Add(ByVal sheet As ISheetContents)
 			sheetContents.Add(sheet)
 		End Sub
 
 		''' <summary>
-		''' ƒRƒ“ƒeƒ“ƒco—Í
+		''' ã‚³ãƒ³ãƒ†ãƒ³ãƒ„å‡ºåŠ›
 		''' </summary>
-		''' <param name="performStep">i’»iƒvƒƒOƒŒƒXƒo[‚È‚Çj‚ğ•K—v‚Æ‚·‚é‚Æ‚«‚ÍA<see cref="PerformStep"/> ƒfƒŠƒQ[ƒg‚ğw’è‚µ‚Ä‚­‚¾‚³‚¢B</param>
+		''' <param name="performStep">é€²æ—ï¼ˆãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒãƒ¼ãªã©ï¼‰ã‚’å¿…è¦ã¨ã™ã‚‹ã¨ãã¯ã€<see cref="PerformStep"/> ãƒ‡ãƒªã‚²ãƒ¼ãƒˆã‚’æŒ‡å®šã—ã¦ãã ã•ã„ã€‚</param>
 		''' <remarks>
 		''' </remarks>
 		Public Sub Write(Optional ByVal performStep As PerformStep = Nothing)
@@ -164,12 +164,12 @@ Namespace Excel
 					Throw ex
 				End Try
 			End Using
-			''DoSomethingƒƒ\ƒbƒh‚ğ•Ê‚ÌƒXƒŒƒbƒh‚ÅÀs‚·‚é
-			''ThreadƒIƒuƒWƒFƒNƒg‚ğì¬‚·‚é
+			''DoSomethingãƒ¡ã‚½ãƒƒãƒ‰ã‚’åˆ¥ã®ã‚¹ãƒ¬ãƒƒãƒ‰ã§å®Ÿè¡Œã™ã‚‹
+			''Threadã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä½œæˆã™ã‚‹
 			'Dim t As New System.Threading.Thread( _
 			' New System.Threading.ThreadStart( _
 			' AddressOf DoSomething))
-			''ƒXƒŒƒbƒh‚ğŠJn‚·‚é
+			''ã‚¹ãƒ¬ãƒƒãƒ‰ã‚’é–‹å§‹ã™ã‚‹
 			't.Start()
 			''t.Join()
 		End Sub
@@ -182,30 +182,30 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' o—ÍƒƒWƒbƒN
+		''' å‡ºåŠ›ãƒ­ã‚¸ãƒƒã‚¯
 		''' </summary>
 		''' <remarks>
 		''' </remarks>
 		Private Sub _writeContents()
 			Dim cbValue As String
 
-			' ƒV[ƒgw’è‚ª–³‚¢‚Æ‚«‚Íˆ—I—¹
+			' ã‚·ãƒ¼ãƒˆæŒ‡å®šãŒç„¡ã„ã¨ãã¯å‡¦ç†çµ‚äº†
 			If sheetContents.Count = 0 Then
-				Throw New ExcelException(Me.App, "ƒV[ƒg‚ªˆê‚Â‚àw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB")
+				Throw New ExcelException(Me.App, "ã‚·ãƒ¼ãƒˆãŒä¸€ã¤ã‚‚æŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚")
 			End If
 
-			' ƒNƒŠƒbƒvƒ{[ƒh‚Ì‘Ş”ğ
+			' ã‚¯ãƒªãƒƒãƒ—ãƒœãƒ¼ãƒ‰ã®é€€é¿
 			cbValue = My.Computer.Clipboard.GetText()
 
 			Try
-				' Excelƒeƒ“ƒvƒŒ[ƒgƒtƒ@ƒCƒ‹‚Ì‘¶İƒ`ƒFƒbƒN
+				' Excelãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã®å­˜åœ¨ãƒã‚§ãƒƒã‚¯
 				_xlsTemplateFileExists()
 
-				' Excelo—Í
+				' Excelå‡ºåŠ›
 				_writeExcel()
 			Finally
 				Try
-					' ƒNƒŠƒbƒvƒ{[ƒh‚Ì•œŒ³
+					' ã‚¯ãƒªãƒƒãƒ—ãƒœãƒ¼ãƒ‰ã®å¾©å…ƒ
 					My.Computer.Clipboard.SetText(cbValue)
 				Catch ex As Exception
 				End Try
@@ -213,7 +213,7 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' Excelƒeƒ“ƒvƒŒ[ƒgƒtƒ@ƒCƒ‹‚Ì‘¶İƒ`ƒFƒbƒN
+		''' Excelãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã®å­˜åœ¨ãƒã‚§ãƒƒã‚¯
 		''' </summary>
 		''' <remarks>
 		''' </remarks>
@@ -222,14 +222,14 @@ Namespace Excel
 				Exit Sub
 			End If
 
-			' Excelƒeƒ“ƒvƒŒ[ƒgƒtƒ@ƒCƒ‹‚Ì‘¶İƒ`ƒFƒbƒN
+			' Excelãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã®å­˜åœ¨ãƒã‚§ãƒƒã‚¯
 			If Not File.Exists(TemplateFilename) Then
-				Throw New ExcelException(Me.App, String.Format("Excelƒeƒ“ƒvƒŒ[ƒgƒtƒ@ƒCƒ‹‚ª‘¶İ‚µ‚Ü‚¹‚ñB({0})", TemplateFilename))
+				Throw New ExcelException(Me.App, String.Format("Excelãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã—ã¾ã›ã‚“ã€‚({0})", TemplateFilename))
 			End If
 		End Sub
 
 		''' <summary>
-		''' o—Í
+		''' å‡ºåŠ›
 		''' </summary>
 		''' <remarks>
 		''' </remarks>
@@ -247,16 +247,16 @@ Namespace Excel
 				Me.App.Interactive = False
 				Me.App.ScreenUpdating = False
 
-				' ƒuƒbƒN‚ğæ“¾
+				' ãƒ–ãƒƒã‚¯ã‚’å–å¾—
 				If TemplateFilename.Length = 0 Then
-					' V‹KƒuƒbƒNì¬
+					' æ–°è¦ãƒ–ãƒƒã‚¯ä½œæˆ
 					xlBook = Me.App.Workbooks.Add(Me.SaveFilename)
 				Else
-					' ƒeƒ“ƒvƒŒ[ƒgƒtƒ@ƒCƒ‹‚Ì“Ç
+					' ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã®èª­è¾¼
 					xlBook = Me.App.Workbooks.Open(TemplateFilename)
 				End If
 
-				' ŠeƒV[ƒgˆ—
+				' å„ã‚·ãƒ¼ãƒˆå‡¦ç†
 				For ii As Integer = 0 To sheetContents.Count - 1
 					Dim contents As ISheetContents
 					Dim contentsWriter As SheetContents
@@ -276,7 +276,7 @@ Namespace Excel
 					xlSheet.Activate()
 					e.SheetName = xlSheet.Name
 
-					' o—Í
+					' å‡ºåŠ›
 					contentsWriter = SheetContentsFactory.Create(contents, xlSheet)
 					Dim tim As Stopwatch = New Stopwatch()
 					tim.Start()
@@ -284,7 +284,7 @@ Namespace Excel
 					tim.Stop()
 					_mylog.DebugFormat("[{0}] Write Time {1}", IIf(contents.SaveSheetName.Length = 0, contents.BaseSheetName, contents.SaveSheetName), tim.ElapsedMilliseconds)
 
-					' ƒz[ƒ€ƒ|ƒWƒVƒ‡ƒ“‚ÉˆÚ“®
+					' ãƒ›ãƒ¼ãƒ ãƒã‚¸ã‚·ãƒ§ãƒ³ã«ç§»å‹•
 					If Not xlSheet.IsDeleted Then
 						xlSheet.Range("A1").Select()
 					End If
@@ -292,7 +292,7 @@ Namespace Excel
 					_runPerformStep(e)
 				Next
 
-				' I—¹ˆ—
+				' çµ‚äº†å‡¦ç†
 				_endWrite(xlBook)
 			Catch chex As ExcelException
 				Throw chex
@@ -302,7 +302,7 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' ExcelI—¹ˆ—
+		''' Excelçµ‚äº†å‡¦ç†
 		''' </summary>
 		''' <returns></returns>
 		''' <remarks>
@@ -310,24 +310,24 @@ Namespace Excel
 		Private Function _endWrite(ByVal xlBook As BookWrapper) As Boolean
 			Dim sheet As SheetWrapper
 
-			' ƒz[ƒ€ƒ|ƒWƒVƒ‡ƒ“‚ÉˆÚ“®
+			' ãƒ›ãƒ¼ãƒ ãƒã‚¸ã‚·ãƒ§ãƒ³ã«ç§»å‹•
 			sheet = Me.App.ActiveWorkbook.Worksheets(1)
 			sheet.Activate()
 			sheet.Range("A1").Select()
 
-			' ©“®•Û‘¶
+			' è‡ªå‹•ä¿å­˜
 			If Save Then
 				If Not _autoSave(xlBook) Then
 					Exit Function
 				End If
 			End If
-			' ©“®ˆóü
+			' è‡ªå‹•å°åˆ·
 			If Print Then
 				If Not _autoPrint() Then
 					Exit Function
 				End If
 			End If
-			' ‰æ–Ê•\¦
+			' ç”»é¢è¡¨ç¤º
 			If Display Then
 				If Not _autoDisplay() Then
 					Exit Function
@@ -336,14 +336,14 @@ Namespace Excel
 		End Function
 
 		''' <summary>
-		''' ©“®•Û‘¶
+		''' è‡ªå‹•ä¿å­˜
 		''' </summary>
 		''' <returns></returns>
 		''' <remarks>
-		''' <see cref="SaveFilename" /> ‚Éw’è‚³‚ê‚Ä‚¢‚é–¼‘O‚Å•Û‘¶‚µ‚Ü‚·B
+		''' <see cref="SaveFilename" /> ã«æŒ‡å®šã•ã‚Œã¦ã„ã‚‹åå‰ã§ä¿å­˜ã—ã¾ã™ã€‚
 		''' </remarks>
 		Private Function _autoSave(ByVal xlBook As BookWrapper) As Boolean
-			' •Û‘¶ƒtƒ@ƒCƒ‹–¼‚ªw’è‚µ‚Ä‚¢‚È‚¢‚Æ‚«‚Í–³‹
+			' ä¿å­˜ãƒ•ã‚¡ã‚¤ãƒ«åãŒæŒ‡å®šã—ã¦ã„ãªã„ã¨ãã¯ç„¡è¦–
 			If _saveFilename.Length = 0 Then
 				Exit Function
 			End If
@@ -356,27 +356,27 @@ Namespace Excel
 			Catch ex As ExcelException
 				Throw ex
 			Catch ex As Exception
-				Throw New ExcelException(_app, ex, "Excel ©“®•Û‘¶‚ÉƒGƒ‰[‚ª”­¶‚µ‚Ü‚µ‚½B")
+				Throw New ExcelException(_app, ex, "Excel è‡ªå‹•ä¿å­˜æ™‚ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã¾ã—ãŸã€‚")
 			End Try
 		End Function
 
 		''' <summary>
-		''' ©“®ˆóü
+		''' è‡ªå‹•å°åˆ·
 		''' </summary>
 		''' <returns></returns>
 		''' <remarks>
 		''' </remarks>
 		Private Function _autoPrint() As Boolean
-			_app.ActiveWorkbook.PrintOut()	' ˆóü
+			_app.ActiveWorkbook.PrintOut()	' å°åˆ·
 			Return True
 		End Function
 
 		''' <summary>
-		''' ‰æ–Ê‚Ö•\¦‚·‚é
+		''' ç”»é¢ã¸è¡¨ç¤ºã™ã‚‹
 		''' </summary>
 		''' <returns></returns>
 		''' <remarks>
-		''' ‰º‹L‚Ì€–Ú‚ğ <c>Ture</c> ‚Éİ’è‚µ‚Ü‚·B<br/>
+		''' ä¸‹è¨˜ã®é …ç›®ã‚’ <c>Ture</c> ã«è¨­å®šã—ã¾ã™ã€‚<br/>
 		''' <list>
 		''' <item><description><see cref="ExcelWrapper.ScreenUpdating"/></description></item>
 		''' <item><description><see cref="ExcelWrapper.Interactive"/></description></item>
@@ -393,7 +393,7 @@ Namespace Excel
 		End Function
 
 		''' <summary>
-		''' i’»•ñ
+		''' é€²æ—å ±å‘Š
 		''' </summary>
 		''' <param name="e"></param>
 		''' <remarks></remarks>

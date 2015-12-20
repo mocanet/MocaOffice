@@ -1,9 +1,9 @@
-
+﻿
 Namespace Excel
 
 	''' <summary>
-	''' �ꗗ�`���̃e���v���[�g�V�[�g���g�p�����Ƃ��ɁA
-	''' �f�[�^�𑽎����z��ɕϊ����l��ݒ肷���@�̃C���^�t�F�[�X
+	''' 一覧形式のテンプレートシートを使用したときに、
+	''' データを多次元配列に変換し値を設定する手法のインタフェース
 	''' </summary>
 	''' <remarks>
 	''' </remarks>
@@ -11,27 +11,27 @@ Namespace Excel
 		Inherits ISheetContents
 
 		''' <summary>
-		''' ���ו��̏o�͊J�n�s
+		''' 明細部の出力開始行
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
 		''' <remarks>
-		''' �e���v���[�g�V�[�g��̈ꗗ�o�͂����ŏ��̍s��Ԃ��悤�ɂ���B
+		''' テンプレートシート上の一覧出力される最初の行を返すようにする。
 		''' </remarks>
 		ReadOnly Property StartRow() As Integer
 
 		''' <summary>
-		''' ���ו��̏o�͊J�n��
+		''' 明細部の出力開始列
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
 		''' <remarks>
-		''' �e���v���[�g�V�[�g��̈ꗗ�o�͂����ŏ��̗��Ԃ��悤�ɂ���B
+		''' テンプレートシート上の一覧出力される最初の列を返すようにする。
 		''' </remarks>
 		ReadOnly Property StartCol() As Integer
 
 		''' <summary>
-		''' ���ו��̏o�͗�
+		''' 明細部の出力列数
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -39,7 +39,7 @@ Namespace Excel
 		ReadOnly Property ColumnLength() As Integer
 
 		''' <summary>
-		''' �o�͂���f�[�^����
+		''' 出力するデータ件数
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -47,12 +47,12 @@ Namespace Excel
 		ReadOnly Property DataCount() As Integer
 
 		''' <summary>
-		''' �o�͂���f�[�^�z����쐬����
+		''' 出力するデータ配列を作成する
 		''' </summary>
 		''' <remarks>
-		''' �o�͂���f�[�^��K�v�Ȑ��̍s��ɊY�����鑽�����z����쐬���߂�l�Ƃ��ĕԂ��܂��B<br/>
-		''' �쐬����z��́A<see cref="DataCount"/>�s�C<see cref="ColumnLength"/>��Ƃ��Ă��������B<br/>
-		''' �쐬���ꂽ�z����A<see cref="StartRow"/>�s�F<see cref="StartCol"/>������ɐݒ肳��܂��B
+		''' 出力するデータを必要な数の行列に該当する多次元配列を作成し戻り値として返します。<br/>
+		''' 作成する配列は、<see cref="DataCount"/>行，<see cref="ColumnLength"/>列としてください。<br/>
+		''' 作成された配列を、<see cref="StartRow"/>行：<see cref="StartCol"/>列を元に設定されます。
 		''' </remarks>
 		Function MakeArrayData() As Array
 

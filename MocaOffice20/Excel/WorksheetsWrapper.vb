@@ -1,14 +1,14 @@
-
+﻿
 Namespace Excel
 
 	''' <summary>
-	''' Excel.Worksheets �̃��b�p�[�N���X
+	''' Excel.Worksheets のラッパークラス
 	''' </summary>
 	''' <remarks></remarks>
 	Public Class WorksheetsWrapper
 		Inherits AbstractExcelWrapper
 
-		''' <summary>�e��Excel.Workbook �̃��b�p�[</summary>
+		''' <summary>親のExcel.Workbook のラッパー</summary>
 		Private _book As BookWrapper
 
 		''' <summary>Excel.Worksheets</summary>
@@ -17,12 +17,12 @@ Namespace Excel
 		''' <summary>log4net logger</summary>
 		Private ReadOnly _mylog As log4net.ILog = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType)
 
-#Region " �R���X�g���N�^ "
+#Region " コンストラクタ "
 
 		''' <summary>
-		''' �R���X�g���N�^
+		''' コンストラクタ
 		''' </summary>
-		''' <param name="book">�e�u�b�N</param>
+		''' <param name="book">親ブック</param>
 		''' <remarks></remarks>
 		Public Sub New(ByVal book As BookWrapper)
 			MyBase.New(book.ApplicationWrapper)
@@ -34,7 +34,7 @@ Namespace Excel
 #Region " Overrides "
 
 		''' <summary>
-		''' �������g�ŊǗ����Ă���Excel�֌W�̃I�u�W�F�N�g�̃������J��
+		''' 自分自身で管理しているExcel関係のオブジェクトのメモリ開放
 		''' </summary>
 		''' <remarks></remarks>
 		Public Overrides Sub MyDispose()
@@ -42,7 +42,7 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' �擾���� Excel �C���X�^���X
+		''' 取得した Excel インスタンス
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -55,10 +55,10 @@ Namespace Excel
 
 #End Region
 
-#Region " �v���p�e�B "
+#Region " プロパティ "
 
 		''' <summary>
-		''' Excel.Application �̃��b�p�[
+		''' Excel.Application のラッパー
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -70,7 +70,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �e�̃u�b�N
+		''' 親のブック
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -82,7 +82,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �V�[�g��
+		''' シート数
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -94,9 +94,9 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' ��ƒ��̃u�b�N�̂��ׂẴV�[�g��\�� Sheets �R���N�V��������w�肳�ꂽ�V�[�g���擾���܂��B 
+		''' 作業中のブックのすべてのシートを表す Sheets コレクションから指定されたシートを取得します。 
 		''' </summary>
-		''' <param name="name">�V�[�g��</param>
+		''' <param name="name">シート名</param>
 		''' <value></value>
 		''' <returns></returns>
 		''' <remarks></remarks>
@@ -112,9 +112,9 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' ��ƒ��̃u�b�N�̂��ׂẴV�[�g��\�� Sheets �R���N�V��������w�肳�ꂽ�V�[�g���擾���܂��B 
+		''' 作業中のブックのすべてのシートを表す Sheets コレクションから指定されたシートを取得します。 
 		''' </summary>
-		''' <param name="index">�V�[�g�ԍ�</param>
+		''' <param name="index">シート番号</param>
 		''' <value></value>
 		''' <returns></returns>
 		''' <remarks></remarks>
@@ -132,24 +132,24 @@ Namespace Excel
 #End Region
 
 		''' <summary>
-		''' ������
+		''' 初期化
 		''' </summary>
-		''' <param name="book">�e�̃u�b�N</param>
+		''' <param name="book">親のブック</param>
 		''' <remarks></remarks>
 		Private Sub _init(ByVal book As BookWrapper)
 			_book = book
-			' Worksheets�I�u�W�F�N�g�̍쐬
+			' Worksheetsオブジェクトの作成
 			_sheets = InvokeGetProperty(_book.OrigianlInstance, "Worksheets", Nothing)
 		End Sub
 
 		''' <summary>
-		''' �V�������[�N�V�[�g���쐬���܂��B�쐬�������[�N�V�[�g�̓A�N�e�B�u�ɂȂ�܂��B 
+		''' 新しいワークシートを作成します。作成したワークシートはアクティブになります。 
 		''' </summary>
-		''' <param name="sheetName">�V�[�g��</param>
-		''' <param name="Before">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B�V�����V�[�g�����̃V�[�g�̒��O�̈ʒu�ɒǉ�����Ƃ��ɁA���̃V�[�g���w�肵�܂��B</param>
-		''' <param name="After">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B�V�����V�[�g�����̃V�[�g�̒���̈ʒu�ɒǉ�����Ƃ��ɁA���̃V�[�g���w�肵�܂��B</param>
-		''' <param name="Count">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B�ǉ�����V�[�g�̐����w�肵�܂��B����l�� 1 �ł��B</param>
-		''' <param name="Type">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B�V�[�g�̎�ނ��w�肵�܂��B�g�p�ł���萔�́AXlSheetType �񋓌^�� xlWorksheet�AxlChart�AxlExcel4MacroSheet�AxlExcel4IntlMacroSheet �̂����ꂩ�ł��B�����̃e���v���[�g����ɂ����V�[�g��}������ꍇ�́A���̃e���v���[�g�ւ̃p�X���w�肵�܂��B����l�� xlWorksheet �ł��B</param>
+		''' <param name="sheetName">シート名</param>
+		''' <param name="Before">省略可能です。オブジェクト型 (Object) の値を指定します。新しいシートを特定のシートの直前の位置に追加するときに、そのシートを指定します。</param>
+		''' <param name="After">省略可能です。オブジェクト型 (Object) の値を指定します。新しいシートを特定のシートの直後の位置に追加するときに、そのシートを指定します。</param>
+		''' <param name="Count">省略可能です。オブジェクト型 (Object) の値を指定します。追加するシートの数を指定します。既定値は 1 です。</param>
+		''' <param name="Type">省略可能です。オブジェクト型 (Object) の値を指定します。シートの種類を指定します。使用できる定数は、XlSheetType 列挙型の xlWorksheet、xlChart、xlExcel4MacroSheet、xlExcel4IntlMacroSheet のいずれかです。既存のテンプレートを基にしたシートを挿入する場合は、そのテンプレートへのパスを指定します。既定値は xlWorksheet です。</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Public Function Add(ByVal sheetName As String _
@@ -195,7 +195,7 @@ Namespace Excel
 		End Function
 
 		''' <summary>
-		''' Excel.Worksheets.GetEnumerator��Ԃ�
+		''' Excel.Worksheets.GetEnumeratorを返す
 		''' </summary>
 		''' <returns></returns>
 		''' <remarks></remarks>
@@ -217,10 +217,10 @@ Namespace Excel
 		End Function
 
 		''' <summary>
-		''' �f�t�H���g�V�[�g�폜
+		''' デフォルトシート削除
 		''' </summary>
 		''' <remarks>
-		''' Excel��V�K�ō쐬����Ƃ��ɏo����f�t�H���g�̃V�[�g�iSheet1...�j���폜���܂��B
+		''' Excelを新規で作成するときに出来るデフォルトのシート（Sheet1...）を削除します。
 		''' </remarks>
 		Public Sub ClearDefaultSheet()
 			Dim sheetEnum As IEnumerator(Of SheetWrapper)
@@ -237,22 +237,22 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' ����̃V�[�g�������݂���ꍇ�̌������Z�o����
+		''' 同一のシート名が存在する場合の件数を算出する
 		''' </summary>
-		''' <param name="sheetName">�V�[�g��</param>
+		''' <param name="sheetName">シート名</param>
 		''' <returns></returns>
 		''' <remarks>
-		''' �u�w�肳�ꂽ���́{�h�Q�h�{�ԍ��Ȃǁv�̖��̃V�[�g�����݂�������Ԃ�
+		''' 「指定された名称＋”＿”＋番号など」の名称シートが存在した数を返す
 		''' </remarks>
 		Public Function MultiSheetCount(ByVal sheetName As String) As Integer
 			Return MultiSheetCount(sheetName, "_")
 		End Function
 
 		''' <summary>
-		''' ����̃V�[�g�������݂���ꍇ�̌������Z�o����
+		''' 同一のシート名が存在する場合の件数を算出する
 		''' </summary>
-		''' <param name="sheetName">�V�[�g��</param>
-		''' <param name="delim">��؂蕶��</param>
+		''' <param name="sheetName">シート名</param>
+		''' <param name="delim">区切り文字</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Public Function MultiSheetCount(ByVal sheetName As String, ByVal delim As String) As Integer

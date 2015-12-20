@@ -1,13 +1,13 @@
-
+﻿
 Imports System.Reflection
 
 Namespace Excel
 
     ''' <summary>
-    ''' Excel.Workbook �̃��b�p�[�N���X
+    ''' Excel.Workbook のラッパークラス
     ''' </summary>
     ''' <remarks>
-    ''' Microsoft Excel �̃u�b�N��\���܂��B
+    ''' Microsoft Excel のブックを表します。
     ''' </remarks>
     Public Class BookWrapper
         Inherits AbstractExcelWrapper
@@ -20,27 +20,27 @@ Namespace Excel
         ''' <summary>Excel.Worksheets</summary>
         Private _worksheets As WorksheetsWrapper
 
-        ''' <summary>�t�@�C����</summary>
+        ''' <summary>ファイル名</summary>
         Private _filename As String
 
-        ''' <summary>�V�K�t�@�C��</summary>
+        ''' <summary>新規ファイル</summary>
         Private _new As Boolean
-        ''' <summary>�������t���O</summary>
+        ''' <summary>閉じたかフラグ</summary>
         Private _close As Boolean
 
         ''' <summary>log4net logger</summary>
         Private ReadOnly _mylog As log4net.ILog = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType)
 
-#Region " �R���X�g���N�^ "
+#Region " コンストラクタ "
 
         ''' <summary>
-        ''' �R���X�g���N�^
+        ''' コンストラクタ
         ''' </summary>
-        ''' <param name="xls">Excel.Application���b�p�[</param>
+        ''' <param name="xls">Excel.Applicationラッパー</param>
         ''' <param name="workbook">Excel.Workbook</param>
-        ''' <param name="newBook">�V�K�u�b�N���ǂ���</param>
+        ''' <param name="newBook">新規ブックかどうか</param>
         ''' <remarks>
-        ''' ���ɊJ���Ă���u�b�N�𑀍삷��Ƃ��Ɏg�p���܂��B
+        ''' 既に開いているブックを操作するときに使用します。
         ''' </remarks>
         Friend Sub New(ByVal xls As ExcelWrapper, ByVal workbook As Object, Optional ByVal newBook As Boolean = False)
             MyBase.New(xls)
@@ -61,7 +61,7 @@ Namespace Excel
 #Region " Overrides "
 
         ''' <summary>
-        ''' �������g�ŊǗ����Ă���Excel�֌W�̃I�u�W�F�N�g�̃������J��
+        ''' 自分自身で管理しているExcel関係のオブジェクトのメモリ開放
         ''' </summary>
         ''' <remarks></remarks>
         Public Overrides Sub MyDispose()
@@ -69,7 +69,7 @@ Namespace Excel
         End Sub
 
         ''' <summary>
-        ''' �擾���� Excel �C���X�^���X
+        ''' 取得した Excel インスタンス
         ''' </summary>
         ''' <value></value>
         ''' <returns></returns>
@@ -81,10 +81,10 @@ Namespace Excel
         End Property
 
 #End Region
-#Region " �v���p�e�B "
+#Region " プロパティ "
 
         ''' <summary>
-        ''' Excel.Application �̃��b�p�[
+        ''' Excel.Application のラッパー
         ''' </summary>
         ''' <value></value>
         ''' <returns></returns>
@@ -96,7 +96,7 @@ Namespace Excel
         End Property
 
         ''' <summary>
-        ''' �t�@�C����
+        ''' ファイル名
         ''' </summary>
         ''' <value></value>
         ''' <returns></returns>
@@ -111,7 +111,7 @@ Namespace Excel
         End Property
 
         ''' <summary>
-        ''' �ۑ��ς�
+        ''' 保存済み
         ''' </summary>
         ''' <value></value>
         ''' <returns></returns>
@@ -126,7 +126,7 @@ Namespace Excel
         End Property
 
         ''' <summary>
-        ''' �u�b�N���̑S�V�[�g
+        ''' ブック内の全シート
         ''' </summary>
         ''' <value></value>
         ''' <returns></returns>
@@ -142,7 +142,7 @@ Namespace Excel
         End Property
 
         ''' <summary>
-        ''' �u�b�N���̑S���[�N�V�[�g
+        ''' ブック内の全ワークシート
         ''' </summary>
         ''' <value></value>
         ''' <returns></returns>
@@ -158,7 +158,7 @@ Namespace Excel
         End Property
 
         ''' <summary>
-        ''' ���݃A�N�e�B�u�ȃV�[�g
+        ''' 現在アクティブなシート
         ''' </summary>
         ''' <returns></returns>
         ''' <remarks></remarks>
@@ -178,11 +178,11 @@ Namespace Excel
         End Property
 
         ''' <summary>
-        ''' �I�u�W�F�N�g�̖��O��������������擾���܂��B���O�ɂ̓f�B�X�N��̃p�X���܂܂�܂��B�l�̎擾�̂݉\�ł��B������^ (String) �̒l���g�p���܂��B 
+        ''' オブジェクトの名前を示す文字列を取得します。名前にはディスク上のパスが含まれます。値の取得のみ可能です。文字列型 (String) の値を使用します。 
         ''' </summary>
         ''' <value></value>
         ''' <returns>
-        ''' ���̃v���p�e�B���g�p����ƁA<see cref="Path"/> �v���p�e�B�A���݂̃t�@�C�� �V�X�e���̋�؂蕶���A<see cref="Name"/> �v���p�e�B�𑱂��ċL�q����̂Ɠ������ʂ������܂��B
+        ''' このプロパティを使用すると、<see cref="Path"/> プロパティ、現在のファイル システムの区切り文字、<see cref="Name"/> プロパティを続けて記述するのと同じ結果が得られます。
         ''' </returns>
         ''' <remarks></remarks>
         Public ReadOnly Property FullName() As String
@@ -192,7 +192,7 @@ Namespace Excel
         End Property
 
         ''' <summary>
-        ''' �A�v���P�[�V�����܂ł̐�΃p�X���擾���܂��B���̃p�X�ł́A�Ō�̋�؂蕶���ƃA�v���P�[�V���������Ȃ���܂��B�l�̎擾�̂݉\�ł��B������^ (String) �̒l���g�p���܂��B
+        ''' アプリケーションまでの絶対パスを取得します。このパスでは、最後の区切り文字とアプリケーション名が省かれます。値の取得のみ可能です。文字列型 (String) の値を使用します。
         ''' </summary>
         ''' <value></value>
         ''' <returns></returns>
@@ -204,7 +204,7 @@ Namespace Excel
         End Property
 
         ''' <summary>
-        ''' �I�u�W�F�N�g�̖��O���擾���܂��B�l�̎擾�̂݉\�ł��B������^ (String) �̒l���g�p���܂��B
+        ''' オブジェクトの名前を取得します。値の取得のみ可能です。文字列型 (String) の値を使用します。
         ''' </summary>
         ''' <value></value>
         ''' <returns></returns>
@@ -216,12 +216,12 @@ Namespace Excel
         End Property
 
 #End Region
-#Region " ���\�b�h "
+#Region " メソッド "
 
         ''' <summary>
-        ''' ����������
+        ''' 初期化処理
         ''' </summary>
-        ''' <param name="xls">Excel.Application���b�p�[</param>
+        ''' <param name="xls">Excel.Applicationラッパー</param>
         ''' <remarks></remarks>
         Private Sub _init(ByVal xls As ExcelWrapper)
             _new = False
@@ -229,7 +229,7 @@ Namespace Excel
         End Sub
 
         ''' <summary>
-        ''' �V�[�g���A�N�e�B�u�ɂ���
+        ''' シートをアクティブにする
         ''' </summary>
         ''' <remarks></remarks>
         Public Sub Activate()
@@ -237,19 +237,19 @@ Namespace Excel
         End Sub
 
         ''' <summary>
-        ''' �u�b�N�����
+        ''' ブックを閉じる
         ''' </summary>
         ''' <remarks>
-        ''' ����Ɠ����ɕۑ����܂��B
+        ''' 閉じると同時に保存します。
         ''' </remarks>
         Public Sub Close()
             Close(True)
         End Sub
 
         ''' <summary>
-        ''' �u�b�N�����
+        ''' ブックを閉じる
         ''' </summary>
-        ''' <param name="save">�ۑ����邩�ǂ���</param>
+        ''' <param name="save">保存するかどうか</param>
         ''' <remarks></remarks>
         Public Sub Close(ByVal save As Boolean)
             If _book Is Nothing Then
@@ -268,7 +268,7 @@ Namespace Excel
         End Sub
 
         '''' <summary>
-        '''' �u�b�N��ۑ�
+        '''' ブックを保存
         '''' </summary>
         '''' <remarks></remarks>
         'Friend Sub SaveTitle()
@@ -284,7 +284,7 @@ Namespace Excel
         'End Sub
 
         ''' <summary>
-        ''' �u�b�N��ۑ�
+        ''' ブックを保存
         ''' </summary>
         ''' <remarks></remarks>
         Public Sub Save()
@@ -301,9 +301,9 @@ Namespace Excel
         End Sub
 
         ''' <summary>
-        ''' �u�b�N�Ƀt�@�C������t���ĕۑ�
+        ''' ブックにファイル名を付けて保存
         ''' </summary>
-        ''' <param name="filename">�t�@�C����</param>
+        ''' <param name="filename">ファイル名</param>
         ''' <remarks></remarks>
         Public Sub SaveAs(ByVal filename As String)
             If Saved Then
@@ -314,7 +314,7 @@ Namespace Excel
         End Sub
 
         ''' <summary>
-        ''' �u�b�N�����
+        ''' ブックを印刷
         ''' </summary>
         ''' <remarks></remarks>
         Public Sub PrintOut()
@@ -322,17 +322,17 @@ Namespace Excel
         End Sub
 
         ''' <summary>
-        ''' �������s�}�N���̎��s
+        ''' 自動実行マクロの実行
         ''' </summary>
-        ''' <param name="Which">���s���鎩�����s�}�N�����w��<br/>
-        ''' XlRunAutoMacro�Œ�`���ꂽ�萔���g�p���܂��B</param>
+        ''' <param name="Which">実行する自動実行マクロを指定<br/>
+        ''' XlRunAutoMacroで定義された定数を使用します。</param>
         ''' <remarks></remarks>
         Public Sub RunAutoMacros(ByVal which As XlRunAutoMacro)
             InvokeMethod(_book, "RunAutoMacros", New Object() {which})
         End Sub
 
         ''' <summary>
-        ''' �w�肵���`���̃t�@�C���ɃG�N�X�|�[�g
+        ''' 指定した形式のファイルにエクスポート
         ''' </summary>
         ''' <remarks>https://msdn.microsoft.com/ja-jp/library/office/ff198122.aspx</remarks>
         Public Sub ExportAsFixedFormat(ByVal xlType As FixedFormatType,

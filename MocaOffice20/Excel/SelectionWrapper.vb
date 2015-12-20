@@ -1,28 +1,28 @@
-
+﻿
 Namespace Excel
 
 	''' <summary>
-	''' �A�N�e�B�u�ȃE�B���h�E�őI������Ă���I�u�W�F�N�g
+	''' アクティブなウィンドウで選択されているオブジェクト
 	''' </summary>
 	''' <remarks></remarks>
 	Public Class SelectionWrapper
 		Inherits AbstractExcelWrapper
 
-		''' <summary>�e��Excel.Application �̃��b�p�[</summary>
+		''' <summary>親のExcel.Application のラッパー</summary>
 		Private _xls As ExcelWrapper
-		''' <summary>Excel.Application Selection �I�u�W�F�N�g</summary>
+		''' <summary>Excel.Application Selection オブジェクト</summary>
 		Private _selection As Object
 
 		''' <summary>log4net logger</summary>
 		Private ReadOnly _mylog As log4net.ILog = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType)
 
-#Region " �R���X�g���N�^ "
+#Region " コンストラクタ "
 
 		''' <summary>
-		''' �R���X�g���N�^
+		''' コンストラクタ
 		''' </summary>
-		''' <param name="xls">Excel.Application���b�p�[</param>
-		''' <param name="selection">Excel.Range �ȂǑI������Ă���I�u�W�F�N�g</param>
+		''' <param name="xls">Excel.Applicationラッパー</param>
+		''' <param name="selection">Excel.Range など選択されているオブジェクト</param>
 		''' <remarks></remarks>
 		Public Sub New(ByVal xls As ExcelWrapper, ByVal selection As Object)
 			MyBase.New(xls.ApplicationWrapper)
@@ -35,7 +35,7 @@ Namespace Excel
 #Region " Overrides "
 
 		''' <summary>
-		''' �������g�ŊǗ����Ă���Excel�֌W�̃I�u�W�F�N�g�̃������J��
+		''' 自分自身で管理しているExcel関係のオブジェクトのメモリ開放
 		''' </summary>
 		''' <remarks></remarks>
 		Public Overrides Sub MyDispose()
@@ -43,7 +43,7 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' �擾���� Excel �C���X�^���X
+		''' 取得した Excel インスタンス
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -57,7 +57,7 @@ Namespace Excel
 #End Region
 
 		''' <summary>
-		''' �I�u�W�F�N�g���R�s�[���܂�
+		''' オブジェクトをコピーします
 		''' </summary>
 		''' <remarks></remarks>
 		Public Sub Copy()
@@ -68,7 +68,7 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' �I������Ă���I�u�W�F�N�g���C���T�[�g���܂�
+		''' 選択されているオブジェクトをインサートします
 		''' </summary>
 		''' <remarks></remarks>
 		Public Sub Insert()
@@ -79,12 +79,12 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' �N���b�v�{�[�h�ɂ��� Range �I�u�W�F�N�g���A�w�肵���Z���͈͂ɓ\��t���܂��B
+		''' クリップボードにある Range オブジェクトを、指定したセル範囲に貼り付けます。
 		''' </summary>
-		''' <param name="Paste">�ȗ��\�ł��B<see cref="XlPasteType" /> �񋓌^�̒萔���w�肵�܂��B�Z���͈͂̒��œ\��t���镔�����w�肵�܂��B</param>
-		''' <param name="Operation">�ȗ��\�ł��B<see cref="XlPasteSpecialOperation" /> �񋓌^�̒l���w�肵�܂��B�\��t���̑�����w�肵�܂��B</param>
-		''' <param name="SkipBlanks">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��BTrue ���w�肷��ƁA�N���b�v�{�[�h�Ɋ܂܂��󔒂̃Z����ΏۃZ���͈͂ɓ\��t���܂���B����l�� False �ł��B</param>
-		''' <param name="Transpose">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��BTrue ���w�肷��ƁA�\��t����Ƃ��ɃZ���͈͂̍s�Ɨ�����ւ��܂��B����l�� False �ł��B</param>
+		''' <param name="Paste">省略可能です。<see cref="XlPasteType" /> 列挙型の定数を指定します。セル範囲の中で貼り付ける部分を指定します。</param>
+		''' <param name="Operation">省略可能です。<see cref="XlPasteSpecialOperation" /> 列挙型の値を指定します。貼り付けの操作を指定します。</param>
+		''' <param name="SkipBlanks">省略可能です。オブジェクト型 (Object) の値を指定します。True を指定すると、クリップボードに含まれる空白のセルを対象セル範囲に貼り付けません。既定値は False です。</param>
+		''' <param name="Transpose">省略可能です。オブジェクト型 (Object) の値を指定します。True を指定すると、貼り付けるときにセル範囲の行と列を入れ替えます。既定値は False です。</param>
 		''' <remarks></remarks>
 		Public Sub PasteSpecial( _
 		 Optional ByVal Paste As XlPasteType = XlPasteType.xlPasteAll, _
@@ -116,18 +116,18 @@ Namespace Excel
 		End Sub
 
 		'''' <summary>
-		'''' �w�肵���`���ŁA�N���b�v�{�[�h�̓��e���V�[�g�ɓ\��t���܂��B���̃A�v���P�[�V��������f�[�^��\��t������A����̌`���Ńf�[�^��\��t����ꍇ�Ɏg�p���܂��B
+		'''' 指定した形式で、クリップボードの内容をシートに貼り付けます。他のアプリケーションからデータを貼り付けたり、特定の形式でデータを貼り付ける場合に使用します。
 		'''' </summary>
-		'''' <param name="Format">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B�N���b�v�{�[�h�̃f�[�^�̌`���𕶎���Ŏw�肵�܂��B</param>
-		'''' <param name="Link">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B���̃f�[�^�Ɠ\��t�����f�[�^�̊ԂɃ����N��ݒ肷��ɂ́ATrue ���w�肵�܂��B���̃f�[�^�������N�ɓK���Ȃ��f�[�^�ł���ꍇ��A���̃f�[�^���쐬�����A�v���P�[�V�����������N���T�|�[�g���Ȃ��ꍇ�A���̈����͖�������܂��B����l�� False �ł��B</param>
-		'''' <param name="DisplayAsIcon">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B�\��t�����f�[�^���A�C�R���Ƃ��ĕ\������ɂ́ATrue ���w�肵�܂��B����l�� False �ł��B</param>
-		'''' <param name="IconFileName">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) ���w�肵�܂��BDisplayAsIcon �� True �̏ꍇ�Ɏg�p����A�C�R�����܂ރt�@�C���̖��O���w�肵�܂��B</param>
-		'''' <param name="IconIndex">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B�A�C�R���̃t�@�C�����̃A�C�R���̃C���f�b�N�X�ԍ����w�肵�܂��B</param>
-		'''' <param name="IconLabel">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B�A�C�R���̃��x���̕�������w�肵�܂��B</param>
-		'''' <param name="NoHTMLFormatting">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��BHTML ���珑���ݒ�A�n�C�p�[�����N�A����уC���[�W�����ׂč폜����ɂ́ATrue ���w�肵�܂��BHTML �����̂܂ܓ\��t����ɂ́AFalse ���w�肵�܂��B����l�� False �ł��B</param>
+		'''' <param name="Format">省略可能です。オブジェクト型 (Object) の値を指定します。クリップボードのデータの形式を文字列で指定します。</param>
+		'''' <param name="Link">省略可能です。オブジェクト型 (Object) の値を指定します。元のデータと貼り付けたデータの間にリンクを設定するには、True を指定します。元のデータがリンクに適さないデータである場合や、元のデータを作成したアプリケーションがリンクをサポートしない場合、この引数は無視されます。既定値は False です。</param>
+		'''' <param name="DisplayAsIcon">省略可能です。オブジェクト型 (Object) の値を指定します。貼り付けたデータをアイコンとして表示するには、True を指定します。既定値は False です。</param>
+		'''' <param name="IconFileName">省略可能です。オブジェクト型 (Object) を指定します。DisplayAsIcon が True の場合に使用するアイコンを含むファイルの名前を指定します。</param>
+		'''' <param name="IconIndex">省略可能です。オブジェクト型 (Object) の値を指定します。アイコンのファイル内のアイコンのインデックス番号を指定します。</param>
+		'''' <param name="IconLabel">省略可能です。オブジェクト型 (Object) の値を指定します。アイコンのラベルの文字列を指定します。</param>
+		'''' <param name="NoHTMLFormatting">省略可能です。オブジェクト型 (Object) の値を指定します。HTML から書式設定、ハイパーリンク、およびイメージをすべて削除するには、True を指定します。HTML をそのまま貼り付けるには、False を指定します。既定値は False です。</param>
 		'''' <remarks>
-		'''' ���̃��\�b�h���g�p����O�ɓ\��t����̃Z���͈͂�I������K�v������܂��B<br/>
-		'''' ���̃��\�b�h���g�p����ƁA�N���b�v�{�[�h�̓��e�ɂ���Ă͑I��͈͂��ύX�����ꍇ������܂��B
+		'''' このメソッドを使用する前に貼り付け先のセル範囲を選択する必要があります。<br/>
+		'''' このメソッドを使用すると、クリップボードの内容によっては選択範囲が変更される場合があります。
 		'''' </remarks>
 		'Public Sub PasteSpecial( _
 		' Optional ByVal Format As Object = Nothing, _

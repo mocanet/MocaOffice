@@ -1,39 +1,39 @@
-Namespace Excel
+﻿Namespace Excel
 
 	''' <summary>
-	''' �V�[�g���e���\������ׂ̃C���^�t�F�[�X
+	''' シート内容を構成する為のインタフェース
 	''' </summary>
 	''' <remarks>
-	''' ���G�Ȓ��[�݌v�ȂǁA�Z���ɑ΂��ďڍׂɑ��삪�K�v�ȂƂ��Ɏg�p���܂��B<br/>
+	''' 複雑な帳票設計など、セルに対して詳細に操作が必要なときに使用します。<br/>
 	''' </remarks>
 	Public Interface ISheetContents
 
 		''' <summary>
-		''' �u�b�N�ɑ��݂���x�[�X�ƂȂ�V�[�g��
+		''' ブックに存在するベースとなるシート名
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
 		''' <remarks>
-		''' �o�͑ΏۂƂȂ�u�b�N��ɑ��݂���V�[�g����Ԃ��悤�ɂ���B
-		''' �V�K�ɒǉ�����V�[�g�̂Ƃ��͋󕶎���Ԃ��悤�ɂ���B
+		''' 出力対象となるブック上に存在するシート名を返すようにする。
+		''' 新規に追加するシートのときは空文字を返すようにする。
 		''' </remarks>
 		Property BaseSheetName() As String
 
 		''' <summary>
-		''' �ۑ����Ɏg�p����V�[�g��
+		''' 保存時に使用するシート名
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
 		''' <remarks>
-		''' �ۑ����Ɏg�p����V�[�g����Ԃ��悤�ɂ���B
-		''' <see cref="BaseSheetName"/> �Ŏw�肵���V�[�g���Ɠ���̏ꍇ�͋󕶎���Ԃ��B
+		''' 保存時に使用するシート名を返すようにする。
+		''' <see cref="BaseSheetName"/> で指定したシート名と同一の場合は空文字を返す。
 		''' </remarks>
 		ReadOnly Property SaveSheetName() As String
 
 		''' <summary>
-		''' �o�͓��e���Z���֐ݒ肷��
+		''' 出力内容をセルへ設定する
 		''' </summary>
-		''' <param name="sheet">�Y������V�[�g����C���X�^���X</param>
+		''' <param name="sheet">該当するシート操作インスタンス</param>
 		''' <remarks>
 		''' </remarks>
 		Sub WriteContents(ByVal sheet As SheetWrapper)

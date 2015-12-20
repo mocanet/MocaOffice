@@ -1,30 +1,30 @@
-
+ï»¿
 Imports System.IO
 Imports System.Text
 
 Namespace Excel
 
 	''' <summary>
-	''' ˆê——Œ`®‚Ìƒeƒ“ƒvƒŒ[ƒgƒV[ƒg‚ğg—p‚µ‚½‚Æ‚«‚ÉA
-	''' ƒf[ƒ^‚ğˆê“xCSVƒtƒ@ƒCƒ‹‚Öo—Í‚µACSVƒtƒ@ƒCƒ‹‚ğ“Ç‚ñ‚ÅExcel‚Ö“\‚è•t‚¯‚éè–@
+	''' ä¸€è¦§å½¢å¼ã®ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‚·ãƒ¼ãƒˆã‚’ä½¿ç”¨ã—ãŸã¨ãã«ã€
+	''' ãƒ‡ãƒ¼ã‚¿ã‚’ä¸€åº¦CSVãƒ•ã‚¡ã‚¤ãƒ«ã¸å‡ºåŠ›ã—ã€CSVãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­è¾¼ã‚“ã§Excelã¸è²¼ã‚Šä»˜ã‘ã‚‹æ‰‹æ³•
 	''' </summary>
 	''' <remarks></remarks>
 	Friend Class SheetContentsUseTemplateMakeCsv
 		Inherits SheetContentsUseTemplate
 
-		''' <summary>CSVƒtƒ@ƒCƒ‹–¼</summary>
+		''' <summary>CSVãƒ•ã‚¡ã‚¤ãƒ«å</summary>
 		Private _csvFilename As String
 
-		''' <summary>CSV“Ç‚İ‚İ‚Ì—ñƒtƒH[ƒ}ƒbƒg</summary>
+		''' <summary>CSVèª­ã¿è¾¼ã¿æ™‚ã®åˆ—ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ</summary>
 		Private _openFormat As Array
 
 		''' <summary>log4net logger</summary>
 		Private ReadOnly _mylog As log4net.ILog = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType)
 
-#Region " ƒRƒ“ƒXƒgƒ‰ƒNƒ^ "
+#Region " ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ "
 
 		''' <summary>
-		''' ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
 		''' <remarks></remarks>
 		Public Sub New(ByVal sheetContents As ISheetContents, ByVal sheet As SheetWrapper)
@@ -36,9 +36,9 @@ Namespace Excel
 
 #End Region
 
-#Region " ƒvƒƒpƒeƒB "
+#Region " ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ "
 
-		''' <summary>CSVo—Í‚·‚éÛ‚Ìƒeƒ“ƒ|ƒ‰ƒŠƒtƒ@ƒCƒ‹–¼</summary>
+		''' <summary>CSVå‡ºåŠ›ã™ã‚‹éš›ã®ãƒ†ãƒ³ãƒãƒ©ãƒªãƒ•ã‚¡ã‚¤ãƒ«å</summary>
 		Private ReadOnly Property CsvTempFilename() As String
 			Get
 				If _csvFilename.Length = 0 Then
@@ -48,7 +48,7 @@ Namespace Excel
 			End Get
 		End Property
 
-		''' <summary>CSV‚ğ“Ç‚Ş‚Æ‚«‚Ì—ñƒtƒH[ƒ}ƒbƒg</summary>
+		''' <summary>CSVã‚’èª­è¾¼ã‚€ã¨ãã®åˆ—ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ</summary>
 		Private ReadOnly Property CsvOpenFormat() As Array
 			Get
 				If _openFormat Is Nothing Then
@@ -64,7 +64,7 @@ Namespace Excel
 #End Region
 
 		''' <summary>
-		''' ƒV[ƒgƒRƒ“ƒeƒ“ƒc‚ğ“–ƒNƒ‰ƒX‚Åg—p‚·‚éƒNƒ‰ƒX‚ÖƒLƒƒƒXƒg‚·‚é
+		''' ã‚·ãƒ¼ãƒˆã‚³ãƒ³ãƒ†ãƒ³ãƒ„ã‚’å½“ã‚¯ãƒ©ã‚¹ã§ä½¿ç”¨ã™ã‚‹ã‚¯ãƒ©ã‚¹ã¸ã‚­ãƒ£ã‚¹ãƒˆã™ã‚‹
 		''' </summary>
 		''' <returns></returns>
 		''' <remarks></remarks>
@@ -73,11 +73,11 @@ Namespace Excel
 		End Function
 
 		''' <summary>
-		''' CSVƒtƒ@ƒCƒ‹‚ğExcel‚É‚ÄŠJ‚­‚ÌƒtƒH[ƒ}ƒbƒg‚ğw’è‚·‚é
+		''' CSVãƒ•ã‚¡ã‚¤ãƒ«ã‚’Excelã«ã¦é–‹ãæ™‚ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’æŒ‡å®šã™ã‚‹
 		''' </summary>
 		''' <remarks>
-		''' CSVƒtƒ@ƒCƒ‹‚ğExcel‚É‚ÄŠJ‚­‚ÌƒtƒH[ƒ}ƒbƒg‚ğw’è‚·‚éê‡‚Íw’è‚µ‚Ä‚­‚¾‚³‚¢B<br/>
-		''' ƒfƒtƒHƒ‹ƒg‚Å‚Íuˆê”Êv‚ÌƒtƒH[ƒ}ƒbƒg‚É‚Ä“Ç‚İ‚İ‚Ü‚·B
+		''' CSVãƒ•ã‚¡ã‚¤ãƒ«ã‚’Excelã«ã¦é–‹ãæ™‚ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’æŒ‡å®šã™ã‚‹å ´åˆã¯æŒ‡å®šã—ã¦ãã ã•ã„ã€‚<br/>
+		''' ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ã¯ã€Œä¸€èˆ¬ã€ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã«ã¦èª­ã¿è¾¼ã¿ã¾ã™ã€‚
 		''' </remarks>
 		Private Sub _setCsvOpenFormat()
 			Dim value As XlColumnDataType
@@ -91,7 +91,7 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' o—Í“à—e‚ğƒZƒ‹‚Öİ’è‚·‚é
+		''' å‡ºåŠ›å†…å®¹ã‚’ã‚»ãƒ«ã¸è¨­å®šã™ã‚‹
 		''' </summary>
 		''' <remarks>
 		''' </remarks>
@@ -105,38 +105,38 @@ Namespace Excel
 					Exit Sub
 				End If
 
-				' ì‹Æ—pƒtƒ@ƒCƒ‹‚Ì‚¨‘|œ
+				' ä½œæ¥­ç”¨ãƒ•ã‚¡ã‚¤ãƒ«ã®ãŠæƒé™¤
 				_clearCsvTempFile()
-				' ƒf[ƒ^‚ğƒeƒLƒXƒgƒtƒ@ƒCƒ‹‚Åƒeƒ“ƒ|ƒ‰ƒŠo—Í
+				' ãƒ‡ãƒ¼ã‚¿ã‚’ãƒ†ã‚­ã‚¹ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã§ãƒ†ãƒ³ãƒãƒ©ãƒªå‡ºåŠ›
 				_csvTempWrite()
 
-				' æ“ªs‚ğƒf[ƒ^”•ªƒRƒs[
+				' å…ˆé ­è¡Œã‚’ãƒ‡ãƒ¼ã‚¿æ•°åˆ†ã‚³ãƒ”ãƒ¼
 				rowCopy(_cType.DataCount _
 				 , MyBase.sheet.Cells(_cType.StartRow, _cType.StartCol) _
 				 , MyBase.sheet.Cells(_cType.StartRow, _cType.StartCol) _
 				 , MyBase.sheet.Cells(_cType.StartRow + 1, _cType.StartCol) _
 				 , MyBase.sheet.Cells(_cType.StartRow + _cType.DataCount - 1, _cType.StartCol))
 
-				' Tempƒtƒ@ƒCƒ‹‚Ì“Ç
+				' Tempãƒ•ã‚¡ã‚¤ãƒ«ã®èª­è¾¼
 				_setCsvOpenFormat()
 				MyBase.sheet.App.Workbooks.OpenText(Filename:=CsvTempFilename, DataType:=XlTextParsingType.xlDelimited, TextQualifier:=XlTextQualifier.xlTextQualifierDoubleQuote, Comma:=True, FieldInfo:=CsvOpenFormat)
 				xlBookTmp = MyBase.sheet.App.ActiveWorkbook
 
-				' Tempƒtƒ@ƒCƒ‹“à—e‚ğ’ •[‚ÖƒRƒs[•ƒy[ƒXƒg
+				' Tempãƒ•ã‚¡ã‚¤ãƒ«å†…å®¹ã‚’å¸³ç¥¨ã¸ã‚³ãƒ”ãƒ¼ï¼†ãƒšãƒ¼ã‚¹ãƒˆ
 				_writeContents(xlBookTmp)
 
 			Finally
-				' Tempƒtƒ@ƒCƒ‹‚ğ•Â‚¶‚é
+				' Tempãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‰ã˜ã‚‹
 				If xlBookTmp IsNot Nothing Then
 					xlBookTmp.Close(False)
 				End If
-				' ì‹Æ—pƒtƒ@ƒCƒ‹‚Ì‚¨‘|œ
+				' ä½œæ¥­ç”¨ãƒ•ã‚¡ã‚¤ãƒ«ã®ãŠæƒé™¤
 				_clearCsvTempFile()
 			End Try
 		End Sub
 
 		''' <summary>
-		''' ì‹Æ—pƒtƒ@ƒCƒ‹‚Ì‚¨‘|œ
+		''' ä½œæ¥­ç”¨ãƒ•ã‚¡ã‚¤ãƒ«ã®ãŠæƒé™¤
 		''' </summary>
 		''' <remarks>
 		''' </remarks>
@@ -145,12 +145,12 @@ Namespace Excel
 				Exit Sub
 			End If
 
-			'Šù‚É‘¶İ‚µ‚Ä‚¢‚éê‡‚Ííœ‚·‚éB
+			'æ—¢ã«å­˜åœ¨ã—ã¦ã„ã‚‹å ´åˆã¯å‰Šé™¤ã™ã‚‹ã€‚
 			File.Delete(CsvTempFilename)
 		End Sub
 
 		''' <summary>
-		''' CSVŒ`®‚Åƒeƒ“ƒ|ƒ‰ƒŠƒtƒ@ƒCƒ‹ì¬
+		''' CSVå½¢å¼ã§ãƒ†ãƒ³ãƒãƒ©ãƒªãƒ•ã‚¡ã‚¤ãƒ«ä½œæˆ
 		''' </summary>
 		''' <remarks>
 		''' </remarks>
@@ -161,7 +161,7 @@ Namespace Excel
 
 			Using file As StreamWriter = New StreamWriter(CsvTempFilename, False, Encoding.GetEncoding("Shift_JIS"))
 				Try
-					'ƒeƒ“ƒvƒtƒ@ƒCƒ‹‚Öo—Í
+					'ãƒ†ãƒ³ãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ã¸å‡ºåŠ›
 					_cType.CsvWrite(file)
 				Catch ex As Exception
 					Throw New ExcelException(MyBase.sheet.App, ex)
@@ -170,9 +170,9 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' ƒŠƒXƒg•”o—Í
+		''' ãƒªã‚¹ãƒˆéƒ¨å‡ºåŠ›
 		''' </summary>
-		''' <param name="xlBookTmp">ExcelƒuƒbƒNƒCƒ“ƒXƒ^ƒ“ƒXiCSV—pj</param>
+		''' <param name="xlBookTmp">Excelãƒ–ãƒƒã‚¯ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ï¼ˆCSVç”¨ï¼‰</param>
 		''' <remarks>
 		''' </remarks>
 		Private Sub _writeContents(ByVal xlBookTmp As BookWrapper)
@@ -183,7 +183,7 @@ Namespace Excel
 			Dim range1 As RangeWrapper
 			Dim range2 As RangeWrapper
 
-			'Œ³ƒlƒ^ƒRƒs[
+			'å…ƒãƒã‚¿ã‚³ãƒ”ãƒ¼
 			xlBookTmp.Activate()
 			tmpSheet = xlBookTmp.Worksheets(1)
 			tmpSheet.Select()
@@ -194,7 +194,7 @@ Namespace Excel
 			selection = MyBase.sheet.App.Selection
 			selection.Copy()
 
-			'“\‚è•t‚¯
+			'è²¼ã‚Šä»˜ã‘
 			MyBase.sheet.Book.Activate()
 			MyBase.sheet.Select()
 			range1 = MyBase.sheet.Cells(_cType.StartRow, _cType.StartCol)

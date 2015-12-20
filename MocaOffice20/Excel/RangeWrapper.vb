@@ -1,16 +1,16 @@
-
+﻿
 Imports System.Runtime.InteropServices
 
 Namespace Excel
 
 	''' <summary>
-	''' �Z���A�s�A��A1 �ȏ�̃Z���͈͂��܂ޑI��͈́A�܂��� 3-D �͈͂�\���܂�
+	''' セル、行、列、1 つ以上のセル範囲を含む選択範囲、または 3-D 範囲を表します
 	''' </summary>
 	''' <remarks></remarks>
 	Public Class RangeWrapper
 		Inherits AbstractExcelWrapper
 
-		''' <summary>�e�̃V�[�g</summary>
+		''' <summary>親のシート</summary>
 		Private _sheet As SheetWrapper
 
 		''' <summary>Excel.Range</summary>
@@ -19,12 +19,12 @@ Namespace Excel
 		''' <summary>log4net logger</summary>
 		Private ReadOnly _mylog As log4net.ILog = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType)
 
-#Region " �R���X�g���N�^ "
+#Region " コンストラクタ "
 
 		''' <summary>
-		''' �R���X�g���N�^
+		''' コンストラクタ
 		''' </summary>
-		''' <param name="sheet">�e�̃V�[�g</param>
+		''' <param name="sheet">親のシート</param>
 		''' <param name="range">Excel.Range</param>
 		''' <remarks></remarks>
 		Public Sub New(ByVal sheet As SheetWrapper, ByVal range As Object)
@@ -37,7 +37,7 @@ Namespace Excel
 #Region " Overrides "
 
 		''' <summary>
-		''' �������g�ŊǗ����Ă���Excel�֌W�̃I�u�W�F�N�g�̃������J��
+		''' 自分自身で管理しているExcel関係のオブジェクトのメモリ開放
 		''' </summary>
 		''' <remarks></remarks>
 		Public Overrides Sub MyDispose()
@@ -45,7 +45,7 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' �擾���� Excel �C���X�^���X
+		''' 取得した Excel インスタンス
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -57,10 +57,10 @@ Namespace Excel
 		End Property
 
 #End Region
-#Region " �v���p�e�B "
+#Region " プロパティ "
 
 		''' <summary>
-		''' Excel.Application �̃��b�p�[
+		''' Excel.Application のラッパー
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -72,7 +72,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �e�̃V�[�g
+		''' 親のシート
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -84,7 +84,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �Z����
+		''' セル数
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -98,7 +98,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �w�肵���Z���͈͂̍ŏ��̗̈�̐擪�s�̔ԍ����擾���܂��B
+		''' 指定したセル範囲の最初の領域の先頭行の番号を取得します。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -112,17 +112,17 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �w�肵���Z���͈͂̒l
+		''' 指定したセル範囲の値
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Public Property Value() As Object
-			' 2003 �ȍ~�̎��͉��L���g�p�\
+			' 2003 以降の時は下記も使用可能
 			'''' <summary>
-			'''' �w�肵���Z���͈͂̒l
+			'''' 指定したセル範囲の値
 			'''' </summary>
-			'''' <param name="RangeValueDataType">�w�肵�� Range �I�u�W�F�N�g�̃f�[�^�^</param>
+			'''' <param name="RangeValueDataType">指定した Range オブジェクトのデータ型</param>
 			'''' <value></value>
 			'''' <returns></returns>
 			'''' <remarks></remarks>
@@ -143,7 +143,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �w�肵���Z���͈͂Ɋ܂܂�� 1 �s�܂��͕����̍s�S�̂�\�� Range �I�u�W�F�N�g���擾���܂��B
+		''' 指定したセル範囲に含まれる 1 行または複数の行全体を表す Range オブジェクトを取得します。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -163,13 +163,13 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �Z�����܂܂��̈�̏I�[�̃Z����\�� Range �I�u�W�F�N�g���擾���܂��B
+		''' セルが含まれる領域の終端のセルを表す Range オブジェクトを取得します。
 		''' </summary>
 		''' <param name="Direction"></param>
 		''' <value></value>
 		''' <returns></returns>
 		''' <remarks>
-		''' End + �����L�[ (���A���A���A�� �̂����ꂩ) �ɑ������܂��B
+		''' End + 方向キー (↑、↓、←、→ のいずれか) に相当します。
 		''' </remarks>
 		Public ReadOnly Property [End](ByVal Direction As XlDirection) As RangeWrapper
 			Get
@@ -186,7 +186,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �I�u�W�F�N�g�̃t�H���g���� (�t�H���g���A�t�H���g �T�C�Y�A�F�Ȃ�) �̑S�̂�\���܂��B
+		''' オブジェクトのフォント属性 (フォント名、フォント サイズ、色など) の全体を表します。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -206,7 +206,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �|�C���g�P�ʂ̃Z���͈͂̕��ł��B
+		''' ポイント単位のセル範囲の幅です。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -218,7 +218,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �w�肵���Z���͈͓��̂��ׂĂ̗�̕���ݒ肵�܂��B
+		''' 指定したセル範囲内のすべての列の幅を設定します。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -233,7 +233,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �w�肵���Z���͈̗͂��\�� Range �I�u�W�F�N�g���擾���܂��B
+		''' 指定したセル範囲の列を表す Range オブジェクトを取得します。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -253,7 +253,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �X�^�C���܂��̓Z���͈� (�����t�������̈ꕔ�Ƃ��Ē�`���ꂽ�͈͂��܂�) �̌r����\�� Borders �R���N�V�������擾���܂��B
+		''' スタイルまたはセル範囲 (条件付き書式の一部として定義された範囲を含む) の罫線を表す Borders コレクションを取得します。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -273,9 +273,9 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �X�^�C���܂��̓Z���͈� (�����t�������̈ꕔ�Ƃ��Ē�`���ꂽ�͈͂��܂�) �̌r����\�� Borders �R���N�V�������擾���܂��B
+		''' スタイルまたはセル範囲 (条件付き書式の一部として定義された範囲を含む) の罫線を表す Borders コレクションを取得します。
 		''' </summary>
-		''' <param name="index">�r�������ʂ���l</param>
+		''' <param name="index">罫線を識別する値</param>
 		''' <value></value>
 		''' <returns></returns>
 		''' <remarks></remarks>
@@ -294,9 +294,9 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �I�u�W�F�N�g�̕�������̕����͈̔͂�\�� Characters �I�u�W�F�N�g���擾���܂��B
+		''' オブジェクトの文字列内の文字の範囲を表す Characters オブジェクトを取得します。
 		''' </summary>
-		''' <param name="Start">���\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B�擾���镶����͈͂̍ŏ��̕������w�肵�܂��B���̈����� 1 ���w�肷�邩�A�ȗ�����ƁA�擪��������n�܂镶����͈͂��擾���܂��B</param>
+		''' <param name="Start">略可能です。オブジェクト型 (Object) の値を指定します。取得する文字列範囲の最初の文字を指定します。この引数に 1 を指定するか、省略すると、先頭文字から始まる文字列範囲を取得します。</param>
 		''' <param name="Length"></param>
 		''' <value></value>
 		''' <returns></returns>
@@ -319,7 +319,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �w�肵���I�u�W�F�N�g�̐��������̔z�u��ݒ肵�܂��B
+		''' 指定したオブジェクトの水平方向の配置を設定します。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -334,7 +334,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �w�肵���I�u�W�F�N�g�̓�����\�� Interior �I�u�W�F�N�g���擾���܂��B
+		''' 指定したオブジェクトの内部を表す Interior オブジェクトを取得します。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -356,7 +356,7 @@ Namespace Excel
 #End Region
 
 		''' <summary>
-		''' �����W�w�肵���Z����I����Ԃɂ���
+		''' レンジ指定したセルを選択状態にする
 		''' </summary>
 		''' <remarks></remarks>
 		Public Sub [Select]()
@@ -364,9 +364,9 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' �I�u�W�F�N�g���R�s�[���܂�
+		''' オブジェクトをコピーします
 		''' </summary>
-		''' <param name="destination">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B�R�s�[��̃Z���͈͂��w�肵�܂��B���̈������ȗ�����ƁA�N���b�v�{�[�h�ɃR�s�[���܂��B</param>
+		''' <param name="destination">省略可能です。オブジェクト型 (Object) の値を指定します。コピー先のセル範囲を指定します。この引数を省略すると、クリップボードにコピーします。</param>
 		''' <remarks></remarks>
 		Public Sub Copy(Optional ByVal destination As Object = Nothing)
 			Dim argsV As ArrayList
@@ -384,7 +384,7 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' �����W�w�肵���Z�����폜����
+		''' レンジ指定したセルを削除する
 		''' </summary>
 		''' <remarks></remarks>
 		Public Sub Delete()
@@ -392,7 +392,7 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' ���e���N���A���܂�
+		''' 内容をクリアします
 		''' </summary>
 		''' <remarks></remarks>
 		Public Sub ClearContents()
@@ -400,12 +400,12 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' �N���b�v�{�[�h�ɂ��� Range �I�u�W�F�N�g���A�w�肵���Z���͈͂ɓ\��t���܂��B
+		''' クリップボードにある Range オブジェクトを、指定したセル範囲に貼り付けます。
 		''' </summary>
-		''' <param name="Paste">�ȗ��\�ł��B<see cref="XlPasteType" /> �񋓌^�̒萔���w�肵�܂��B�Z���͈͂̒��œ\��t���镔�����w�肵�܂��B</param>
-		''' <param name="Operation">�ȗ��\�ł��B<see cref="XlPasteSpecialOperation" /> �񋓌^�̒l���w�肵�܂��B�\��t���̑�����w�肵�܂��B</param>
-		''' <param name="SkipBlanks">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��BTrue ���w�肷��ƁA�N���b�v�{�[�h�Ɋ܂܂��󔒂̃Z����ΏۃZ���͈͂ɓ\��t���܂���B����l�� False �ł��B</param>
-		''' <param name="Transpose">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��BTrue ���w�肷��ƁA�\��t����Ƃ��ɃZ���͈͂̍s�Ɨ�����ւ��܂��B����l�� False �ł��B</param>
+		''' <param name="Paste">省略可能です。<see cref="XlPasteType" /> 列挙型の定数を指定します。セル範囲の中で貼り付ける部分を指定します。</param>
+		''' <param name="Operation">省略可能です。<see cref="XlPasteSpecialOperation" /> 列挙型の値を指定します。貼り付けの操作を指定します。</param>
+		''' <param name="SkipBlanks">省略可能です。オブジェクト型 (Object) の値を指定します。True を指定すると、クリップボードに含まれる空白のセルを対象セル範囲に貼り付けません。既定値は False です。</param>
+		''' <param name="Transpose">省略可能です。オブジェクト型 (Object) の値を指定します。True を指定すると、貼り付けるときにセル範囲の行と列を入れ替えます。既定値は False です。</param>
 		''' <remarks></remarks>
 		Public Sub PasteSpecial( _
 		 Optional ByVal Paste As XlPasteType = XlPasteType.xlPasteAll, _

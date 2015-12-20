@@ -1,16 +1,16 @@
-
+﻿
 Imports System.Runtime.InteropServices
 
 Namespace Excel
 
 	''' <summary>
-	''' Excel.Sheets �̃��b�p�[�N���X
+	''' Excel.Sheets のラッパークラス
 	''' </summary>
 	''' <remarks></remarks>
 	Public Class SheetsWrapper
 		Inherits AbstractExcelWrapper
 
-		''' <summary>�e��Excel.Workbook �̃��b�p�[</summary>
+		''' <summary>親のExcel.Workbook のラッパー</summary>
 		Private _book As BookWrapper
 
 		''' <summary>Excel.Worksheets</summary>
@@ -19,12 +19,12 @@ Namespace Excel
 		''' <summary>log4net logger</summary>
 		Private ReadOnly _mylog As log4net.ILog = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType)
 
-#Region " �R���X�g���N�^ "
+#Region " コンストラクタ "
 
 		''' <summary>
-		''' �R���X�g���N�^
+		''' コンストラクタ
 		''' </summary>
-		''' <param name="book">�e�u�b�N</param>
+		''' <param name="book">親ブック</param>
 		''' <remarks></remarks>
 		Public Sub New(ByVal book As BookWrapper)
 			MyBase.New(book.ApplicationWrapper)
@@ -35,7 +35,7 @@ Namespace Excel
 #Region " Overrides "
 
 		''' <summary>
-		''' �������g�ŊǗ����Ă���Excel�֌W�̃I�u�W�F�N�g�̃������J��
+		''' 自分自身で管理しているExcel関係のオブジェクトのメモリ開放
 		''' </summary>
 		''' <remarks></remarks>
 		Public Overrides Sub MyDispose()
@@ -43,7 +43,7 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' �擾���� Excel �C���X�^���X
+		''' 取得した Excel インスタンス
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -55,10 +55,10 @@ Namespace Excel
 		End Property
 
 #End Region
-#Region " �v���p�e�B "
+#Region " プロパティ "
 
 		''' <summary>
-		''' Excel.Application �̃��b�p�[
+		''' Excel.Application のラッパー
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -70,7 +70,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �e�̃u�b�N
+		''' 親のブック
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -82,7 +82,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �V�[�g��
+		''' シート数
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -94,9 +94,9 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' ��ƒ��̃u�b�N�̂��ׂẴV�[�g��\�� Sheets �R���N�V��������w�肳�ꂽ�V�[�g���擾���܂��B 
+		''' 作業中のブックのすべてのシートを表す Sheets コレクションから指定されたシートを取得します。 
 		''' </summary>
-		''' <param name="name">�V�[�g��</param>
+		''' <param name="name">シート名</param>
 		''' <value></value>
 		''' <returns></returns>
 		''' <remarks></remarks>
@@ -112,9 +112,9 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' ��ƒ��̃u�b�N�̂��ׂẴV�[�g��\�� Sheets �R���N�V��������w�肳�ꂽ�V�[�g���擾���܂��B 
+		''' 作業中のブックのすべてのシートを表す Sheets コレクションから指定されたシートを取得します。 
 		''' </summary>
-		''' <param name="index">�V�[�g�ԍ�</param>
+		''' <param name="index">シート番号</param>
 		''' <value></value>
 		''' <returns></returns>
 		''' <remarks></remarks>
@@ -130,7 +130,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �I�u�W�F�N�g��\�����邩�A��\���ɂ��邩�����肵�܂��B�l�̎擾����ѐݒ肪�\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���g�p���܂��B
+		''' オブジェクトを表示するか、非表示にするかを決定します。値の取得および設定が可能です。オブジェクト型 (Object) の値を使用します。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -145,7 +145,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �V�[�g�̐��������̉��y�[�W��\�� VPageBreaks �R���N�V�������擾���܂��B�l�̎擾�̂݉\�ł��B
+		''' シートの垂直方向の改ページを表す VPageBreaks コレクションを取得します。値の取得のみ可能です。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -157,26 +157,26 @@ Namespace Excel
 		End Property
 
 #End Region
-#Region " ���\�b�h "
+#Region " メソッド "
 
 		''' <summary>
-		''' ������
+		''' 初期化
 		''' </summary>
-		''' <param name="book">�e�̃u�b�N</param>
+		''' <param name="book">親のブック</param>
 		''' <remarks></remarks>
 		Private Sub _init(ByVal book As BookWrapper)
 			_book = book
-			' Worksheets�I�u�W�F�N�g�̍쐬
+			' Worksheetsオブジェクトの作成
 			_sheets = InvokeGetProperty(_book.OrigianlInstance, "Sheets", Nothing)
 		End Sub
 
 		''' <summary>
-		''' �V�������[�N�V�[�g�A�O���t �V�[�g�A�}�N�� �V�[�g�̂����ꂩ���쐬���܂��B�쐬�������[�N�V�[�g�̓A�N�e�B�u�ɂȂ�܂��B
+		''' 新しいワークシート、グラフ シート、マクロ シートのいずれかを作成します。作成したワークシートはアクティブになります。
 		''' </summary>
-		''' <param name="Before">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B�V�����V�[�g�����̃V�[�g�̒��O�̈ʒu�ɒǉ�����Ƃ��ɁA���̃V�[�g���w�肵�܂��B</param>
-		''' <param name="After">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B�V�����V�[�g�����̃V�[�g�̒���̈ʒu�ɒǉ�����Ƃ��ɁA���̃V�[�g���w�肵�܂��B</param>
-		''' <param name="Count">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B�ǉ�����V�[�g�̐����w�肵�܂��B����l�� 1 �ł��B</param>
-		''' <param name="Type">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B�V�[�g�̎�ނ��w�肵�܂��B�g�p�ł���萔�́AXlSheetType �񋓌^�� xlWorksheet�AxlChart�AxlExcel4MacroSheet�AxlExcel4IntlMacroSheet �̂����ꂩ�ł��B�����̃e���v���[�g����ɂ����V�[�g��}������ꍇ�́A���̃e���v���[�g�ւ̃p�X���w�肵�܂��B����l�� xlWorksheet �ł��B</param>
+		''' <param name="Before">省略可能です。オブジェクト型 (Object) の値を指定します。新しいシートを特定のシートの直前の位置に追加するときに、そのシートを指定します。</param>
+		''' <param name="After">省略可能です。オブジェクト型 (Object) の値を指定します。新しいシートを特定のシートの直後の位置に追加するときに、そのシートを指定します。</param>
+		''' <param name="Count">省略可能です。オブジェクト型 (Object) の値を指定します。追加するシートの数を指定します。既定値は 1 です。</param>
+		''' <param name="Type">省略可能です。オブジェクト型 (Object) の値を指定します。シートの種類を指定します。使用できる定数は、XlSheetType 列挙型の xlWorksheet、xlChart、xlExcel4MacroSheet、xlExcel4IntlMacroSheet のいずれかです。既存のテンプレートを基にしたシートを挿入する場合は、そのテンプレートへのパスを指定します。既定値は xlWorksheet です。</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Public Function Add( _
@@ -215,12 +215,12 @@ Namespace Excel
 		End Function
 
 		''' <summary>
-		''' �V�[�g���u�b�N���̑��̏ꏊ�ɃR�s�[���܂��B
+		''' シートをブック内の他の場所にコピーします。
 		''' </summary>
-		''' <param name="Before">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B�R�s�[����V�[�g�����̃V�[�g�̒��O�̈ʒu�ɑ}������Ƃ��ɁA���̃V�[�g���w�肵�܂��BAfter ���w�肳��Ă���ꍇ�ABefore �͎w��ł��܂���B</param>
-		''' <param name="After">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B�R�s�[����V�[�g�����̃V�[�g�̒���̈ʒu�ɑ}������Ƃ��ɁA���̃V�[�g���w�肵�܂��BBefore ���w�肳��Ă���ꍇ�AAfter �͎w��ł��܂���B</param>
+		''' <param name="Before">省略可能です。オブジェクト型 (Object) の値を指定します。コピーするシートを特定のシートの直前の位置に挿入するときに、そのシートを指定します。After が指定されている場合、Before は指定できません。</param>
+		''' <param name="After">省略可能です。オブジェクト型 (Object) の値を指定します。コピーするシートを特定のシートの直後の位置に挿入するときに、そのシートを指定します。Before が指定されている場合、After は指定できません。</param>
 		''' <remarks>
-		''' ���� Before �ƈ��� After �����ɏȗ������ꍇ�́A�V�K�u�b�N�������I�ɍ쐬����A�V�[�g�͂��̃u�b�N���ɑ}������܂��B
+		''' 引数 Before と引数 After を共に省略した場合は、新規ブックが自動的に作成され、シートはそのブック内に挿入されます。
 		''' </remarks>
 		Public Sub Copy( _
 		  <InAttribute()> Optional ByVal Before As SheetWrapper = Nothing, _
@@ -245,7 +245,7 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' �I�u�W�F�N�g���폜���܂��B
+		''' オブジェクトを削除します。
 		''' </summary>
 		''' <remarks></remarks>
 		Public Sub Delete()
@@ -253,10 +253,10 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' �w�肳�ꂽ�Z���͈͂��A�R���N�V�������̑��̂��ׂẴ��[�N�V�[�g�̓����̈�ɃR�s�[���܂��B
+		''' 指定されたセル範囲を、コレクション内の他のすべてのワークシートの同じ領域にコピーします。
 		''' </summary>
-		''' <param name="Range">�K���w�肵�܂��BRange �I�u�W�F�N�g���w�肵�܂��B�R���N�V�����ɑ����邷�ׂẴ��[�N�V�[�g�̃t�B���Ɏg�p����Z���͈͂��w�肵�܂��B���̃Z���͈͂ɂ́A�R���N�V�������̃��[�N�V�[�g���w�肷��K�v������܂��B</param>
-		''' <param name="Type">�ȗ��\�ł��BXlFillWith �̒l���w�肵�܂��B�w�肵���Z���͈͂��R�s�[������@���w�肵�܂��B</param>
+		''' <param name="Range">必ず指定します。Range オブジェクトを指定します。コレクションに属するすべてのワークシートのフィルに使用するセル範囲を指定します。このセル範囲には、コレクション内のワークシートを指定する必要があります。</param>
+		''' <param name="Type">省略可能です。XlFillWith の値を指定します。指定したセル範囲をコピーする方法を指定します。</param>
 		''' <remarks></remarks>
 		Public Sub FillAcrossSheets( _
 		  <InAttribute()> ByVal Range As RangeWrapper, _
@@ -266,7 +266,7 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' Excel.Sheets.GetEnumerator��Ԃ�
+		''' Excel.Sheets.GetEnumeratorを返す
 		''' </summary>
 		''' <returns></returns>
 		''' <remarks></remarks>
@@ -288,10 +288,10 @@ Namespace Excel
 		End Function
 
 		''' <summary>
-		''' �V�[�g���u�b�N���̑��̏ꏊ�Ɉړ����܂��B
+		''' シートをブック内の他の場所に移動します。
 		''' </summary>
-		''' <param name="Before">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B�ړ�����V�[�g�����̃V�[�g�̒��O�̈ʒu�ɑ}������Ƃ��ɁA���̃V�[�g���w�肵�܂��BAfter ���w�肳��Ă���ꍇ�ABefore �͎w��ł��܂���B</param>
-		''' <param name="After">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B�ړ�����V�[�g�����̃V�[�g�̒���̈ʒu�ɑ}������Ƃ��ɁA���̃V�[�g���w�肵�܂��BBefore ���w�肳��Ă���ꍇ�AAfter �͎w��ł��܂���B</param>
+		''' <param name="Before">省略可能です。オブジェクト型 (Object) の値を指定します。移動するシートを特定のシートの直前の位置に挿入するときに、そのシートを指定します。After が指定されている場合、Before は指定できません。</param>
+		''' <param name="After">省略可能です。オブジェクト型 (Object) の値を指定します。移動するシートを特定のシートの直後の位置に挿入するときに、そのシートを指定します。Before が指定されている場合、After は指定できません。</param>
 		''' <remarks></remarks>
 		Public Sub Move( _
 		<InAttribute()> Optional ByVal Before As SheetWrapper = Nothing, _
@@ -316,16 +316,16 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' �I�u�W�F�N�g��������܂��B
+		''' オブジェクトを印刷します。
 		''' </summary>
-		''' <param name="From">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B������J�n����y�[�W�ԍ����w�肵�܂��B���̈������ȗ�����ƁA�ŏ��̃y�[�W����������܂��B</param>
-		''' <param name="To">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B������I������y�[�W�ԍ����w�肵�܂��B���̈������ȗ�����ƁA����͍Ō�̃y�[�W�ŏI�����܂��B</param>
-		''' <param name="Copies">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B������镔�����w�肵�܂��B���̈������ȗ�����ƁA1 �����������܂��B</param>
-		''' <param name="Preview">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��BTrue ��ݒ肷��ƁA�I�u�W�F�N�g���������O�Ɉ���v���r���[�����s����܂��BFalse ��ݒ肷�邩�A�܂��͈������ȗ�����ƁA�I�u�W�F�N�g�͒����Ɉ������܂��B</param>
-		''' <param name="ActivePrinter">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B���ݎg�p���Ă���v�����^�̖��O��ݒ肵�܂��B</param>
-		''' <param name="PrintToFile">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��BTrue ��ݒ肷��ƁA�t�@�C����������܂��B���� PrToFileName ���w�肵�Ȃ��ƁA�o�̓t�@�C�����̓��͂𑣂��_�C�A���O �{�b�N�X���\������܂��B</param>
-		''' <param name="Collate">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��BTrue ��ݒ肷��ƁA�������P�ʂň������܂��B</param>
-		''' <param name="PrToFileName">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B���� PrintToFile �� True ��ݒ肵���ꍇ�A�������t�@�C���̖��O�����̈����Ɏw�肵�܂��B</param>
+		''' <param name="From">省略可能です。オブジェクト型 (Object) の値を指定します。印刷を開始するページ番号を指定します。この引数を省略すると、最初のページから印刷されます。</param>
+		''' <param name="To">省略可能です。オブジェクト型 (Object) の値を指定します。印刷を終了するページ番号を指定します。この引数を省略すると、印刷は最後のページで終了します。</param>
+		''' <param name="Copies">省略可能です。オブジェクト型 (Object) の値を指定します。印刷する部数を指定します。この引数を省略すると、1 部が印刷されます。</param>
+		''' <param name="Preview">省略可能です。オブジェクト型 (Object) の値を指定します。True を設定すると、オブジェクトを印刷する前に印刷プレビューが実行されます。False を設定するか、または引数を省略すると、オブジェクトは直ちに印刷されます。</param>
+		''' <param name="ActivePrinter">省略可能です。オブジェクト型 (Object) の値を指定します。現在使用しているプリンタの名前を設定します。</param>
+		''' <param name="PrintToFile">省略可能です。オブジェクト型 (Object) の値を指定します。True を設定すると、ファイルを印刷します。引数 PrToFileName を指定しないと、出力ファイル名の入力を促すダイアログ ボックスが表示されます。</param>
+		''' <param name="Collate">省略可能です。オブジェクト型 (Object) の値を指定します。True を設定すると、複数部単位で印刷されます。</param>
+		''' <param name="PrToFileName">省略可能です。オブジェクト型 (Object) の値を指定します。引数 PrintToFile に True を設定した場合、印刷するファイルの名前をこの引数に指定します。</param>
 		''' <remarks></remarks>
 		Public Sub PrintOut( _
 		  <InAttribute()> Optional ByVal From As Object = Nothing, _
@@ -380,9 +380,9 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' �I�u�W�F�N�g�̈���v���r���[ (������̃C���[�W) ��\�����܂��B
+		''' オブジェクトの印刷プレビュー (印刷時のイメージ) を表示します。
 		''' </summary>
-		''' <param name="EnableChanges">�I�u�W�F�N�g�̕ύX���\�ɂ��܂��B</param>
+		''' <param name="EnableChanges">オブジェクトの変更を可能にします。</param>
 		''' <remarks></remarks>
 		Public Sub PrintPreview( _
 		  <InAttribute()> Optional ByVal EnableChanges As Object = Nothing _
@@ -402,9 +402,9 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' �I�u�W�F�N�g��I�����܂��B
+		''' オブジェクトを選択します。
 		''' </summary>
-		''' <param name="Replace">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B�w��̃I�u�W�F�N�g��I������ۂɁA���ɑI�����Ă���I�u�W�F�N�g�̑I�����������邩�ǂ������w�肵�܂��B</param>
+		''' <param name="Replace">省略可能です。オブジェクト型 (Object) の値を指定します。指定のオブジェクトを選択する際に、既に選択しているオブジェクトの選択を解除するかどうかを指定します。</param>
 		''' <remarks></remarks>
 		Public Sub [Select]( _
 		  <InAttribute()> Optional ByVal Replace As Object = Nothing _

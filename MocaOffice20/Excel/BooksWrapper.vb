@@ -1,27 +1,27 @@
-
+﻿
 Imports System.Runtime.InteropServices
 
 Namespace Excel
 
 	''' <summary>
-	''' Excel.Workbooks �̃��b�p�[�N���X
+	''' Excel.Workbooks のラッパークラス
 	''' </summary>
 	''' <remarks>
-	''' Microsoft Excel �Ō��݊J���Ă��邷�ׂĂ� Workbook �I�u�W�F�N�g�̃R���N�V�����ł��B
+	''' Microsoft Excel で現在開いているすべての Workbook オブジェクトのコレクションです。
 	''' </remarks>
 	Public Class BooksWrapper
 		Inherits AbstractExcelWrapper
 
-		''' <summary>Excel.Workbooks �C���X�^���X</summary>
+		''' <summary>Excel.Workbooks インスタンス</summary>
 		Private _workbooks As Object
 
 		''' <summary>log4net logger</summary>
 		Private ReadOnly _mylog As log4net.ILog = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType)
 
-#Region " �R���X�g���N�^ "
+#Region " コンストラクタ "
 
 		''' <summary>
-		''' �R���X�g���N�^
+		''' コンストラクタ
 		''' </summary>
 		''' <param name="xls"></param>
 		''' <remarks></remarks>
@@ -34,7 +34,7 @@ Namespace Excel
 #Region " Overrides "
 
 		''' <summary>
-		''' �������g�ŊǗ����Ă���Excel�֌W�̃I�u�W�F�N�g�̃������J��
+		''' 自分自身で管理しているExcel関係のオブジェクトのメモリ開放
 		''' </summary>
 		''' <remarks></remarks>
 		Public Overrides Sub MyDispose()
@@ -42,7 +42,7 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' �擾���� Excel �C���X�^���X
+		''' 取得した Excel インスタンス
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -54,10 +54,10 @@ Namespace Excel
 		End Property
 
 #End Region
-#Region " �v���p�e�B "
+#Region " プロパティ "
 
 		''' <summary>
-		''' Excel.Application �̃��b�p�[
+		''' Excel.Application のラッパー
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -81,7 +81,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �w�肵���I�u�W�F�N�g�̍쐬���̃A�v���P�[�V���������� 32 �r�b�g�̐����l���擾���܂��B
+		''' 指定したオブジェクトの作成元のアプリケーションを示す 32 ビットの整数値を取得します。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -93,9 +93,9 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �w�肵�������l��ݒ肵�܂��B
+		''' 指定した調整値を設定します。
 		''' </summary>
-		''' <param name="Index">�K���w�肵�܂��B�����^ (Integer) �̒l���w�肵�܂��B�����̃C���f�b�N�X�ԍ����w�肵�܂��B</param>
+		''' <param name="Index">必ず指定します。整数型 (Integer) の値を指定します。調整のインデックス番号を指定します。</param>
 		''' <value></value>
 		''' <returns></returns>
 		''' <remarks></remarks>
@@ -116,22 +116,22 @@ Namespace Excel
 		End Property
 
 #End Region
-#Region " ���\�b�h "
+#Region " メソッド "
 
 		''' <summary>
-		''' ����������
+		''' 初期化処理
 		''' </summary>
-		''' <param name="xls">Excel.Application���b�p�[</param>
+		''' <param name="xls">Excel.Applicationラッパー</param>
 		''' <remarks></remarks>
 		Private Sub _init(ByVal xls As ExcelWrapper)
-			' Books�I�u�W�F�N�g�̍쐬
+			' Booksオブジェクトの作成
 			_workbooks = InvokeGetProperty(xlsApp, "Workbooks", Nothing)
 		End Sub
 
 		''' <summary>
-		''' �u�b�N�̐V�K�ǉ�
+		''' ブックの新規追加
 		''' </summary>
-		''' <param name="filename">�u�b�N�̃t�@�C����</param>
+		''' <param name="filename">ブックのファイル名</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Public Function Add(ByVal filename As String) As BookWrapper
@@ -145,9 +145,9 @@ Namespace Excel
 		End Function
 
 		''' <summary>
-		''' True ��ݒ肷��ƁA�T�[�o�[����w�肵���u�b�N���`�F�b�N�A�E�g�ł��܂��B�l�̎擾����ѐݒ肪�\�ł��B�u�[���^ (Boolean) �̒l���g�p���܂��B
+		''' True を設定すると、サーバーから指定したブックをチェックアウトできます。値の取得および設定が可能です。ブール型 (Boolean) の値を使用します。
 		''' </summary>
-		''' <param name="Filename">�K���w�肵�܂��B������^ (String) �̒l���w�肵�܂��B�`�F�b�N�A�E�g����t�@�C���̖��O���w�肵�܂��B</param>
+		''' <param name="Filename">必ず指定します。文字列型 (String) の値を指定します。チェックアウトするファイルの名前を指定します。</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Public Function CanCheckOut( _
@@ -157,9 +157,9 @@ Namespace Excel
 		End Function
 
 		''' <summary>
-		''' �w�肵���u�b�N���T�[�o�[���烍�[�J�� �R���s���[�^�ɃR�s�[���āA�ҏW�ł���悤�ɂ��܂��B
+		''' 指定したブックをサーバーからローカル コンピュータにコピーして、編集できるようにします。
 		''' </summary>
-		''' <param name="Filename">�K���w�肵�܂��B������^ (String) �̒l���w�肵�܂��B�`�F�b�N�A�E�g����t�@�C���̖��O���w�肵�܂��B</param>
+		''' <param name="Filename">必ず指定します。文字列型 (String) の値を指定します。チェックアウトするファイルの名前を指定します。</param>
 		''' <remarks></remarks>
 		Public Sub CheckOut( _
 		  <InAttribute()> ByVal Filename As String _
@@ -168,7 +168,7 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' �w�肵���I�u�W�F�N�g����܂��B
+		''' 指定したオブジェクトを閉じます。
 		''' </summary>
 		''' <remarks></remarks>
 		Public Sub Close()
@@ -176,7 +176,7 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' �R���N�V�����S�̂ł̌J��Ԃ����T�|�[�g���邽�߂ɁA�񋓌^�̒l���擾���܂��B
+		''' コレクション全体での繰り返しをサポートするために、列挙型の値を取得します。
 		''' </summary>
 		''' <returns></returns>
 		''' <remarks></remarks>
@@ -198,23 +198,23 @@ Namespace Excel
 		End Function
 
 		''' <summary>
-		''' �u�b�N���J���܂��B
+		''' ブックを開きます。
 		''' </summary>
-		''' <param name="Filename">�K���w�肵�܂��B������^ (String) �̒l���w�肵�܂��B�J���u�b�N�̃t�@�C�������w�肵�܂��B</param>
-		''' <param name="UpdateLinks">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B�t�@�C�����̃����N�̍X�V���@���w�肵�܂��B���̈������ȗ�����ƁA�����N�̍X�V���@�̎w��𑣂��_�C�A���O �{�b�N�X���\������܂��B�ȗ����Ȃ��ꍇ�́A���̂����ꂩ�̒l���w�肵�܂��B</param>
-		''' <param name="ReadOnly">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���g�p���܂��B�u�b�N��ǂݎ���p���[�h�ŊJ���ɂ́ATrue ���w�肵�܂��B</param>
-		''' <param name="Format">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���g�p���܂��BMicrosoft Excel ���e�L�X�g �t�@�C�����J���Ƃ��ɁA���̈����ɍ��ڂ̋�؂蕶�����w�肵�܂��B�w��ł����؂蕶���͎��̂Ƃ���ł��B���̈������ȗ�����ƁA���ݎw�肳��Ă����؂蕶�����g���܂��B</param>
-		''' <param name="Password">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B�p�X���[�h�ی삳�ꂽ�u�b�N���J�����߂ɕK�v�ȃp�X���[�h���w�肵�܂��B�p�X���[�h���K�v�ȂƂ��ɂ��̈������ȗ�����ƁA�p�X���[�h�̓��͂𑣂��_�C�A���O �{�b�N�X���\������܂��B</param>
-		''' <param name="WriteResPassword">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���g�p���܂��B�������ݕی삳�ꂽ�u�b�N�ɏ������݂����邽�߂ɕK�v�ȃp�X���[�h���w�肵�܂��B�p�X���[�h���K�v�ȂƂ��ɂ��̈������ȗ�����ƁA�p�X���[�h�̓��͂𑣂��_�C�A���O �{�b�N�X���\������܂��B</param>
-		''' <param name="IgnoreReadOnlyRecommended">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B[�ǂݎ���p�𐄏�����] �`�F�b�N �{�b�N�X���I���ɂ��ĕۑ����ꂽ�u�b�N���J���Ƃ��ł��A�ǂݎ���p�𐄏����郁�b�Z�[�W���\���ɂ���ɂ́ATrue ���w�肵�܂��B</param>
-		''' <param name="Origin">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B�w�肵���t�@�C�����e�L�X�g �t�@�C���̂Ƃ��ɁA���ꂪ�ǂ̂悤�Ȍ`���̃e�L�X�g �t�@�C�������w�肵�܂��B�R�[�h �y�[�W�� CR/LF �𐳂����ϊ����邽�߂ɕK�v�ł��B�g�p�ł���萔�́AXlPlatform �񋓌^�� xlMacintosh�AxlWindows�AxlMSDOS �̂����ꂩ�ł��B���̈������ȗ�����ƁA���݂̃I�y���[�e�B���O �V�X�e���̌`�����g���܂��B</param>
-		''' <param name="Delimiter">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B�w�肵���t�@�C�����e�L�X�g �t�@�C���ł���A���� Format �� 6 ���ݒ肳��Ă���Ƃ��ɁA��؂�L���Ƃ��Ďg���������w�肵�܂��B���Ƃ��΁A�^�u�̏ꍇ�� Chr(9)�A�R���}�̏ꍇ�� ","�A�Z�~�R�����̏ꍇ�� ";" ���w�肵�܂��B�C�ӂ̕������w�肷�邱�Ƃ��ł��܂��B��������w�肵���Ƃ��́A�ŏ��̕����������g���܂��B</param>
-		''' <param name="Editable">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���g�p���܂��B�w�肵���t�@�C���� Microsoft Excel 4.0 �̃A�h�C���̏ꍇ�A���̈����� True ���w�肷��ƁA�A�h�C�����E�B���h�E�Ƃ��ĕ\�����܂��B���̈����� False ���w�肷�邩�ȗ�����ƁA�A�h�C���͔�\���̏�ԂŊJ����A�E�B���h�E�Ƃ��ĕ\�����邱�Ƃ͂ł��܂���B���̈����́AMicrosoft Excel 5.0 �ȍ~�̃A�h�C���ɂ͓K�p����܂���B�w�肵���t�@�C���� Excel �̃e���v���[�g�̏ꍇ�ATrue ���w�肷��ƁA�w�肳�ꂽ�e���v���[�g��ҏW�p�ɊJ���܂��BFalse ���w�肷��ƁA�w�肳�ꂽ�e���v���[�g����ɂ����A�V�����u�b�N���J���܂��B����l�� False �ł��B</param>
-		''' <param name="Notify">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���g�p���܂��B�w�肵���t�@�C�����ǂݎ��/�������݃��[�h�ŊJ���Ȃ��ꍇ�ɁA�t�@�C����ʒm���X�g�ɒǉ�����ɂ́ATrue ���w�肵�܂��B�t�@�C���͓ǂݎ���p���[�h�ŊJ����Ēʒm���X�g�ɒǉ�����A�u�b�N��ҏW�ł����ԂɂȂ������_�ŁA���[�U�[�ɂ��̎|���ʒm����܂��B�t�@�C�����J���Ȃ��ꍇ�ɁA���̂悤�Ȓʒm���s�킸�ɃG���[�𔭐�������ɂ́AFalse ���w�肷�邩�ȗ����܂��B</param>
-		''' <param name="Converter">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���g�p���܂��B�t�@�C�����J���Ƃ��ɁA�ŏ��Ɏg���t�@�C�� �R���o�[�^�̃C���f�b�N�X�ԍ����w�肵�܂��B�w�肵���t�@�C�� �R���o�[�^�Ńt�@�C����ϊ��ł��Ȃ��ꍇ�́A���̂��ׂẴt�@�C�� �R���o�[�^�ł̕ϊ������݂��܂��B�w�肷��C���f�b�N�X�ԍ��́AFileConverters �v���p�e�B�Ŏ擾�����t�@�C�� �R���o�[�^�̍s�ԍ��ł��B</param>
-		''' <param name="AddToMru">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��BTrue ��ݒ肷��ƁA�ŋߎg�p�����t�@�C���̈ꗗ�ɂ��̃u�b�N���ǉ�����܂��B����l�� False �ł��B</param>
-		''' <param name="Local">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��BTrue ��ݒ肷��ƁAMicrosoft Excel �Ŏg�p����Ă��錾��Ńt�@�C�����ۑ�����܂� (�R���g���[�� �p�l���̐ݒ���܂�)�BFalse (����l) ��ݒ肷��ƁAVBA (Visual Basic for Applications) �Ŏg�p����Ă��錾��Ńt�@�C�����ۑ�����܂� (�ʏ�̓A�����J�p��ł��B�������A�Â����۔ł� XL5/95 VBA �v���W�F�N�g���� Workbooks.Open �����s���Ă���ꍇ�������܂�)�B</param>
-		''' <param name="CorruptLoad">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���g�p���܂��B�g�p�ł���萔�́AxlNormalLoad�AxlRepairFile�AxlExtractData �̂����ꂩ�ł��B���̈������ȗ������Ƃ��̊���̓���́A�W���̓ǂݍ��ݏ����ƂȂ�̂����ʂł����A2 ��ڈȍ~�̓Z�[�t ���[�h��f�[�^ ���J�o���ƂȂ邱�Ƃ�����܂��B�܂�A�ŏ��͕W���̓ǂݍ��ݏ��������݂܂��B�t�@�C�����J���Ă���r���ŏ�������~�����Ƃ��́A���ɃZ�[�t ���[�h�����݂܂��B�Ăя�������~�����Ƃ��́A���Ƀf�[�^ ���J�o�������݂܂��B</param>
+		''' <param name="Filename">必ず指定します。文字列型 (String) の値を指定します。開くブックのファイル名を指定します。</param>
+		''' <param name="UpdateLinks">省略可能です。オブジェクト型 (Object) の値を指定します。ファイル内のリンクの更新方法を指定します。この引数を省略すると、リンクの更新方法の指定を促すダイアログ ボックスが表示されます。省略しない場合は、次のいずれかの値を指定します。</param>
+		''' <param name="ReadOnly">省略可能です。オブジェクト型 (Object) の値を使用します。ブックを読み取り専用モードで開くには、True を指定します。</param>
+		''' <param name="Format">省略可能です。オブジェクト型 (Object) の値を使用します。Microsoft Excel がテキスト ファイルを開くときに、この引数に項目の区切り文字を指定します。指定できる区切り文字は次のとおりです。この引数を省略すると、現在指定されている区切り文字が使われます。</param>
+		''' <param name="Password">省略可能です。オブジェクト型 (Object) の値を指定します。パスワード保護されたブックを開くために必要なパスワードを指定します。パスワードが必要なときにこの引数を省略すると、パスワードの入力を促すダイアログ ボックスが表示されます。</param>
+		''' <param name="WriteResPassword">省略可能です。オブジェクト型 (Object) の値を使用します。書き込み保護されたブックに書き込みをするために必要なパスワードを指定します。パスワードが必要なときにこの引数を省略すると、パスワードの入力を促すダイアログ ボックスが表示されます。</param>
+		''' <param name="IgnoreReadOnlyRecommended">省略可能です。オブジェクト型 (Object) の値を指定します。[読み取り専用を推奨する] チェック ボックスをオンにして保存されたブックを開くときでも、読み取り専用を推奨するメッセージを非表示にするには、True を指定します。</param>
+		''' <param name="Origin">省略可能です。オブジェクト型 (Object) の値を指定します。指定したファイルがテキスト ファイルのときに、それがどのような形式のテキスト ファイルかを指定します。コード ページと CR/LF を正しく変換するために必要です。使用できる定数は、XlPlatform 列挙型の xlMacintosh、xlWindows、xlMSDOS のいずれかです。この引数を省略すると、現在のオペレーティング システムの形式が使われます。</param>
+		''' <param name="Delimiter">省略可能です。オブジェクト型 (Object) の値を指定します。指定したファイルがテキスト ファイルであり、引数 Format に 6 が設定されているときに、区切り記号として使う文字を指定します。たとえば、タブの場合は Chr(9)、コンマの場合は ","、セミコロンの場合は ";" を指定します。任意の文字を指定することもできます。文字列を指定したときは、最初の文字だけが使われます。</param>
+		''' <param name="Editable">省略可能です。オブジェクト型 (Object) の値を使用します。指定したファイルが Microsoft Excel 4.0 のアドインの場合、この引数に True を指定すると、アドインをウィンドウとして表示します。この引数に False を指定するか省略すると、アドインは非表示の状態で開かれ、ウィンドウとして表示することはできません。この引数は、Microsoft Excel 5.0 以降のアドインには適用されません。指定したファイルが Excel のテンプレートの場合、True を指定すると、指定されたテンプレートを編集用に開きます。False を指定すると、指定されたテンプレートを基にした、新しいブックを開きます。既定値は False です。</param>
+		''' <param name="Notify">省略可能です。オブジェクト型 (Object) の値を使用します。指定したファイルが読み取り/書き込みモードで開けない場合に、ファイルを通知リストに追加するには、True を指定します。ファイルは読み取り専用モードで開かれて通知リストに追加され、ブックを編集できる状態になった時点で、ユーザーにその旨が通知されます。ファイルが開けない場合に、このような通知を行わずにエラーを発生させるには、False を指定するか省略します。</param>
+		''' <param name="Converter">省略可能です。オブジェクト型 (Object) の値を使用します。ファイルを開くときに、最初に使うファイル コンバータのインデックス番号を指定します。指定したファイル コンバータでファイルを変換できない場合は、他のすべてのファイル コンバータでの変換が試みられます。指定するインデックス番号は、FileConverters プロパティで取得されるファイル コンバータの行番号です。</param>
+		''' <param name="AddToMru">省略可能です。オブジェクト型 (Object) の値を指定します。True を設定すると、最近使用したファイルの一覧にこのブックが追加されます。既定値は False です。</param>
+		''' <param name="Local">省略可能です。オブジェクト型 (Object) の値を指定します。True を設定すると、Microsoft Excel で使用されている言語でファイルが保存されます (コントロール パネルの設定を含む)。False (既定値) を設定すると、VBA (Visual Basic for Applications) で使用されている言語でファイルが保存されます (通常はアメリカ英語です。ただし、古い国際版の XL5/95 VBA プロジェクトから Workbooks.Open を実行している場合を除きます)。</param>
+		''' <param name="CorruptLoad">省略可能です。オブジェクト型 (Object) の値を使用します。使用できる定数は、xlNormalLoad、xlRepairFile、xlExtractData のいずれかです。この引数を省略したときの既定の動作は、標準の読み込み処理となるのが普通ですが、2 回目以降はセーフ ロードやデータ リカバリとなることがあります。つまり、最初は標準の読み込み処理を試みます。ファイルを開いている途中で処理が停止したときは、次にセーフ ロードを試みます。再び処理が停止したときは、次にデータ リカバリを試みます。</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Public Function Open(ByVal Filename As String, _
@@ -306,7 +306,7 @@ Namespace Excel
 		End Function
 
 		''' <summary>
-		''' �f�[�^�x�[�X��\�� Workbook �I�u�W�F�N�g���擾���܂��B
+		''' データベースを表す Workbook オブジェクトを取得します。
 		''' </summary>
 		''' <param name="Filename"></param>
 		''' <param name="CommandText"></param>
@@ -357,26 +357,26 @@ Namespace Excel
 		End Function
 
 		''' <summary>
-		''' �e�L�X�g �t�@�C���𕪐͂��ēǂݍ��݂܂��B�e�L�X�g �t�@�C���� 1 ���̃V�[�g�Ƃ��āA������܂ސV�����u�b�N���J���܂��B
+		''' テキスト ファイルを分析して読み込みます。テキスト ファイルを 1 枚のシートとして、それを含む新しいブックを開きます。
 		''' </summary>
-		''' <param name="Filename">�K���w�肵�܂��B������^ (String) �̒l���g�p���܂��B�ǂݍ��܂��e�L�X�g �t�@�C���̖��O���w�肵�܂��B</param>
-		''' <param name="Origin">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B�e�L�X�g �t�@�C�����쐬���ꂽ�@����w�肵�܂��B�g�p�ł���萔�́A<see cref="XlPlatform"/> �񋓌^�� xlMacintosh�AxlWindows�AxlMSDOS �̂����ꂩ�ł��B���̑��ɁA�ړI�̃R�[�h �y�[�W�̃R�[�h �y�[�W�ԍ���\���������w��ł��܂��B���Ƃ��΁A"1256" �́A�\�[�X �e�L�X�g �t�@�C���̃G���R�[�h�ŃA���r�A�� (Windows) ���w�肵�܂��B���̈������ȗ�����ƁAText Import Wizard �� [���̃t�@�C��] �I�v�V�����̌��݂̐ݒ肪�g�p����܂��B</param>
-		''' <param name="StartRow">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B��荞�݊J�n�s���w�肵�܂��B�ŏ��̍s�� 1 �Ƃ��Đ����܂��B����l�� 1 �ł��B </param>
-		''' <param name="DataType">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B�t�@�C���Ɋ܂܂��f�[�^�̌`�����w�肵�܂��B�g�p�ł���萔�́A<see cref="XlTextParsingType"/> �񋓌^�� xlDelimited �܂��� xlFixedWidth �ł��B���̈������ȗ�����ƁA�t�@�C�����J�����Ƃ��Ƀf�[�^�̌`���������I�Ɍ��肳��܂��B</param>
-		''' <param name="TextQualifier">�ȗ��\�ł��B<see cref="XlTextQualifier"/> �񋓌^�̒萔���g�p���܂��B������̈��p�����w�肵�܂��B�g�p�ł���萔�́A���Ɏ��� XlTextQualifier �񋓌^�̒萔�̂����ꂩ�ł��B</param>
-		''' <param name="ConsecutiveDelimiter">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B�A��������؂蕶���� 1 �����Ƃ��Ĉ����Ƃ��� True ���w�肵�܂��B����l�� False �ł��B</param>
-		''' <param name="Tab">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B���� DataType �� xlDelimited ���w�肵�A��؂蕶���Ƀ^�u���g���Ƃ��� True ���w�肵�܂��B����l�� False �ł��B</param>
-		''' <param name="Semicolon">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B���� DataType �� xlDelimited ���w�肵�A��؂蕶���ɃZ�~�R���� (;) ���g���Ƃ��� True ���w�肵�܂��B����l�� False �ł��B</param>
-		''' <param name="Comma">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B���� DataType �� xlDelimited ���w�肵�A��؂蕶���ɃR���} (,) ���g���Ƃ��� True ���w�肵�܂��B����l�� False �ł��B</param>
-		''' <param name="Space">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B���� DataType �� xlDelimited ���w�肵�A��؂蕶���ɃX�y�[�X���g���Ƃ��� True ���w�肵�܂��B����l�� False �ł��B</param>
-		''' <param name="Other">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B���� DataType �� xlDelimited ���w�肵�A��؂蕶���� OtherChar �Ŏw�肵���������g���Ƃ��� True ���w�肵�܂��B����l�� False �ł��B</param>
-		''' <param name="OtherChar">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B���� Other �� True �̂Ƃ��́A�K�����̈����ɋ�؂蕶�����w�肵�܂��B�����̕������w�肵���Ƃ��́A�擪�̕�������؂蕶���ƂȂ�A�c��̕����͖�������܂��B</param>
-		''' <param name="FieldInfo">�ȗ��\�ł��B<see cref="XlColumnDataType"/> �񋓌^�̒萔���g�p���܂��B�e��̃f�[�^�`���Ɋւ���������z����w�肵�܂��B�f�[�^�`���̉��߂́A���� DataType �̒l�ɂ���ĈقȂ�܂��B�f�[�^����؂�L���ŋ�؂��Ă���ꍇ�́A���̈����� 2 �v�f�z��̔z��ŁA�e 2 �v�f�z��͓���̗�̕ϊ��I�v�V�������w�肵�܂��B1 �Ԗڂ̗v�f�ɂ� 1 ����n�܂��ԍ����w�肵�A2 �Ԗڂ̗v�f�ɂ͗�̃f�[�^�`�������� XlColumnDataType �񋓌^�̒萔���w�肵�܂��B</param>
-		''' <param name="TextVisualLayout">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B�e�L�X�g�̎��o�I�Ȕz�u���w�肵�܂��B</param>
-		''' <param name="DecimalSeparator">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��BMicrosoft Excel �Ő��l��F������ꍇ�Ɏg�������_�̋L���ł��B����̓V�X�e���ݒ�ł��B </param>
-		''' <param name="ThousandsSeparator">�ȗ��\�ł��B������^ (Object) �̒l���w�肵�܂��B�����̔F���Ɏg�p����錅��؂蕶�����w�肵�܂��B����l�́A�V�X�e���ݒ�ł��B<br/>���܂��܂ȃC���|�[�g�ݒ�Ńe�L�X�g�� Excel �ɃC���|�[�g���錋�ʂ����Ɏ����܂��B���l�̌��ʂ͉E�l�߂ŕ\�����܂��B</param>
-		''' <param name="TrailingMinusNumbers">�ȗ��\�ł��B</param>
-		''' <param name="Local">�ȗ��\�ł��B</param>
+		''' <param name="Filename">必ず指定します。文字列型 (String) の値を使用します。読み込まれるテキスト ファイルの名前を指定します。</param>
+		''' <param name="Origin">省略可能です。オブジェクト型 (Object) の値を指定します。テキスト ファイルが作成された機種を指定します。使用できる定数は、<see cref="XlPlatform"/> 列挙型の xlMacintosh、xlWindows、xlMSDOS のいずれかです。この他に、目的のコード ページのコード ページ番号を表す整数も指定できます。たとえば、"1256" は、ソース テキスト ファイルのエンコードでアラビア語 (Windows) を指定します。この引数を省略すると、Text Import Wizard の [元のファイル] オプションの現在の設定が使用されます。</param>
+		''' <param name="StartRow">省略可能です。オブジェクト型 (Object) の値を指定します。取り込み開始行を指定します。最初の行を 1 として数えます。既定値は 1 です。 </param>
+		''' <param name="DataType">省略可能です。オブジェクト型 (Object) の値を指定します。ファイルに含まれるデータの形式を指定します。使用できる定数は、<see cref="XlTextParsingType"/> 列挙型の xlDelimited または xlFixedWidth です。この引数を省略すると、ファイルを開いたときにデータの形式が自動的に決定されます。</param>
+		''' <param name="TextQualifier">省略可能です。<see cref="XlTextQualifier"/> 列挙型の定数を使用します。文字列の引用符を指定します。使用できる定数は、次に示す XlTextQualifier 列挙型の定数のいずれかです。</param>
+		''' <param name="ConsecutiveDelimiter">省略可能です。オブジェクト型 (Object) の値を指定します。連続した区切り文字を 1 文字として扱うときは True を指定します。既定値は False です。</param>
+		''' <param name="Tab">省略可能です。オブジェクト型 (Object) の値を指定します。引数 DataType に xlDelimited を指定し、区切り文字にタブを使うときは True を指定します。既定値は False です。</param>
+		''' <param name="Semicolon">省略可能です。オブジェクト型 (Object) の値を指定します。引数 DataType に xlDelimited を指定し、区切り文字にセミコロン (;) を使うときは True を指定します。既定値は False です。</param>
+		''' <param name="Comma">省略可能です。オブジェクト型 (Object) の値を指定します。引数 DataType に xlDelimited を指定し、区切り文字にコンマ (,) を使うときは True を指定します。既定値は False です。</param>
+		''' <param name="Space">省略可能です。オブジェクト型 (Object) の値を指定します。引数 DataType に xlDelimited を指定し、区切り文字にスペースを使うときは True を指定します。既定値は False です。</param>
+		''' <param name="Other">省略可能です。オブジェクト型 (Object) の値を指定します。引数 DataType に xlDelimited を指定し、区切り文字に OtherChar で指定した文字を使うときは True を指定します。既定値は False です。</param>
+		''' <param name="OtherChar">省略可能です。オブジェクト型 (Object) の値を指定します。引数 Other が True のときは、必ずこの引数に区切り文字を指定します。複数の文字を指定したときは、先頭の文字が区切り文字となり、残りの文字は無視されます。</param>
+		''' <param name="FieldInfo">省略可能です。<see cref="XlColumnDataType"/> 列挙型の定数を使用します。各列のデータ形式に関する情報を持つ配列を指定します。データ形式の解釈は、引数 DataType の値によって異なります。データが区切り記号で区切られている場合は、この引数は 2 要素配列の配列で、各 2 要素配列は特定の列の変換オプションを指定します。1 番目の要素には 1 から始まる列番号を指定し、2 番目の要素には列のデータ形式を示す XlColumnDataType 列挙型の定数を指定します。</param>
+		''' <param name="TextVisualLayout">省略可能です。オブジェクト型 (Object) の値を指定します。テキストの視覚的な配置を指定します。</param>
+		''' <param name="DecimalSeparator">省略可能です。オブジェクト型 (Object) の値を指定します。Microsoft Excel で数値を認識する場合に使う小数点の記号です。既定はシステム設定です。 </param>
+		''' <param name="ThousandsSeparator">省略可能です。文字列型 (Object) の値を指定します。数字の認識に使用される桁区切り文字を指定します。既定値は、システム設定です。<br/>さまざまなインポート設定でテキストを Excel にインポートする結果を次に示します。数値の結果は右詰めで表示します。</param>
+		''' <param name="TrailingMinusNumbers">省略可能です。</param>
+		''' <param name="Local">省略可能です。</param>
 		''' <remarks></remarks>
 		Public Sub OpenText( _
 		 ByVal Filename As String, _
@@ -476,11 +476,11 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' XML �f�[�^ �t�@�C�����J���܂��BWorkbook �I�u�W�F�N�g���擾���܂��B
+		''' XML データ ファイルを開きます。Workbook オブジェクトを取得します。
 		''' </summary>
-		''' <param name="Filename">�K���w�肵�܂��B������^ (String) �̒l���w�肵�܂��B�J���t�@�C�������w�肵�܂��B</param>
-		''' <param name="Stylesheets">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��B�K�p���� XSLT (XSL �ϊ�) �X�^�C���V�[�g�������߂��w�肷��P��̒l�܂��͒l�̔z����w�肵�܂��B</param>
-		''' <param name="LoadOption">�ȗ��\�ł��B�I�u�W�F�N�g�^ (Object) �̒l���w�肵�܂��BExcel �� XML �f�[�^ �t�@�C�����J�����@���w�肵�܂��B�g�p�ł���萔�́A���Ɏ��� <see cref="XlXmlLoadOption"/> �񋓌^�̒萔�̂����ꂩ�ł��B</param>
+		''' <param name="Filename">必ず指定します。文字列型 (String) の値を指定します。開くファイル名を指定します。</param>
+		''' <param name="Stylesheets">省略可能です。オブジェクト型 (Object) の値を指定します。適用する XSLT (XSL 変換) スタイルシート処理命令を指定する単一の値または値の配列を指定します。</param>
+		''' <param name="LoadOption">省略可能です。オブジェクト型 (Object) の値を指定します。Excel が XML データ ファイルを開く方法を指定します。使用できる定数は、次に示す <see cref="XlXmlLoadOption"/> 列挙型の定数のいずれかです。</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Public Function OpenXML( _

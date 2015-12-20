@@ -1,4 +1,4 @@
-
+ï»¿
 Imports System.IO
 Imports System.Reflection
 
@@ -31,7 +31,7 @@ Namespace Excel
 			Try
 				Return DirectCast(Activator.CreateInstance(Type.GetType(name), contents, sheet), SheetContents)
 			Catch ex As Exception
-				Throw New ExcelException(sheet.App, ex, String.Format("ƒV[ƒgƒRƒ“ƒeƒ“ƒcƒNƒ‰ƒX‚ğƒCƒ“ƒXƒ^ƒ“ƒX‰»‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½B[{0}]", name))
+				Throw New ExcelException(sheet.App, ex, String.Format("ã‚·ãƒ¼ãƒˆã‚³ãƒ³ãƒ†ãƒ³ãƒ„ã‚¯ãƒ©ã‚¹ã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã§ãã¾ã›ã‚“ã§ã—ãŸã€‚[{0}]", name))
 			End Try
 		End Function
 

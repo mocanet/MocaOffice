@@ -1,22 +1,22 @@
-
+ï»¿
 Namespace Excel
 
 	''' <summary>
-	''' Excel ‘€ì‚Ì—áŠO
+	''' Excel æ“ä½œæ™‚ã®ä¾‹å¤–
 	''' </summary>
 	''' <remarks></remarks>
 	Public Class ExcelException
         Inherits ApplicationException
 
-        ''' <summary>Excel.Application ‚Ìƒ‰ƒbƒp[</summary>
+        ''' <summary>Excel.Application ã®ãƒ©ãƒƒãƒ‘ãƒ¼</summary>
         Private _xls As AbstractExcelWrapper
 
 #Region " Constructor/DeConstructor "
 
 		''' <summary>
-		''' ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
-		''' <param name="Message">ƒGƒ‰[ƒƒbƒZ[ƒW</param>
+		''' <param name="Message">ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸</param>
 		''' <remarks>
 		''' </remarks>
 		Public Sub New(ByVal xls As AbstractExcelWrapper, ByVal Message As String)
@@ -25,9 +25,9 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
-		''' <param name="ex">—áŠOƒCƒ“ƒXƒ^ƒ“ƒX</param>
+		''' <param name="ex">ä¾‹å¤–ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</param>
 		''' <remarks>
 		''' </remarks>
 		Public Sub New(ByVal xls As AbstractExcelWrapper, ByVal ex As Exception)
@@ -36,10 +36,10 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
-		''' <param name="ex">—áŠOƒCƒ“ƒXƒ^ƒ“ƒX</param>
-		''' <param name="Message">ƒGƒ‰[ƒƒbƒZ[ƒW</param>
+		''' <param name="ex">ä¾‹å¤–ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</param>
+		''' <param name="Message">ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸</param>
 		''' <remarks>
 		''' </remarks>
 		Public Sub New(ByVal xls As AbstractExcelWrapper, ByVal ex As Exception, ByVal Message As String)

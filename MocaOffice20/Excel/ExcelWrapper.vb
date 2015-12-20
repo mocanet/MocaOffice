@@ -1,16 +1,16 @@
-
+﻿
 Imports System.Reflection
 
 Namespace Excel
 
 	''' <summary>
-	''' Excel.Application �̃��b�p�[�N���X
+	''' Excel.Application のラッパークラス
 	''' </summary>
 	''' <remarks>
-	''' Excel �����C�g�o�C���f�B���O�ɂāi�Q�Ɛݒ肷�邱�ƂȂ��j����o���܂��B<br/>
-	''' Excel �𑀍삷���ŃC���X�^���X�����ꂽ�I�u�W�F�N�g�͓��N���X���J�����邱�ƂőS�ĊJ������悤�ɂȂ��Ă��܂��B<br/>
-	''' Excel ���I�����邩�ǂ����́A<see cref="ExcelWrapper.Visible"/> �ɂ���Ď����Ŕ��f���܂��B<br/>
-	''' �g�p����Ƃ��́A<c>Using</c>��𗘗p���Ă��������B<br/>
+	''' Excel をレイトバインディングにて（参照設定することなく）操作出来ます。<br/>
+	''' Excel を操作する上でインスタンス化されたオブジェクトは当クラスを開放することで全て開放するようになっています。<br/>
+	''' Excel を終了するかどうかは、<see cref="ExcelWrapper.Visible"/> によって自動で判断します。<br/>
+	''' 使用するときは、<c>Using</c>句を利用してください。<br/>
 	''' <br/>
 	''' <example>
 	''' <code lang="vb">
@@ -36,7 +36,7 @@ Namespace Excel
 	Public Class ExcelWrapper
 		Inherits AbstractExcelWrapper
 
-		''' <summary>Excel.Workbooks �C���X�^���X</summary>
+		''' <summary>Excel.Workbooks インスタンス</summary>
 		Private _workbooks As BooksWrapper
 
 
@@ -45,10 +45,10 @@ Namespace Excel
 		''' <summary>log4net logger</summary>
 		Private ReadOnly _mylog As log4net.ILog = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType)
 
-#Region " �R���X�g���N�^ "
+#Region " コンストラクタ "
 
 		''' <summary>
-		''' �f�t�H���g�R���X�g���N�^
+		''' デフォルトコンストラクタ
 		''' </summary>
 		''' <remarks></remarks>
 		Public Sub New()
@@ -56,24 +56,24 @@ Namespace Excel
 
 			Try
 
-				' Excel�N���X ProgID �Ɋ֘A�t�����Ă���^���擾
+				' Excelクラス ProgID に関連付けられている型を取得
 				typApplication = Type.GetTypeFromProgID("Excel.Application")
 
-				' Excel�̌^������Ɋ֘A�t�����Ă��Ȃ��B(Excel�����݂��Ȃ�)
+				' Excelの型がそれに関連付けられていない。(Excelが存在しない)
 				If typApplication Is Nothing Then
-					_mylog.Error("Excel�����݂��܂���B�C���X�g�[������Ă��邩�m�F���Ă��������B")
-					Throw New NotSupportedException("Excel�����݂��܂���B�C���X�g�[������Ă��邩�m�F���Ă��������B")
+					_mylog.Error("Excelが存在しません。インストールされているか確認してください。")
+					Throw New NotSupportedException("Excelが存在しません。インストールされているか確認してください。")
 				End If
 
-				' �e�평����
+				' 各種初期化
 				Me.ApplicationWrapper = Me
 
-				' Excel�̃C���X�^���X���쐬���܂��B
+				' Excelのインスタンスを作成します。
 				xlsApp = Activator.CreateInstance(typApplication)
 
 				_mylog.DebugFormat("{0} Version:{1} ProductCode:{2}", Me.Name, Me.Version, Me.ProductCode)
 
-				' Books�I�u�W�F�N�g�̍쐬
+				' Booksオブジェクトの作成
 				_workbooks = New BooksWrapper(Me)
 				addXlsObject(_workbooks)
 			Catch ex As ExcelException
@@ -81,7 +81,7 @@ Namespace Excel
 				Throw ex
 			Catch ex As Exception
 				Me.MyDispose()
-				Throw New ExcelException(Me, ex, "ExcelWrapper �̃C���X�^���X�������ɃG���[���������܂����B")
+				Throw New ExcelException(Me, ex, "ExcelWrapper のインスタンス生成時にエラーが発生しました。")
 			End Try
 		End Sub
 
@@ -90,7 +90,7 @@ Namespace Excel
 #Region " Overrides "
 
 		''' <summary>
-		''' �������g�ŊǗ����Ă���Excel�֌W�̃I�u�W�F�N�g�̃������J��
+		''' 自分自身で管理しているExcel関係のオブジェクトのメモリ開放
 		''' </summary>
 		''' <remarks></remarks>
 		Public Overrides Sub MyDispose()
@@ -101,7 +101,7 @@ Namespace Excel
 		End Sub
 
 		''' <summary>
-		''' �擾���� Excel �C���X�^���X
+		''' 取得した Excel インスタンス
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -114,10 +114,10 @@ Namespace Excel
 
 #End Region
 
-#Region " �v���p�e�B "
+#Region " プロパティ "
 
 		''' <summary>
-		''' �A�v���P�[�V������
+		''' アプリケーション名
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -129,7 +129,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' Excel�o�[�W����
+		''' Excelバージョン
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -141,7 +141,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �v���_�N�g�R�[�h
+		''' プロダクトコード
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -153,7 +153,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �A�N�e�B�u�ȃE�B���h�E�őI������Ă���I�u�W�F�N�g���擾���܂��B
+		''' アクティブなウィンドウで選択されているオブジェクトを取得します。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -175,7 +175,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' ��ʕ\���L��
+		''' 画面表示有無
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -190,7 +190,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �m�F�_�C�A���O�\���L��
+		''' 確認ダイアログ表示有無
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -205,7 +205,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' ��ʍX�V��L��
+		''' 画面更新を有無
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -220,12 +220,12 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' ���[�U�[����̊��L��
+		''' ユーザーからの干渉有無
 		''' </summary>
 		''' <value></value>
 		''' <returns>
-		''' True ��ݒ肷��ƁAMicrosoft Excel ���Θb���[�h�ɂȂ�܂��B���̃v���p�e�B�͒ʏ� True �ł��B���̃v���p�e�B�� False ��ݒ肷��ƁA�L�[�{�[�h����у}�E�X����̓��͂��󂯕t���Ȃ��Ȃ�܂��B�������A�R�[�h�ɂ���ĕ\�����ꂽ�_�C�A���O �{�b�N�X�ւ̓��͉͂\�ł��B���͂ł��Ȃ���Ԃɂ��Ă����ƁA�R�[�h���g�p���� Microsoft Excel �̃I�u�W�F�N�g���ړ�������A�N�e�B�u�ɂ����肵�Ă���Ƃ��ɁA���[�U�[����̊���h�����Ƃ��ł��܂��B<br/>
-		''' ���̃v���p�e�B�� False ��ݒ肵���ꍇ�́ATrue �ɖ߂��̂�Y��Ȃ��悤�ɂ��Ă��������B�R�[�h�̎��s���I�����Ă��A���̃v���p�e�B�͎����I�� True �ɖ߂�܂���B
+		''' True を設定すると、Microsoft Excel が対話モードになります。このプロパティは通常 True です。このプロパティに False を設定すると、キーボードおよびマウスからの入力を受け付けなくなります。ただし、コードによって表示されたダイアログ ボックスへの入力は可能です。入力できない状態にしておくと、コードを使用して Microsoft Excel のオブジェクトを移動したりアクティブにしたりしているときに、ユーザーからの干渉を防ぐことができます。<br/>
+		''' このプロパティに False を設定した場合は、True に戻すのを忘れないようにしてください。コードの実行が終了しても、このプロパティは自動的に True に戻りません。
 		''' </returns>
 		''' <remarks></remarks>
 		Public Property Interactive() As Boolean
@@ -238,12 +238,12 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' �C�x���g�����̗L��
+		''' イベント発生の有無
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
 		''' <remarks>
-		''' True �̏ꍇ�A�w�肳�ꂽ�I�u�W�F�N�g�ɑ΂��ăC�x���g���������܂��B�l�̎擾����ѐݒ肪�\�ł��B�u�[���^ (Boolean) �̒l���g�p���܂��B
+		''' True の場合、指定されたオブジェクトに対してイベントが発生します。値の取得および設定が可能です。ブール型 (Boolean) の値を使用します。
 		''' </remarks>
 		Public Property EnableEvents() As Boolean
 			Get
@@ -267,7 +267,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' ���݃A�N�e�B�u�ȃu�b�N
+		''' 現在アクティブなブック
 		''' </summary>
 		''' <returns></returns>
 		''' <remarks></remarks>
@@ -290,7 +290,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' ���݃A�N�e�B�u�ȃV�[�g
+		''' 現在アクティブなシート
 		''' </summary>
 		''' <returns></returns>
 		''' <remarks></remarks>
@@ -310,7 +310,7 @@ Namespace Excel
 		End Property
 
 		''' <summary>
-		''' Microsoft Excel �ŐV�K�u�b�N�Ɏ����I�ɑ}�������V�[�g�̐���ݒ肵�܂��B
+		''' Microsoft Excel で新規ブックに自動的に挿入されるシートの数を設定します。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -327,9 +327,9 @@ Namespace Excel
 #End Region
 
 		''' <summary>
-		''' Excel�I��
+		''' Excel終了
 		''' </summary>
-		''' <param name="windowClose">��ʂ���邩�ǂ���</param>
+		''' <param name="windowClose">画面を閉じるかどうか</param>
 		''' <remarks></remarks>
 		Public Sub Quit(Optional ByVal windowClose As Boolean = False)
 			ReleaseExcelObject(xlsApp, windowClose)
