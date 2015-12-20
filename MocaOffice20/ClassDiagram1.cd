@@ -1,0 +1,695 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Moca.Office.Excel.BookContentsEventArgs" Collapsed="true">
+    <Position X="60.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Excel\AbstractBookContents.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Moca.Office.Excel.AbstractBookContents" Collapsed="true">
+    <Position X="1.75" Y="10" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>EAIBAIAICAIAAAgQAAAAAQAJAEDAAEQAAwAhAAEkIAQ=</HashCode>
+      <FileName>Excel\AbstractBookContents.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_app" />
+      <Field Name="_performStep" />
+      <Property Name="App" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Moca.Office.Excel.AbstractExcelWrapper" Collapsed="true">
+    <Position X="30.25" Y="1.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>YgABAAAAADIAAAQAABEAAgEAEIIAAAgEAEAoAgAAAEA=</HashCode>
+      <FileName>Excel\AbstractExcelWrapper.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="xlsWrapper" />
+      <Property Name="ApplicationWrapper" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Moca.Office.Excel.AdjustmentsWrapper" Collapsed="true">
+    <Position X="8.25" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAIAAAAAAAAAAAQEEAAAAAQEEAAAAAAAAAA=</HashCode>
+      <FileName>Excel\AdjustmentsWrapper.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_shape" />
+      <Property Name="Creator" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Moca.Office.Excel.BooksWrapper" Collapsed="true">
+    <Position X="18.5" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAIEAAAAAAIAJBAAAAgAQAQEEAAgAIAEEQAAAACgAAA=</HashCode>
+      <FileName>Excel\BooksWrapper.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="App" />
+      <Property Name="Creator" />
+      <Property Name="Item(System.Int32)" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Moca.Office.Excel.BookWrapper" Collapsed="true">
+    <Position X="28.5" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>BAIAAICAAAIAQIdAAAgIAAYAEBAgAAAEAhAgAACgAAA=</HashCode>
+      <FileName>Excel\BookWrapper.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_sheets" />
+      <Field Name="_worksheets" />
+      <Property Name="App" />
+      <Property Name="Sheets" />
+      <Property Name="Worksheets" />
+      <Property Name="ActiveSheet" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Moca.Office.Excel.BordersWrapper" Collapsed="true">
+    <Position X="39.5" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIQAIAAAAAEBAAAAQEECAAAAAEEAAggAAAAAA=</HashCode>
+      <FileName>Excel\BordersWrapper.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_range" />
+      <Property Name="Creator" />
+      <Property Name="Item(Moca.Office.Excel.XlBordersIndex)" />
+      <Property Name="LineStyle" />
+      <Property Name="Weight" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Moca.Office.Excel.BorderWrapper" Collapsed="true">
+    <Position X="49.75" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIQAIAAAAAABAAAAAAECAAAAAEEACAgAAAAAA=</HashCode>
+      <FileName>Excel\BorderWrapper.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_borders" />
+      <Property Name="Creator" />
+      <Property Name="LineStyle" />
+      <Property Name="Weight" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Moca.Office.Excel.CharactersWrapper" Collapsed="true">
+    <Position X="3.25" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAIAAEAAAAIAAAAAMAAAAAQAEAEAAAAEGAAACAACAAA=</HashCode>
+      <FileName>Excel\CharactersWrapper.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_range" />
+      <Property Name="Creator" />
+      <Property Name="Font" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Moca.Office.Excel.ExcelException" Collapsed="true">
+    <Position X="62" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Excel\ExcelException.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_xls" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Moca.Office.Excel.ExcelWrapper" Collapsed="true">
+    <Position X="11" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ICIAAAAAACIAAAAAAAAQQAQAkAAAAAAMAAAAABAAYQA=</HashCode>
+      <FileName>Excel\ExcelWrapper.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_workbooks" />
+      <Property Name="Selection" />
+      <Property Name="Workbooks" />
+      <Property Name="ActiveWorkbook" />
+      <Property Name="ActiveSheet" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Moca.Office.Excel.FontWrapper" Collapsed="true">
+    <Position X="21" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAIAAIAgiAAEIAAAAQAEACAAAAEEAAggACQABE=</HashCode>
+      <FileName>Excel\FontWrapper.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_range" />
+      <Property Name="Background" />
+      <Property Name="Creator" />
+      <Property Name="Underline" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Moca.Office.Excel.FreeformBuilderWrapper" Collapsed="true">
+    <Position X="31" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAIgAAAAAAAAAEAAEAAAAAAEEAAAAAEAAAA=</HashCode>
+      <FileName>Excel\FreeformBuilderWrapper.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_shapes" />
+      <Property Name="Creator" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Moca.Office.Excel.GraphicWrapper" Collapsed="true">
+    <Position X="42" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAoAQAAQAAAkAGAAEAAAAAAHEAAAAAgQAIA=</HashCode>
+      <FileName>Excel\GraphicWrapper.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_pageSetup" />
+      <Property Name="ColorType" />
+      <Property Name="Creator" />
+      <Property Name="LockAspectRatio" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Moca.Office.Excel.InteriorWrapper" Collapsed="true">
+    <Position X="52.25" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAEAAIAAIAAIAAAAAAAAAQEAgAAAAEBAAAgAAAAAA=</HashCode>
+      <FileName>Excel\InteriorWrapper.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_sheet" />
+      <Property Name="Pattern" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Moca.Office.Excel.PageSetupWrapper" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>IQkABAAohQIABFoaFAghkGAAEgAAAAAEFUkAAAEABQA=</HashCode>
+      <FileName>Excel\PageSetupWrapper.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_sheet" />
+      <Property Name="CenterHeaderPicture" />
+      <Property Name="ChartSize" />
+      <Property Name="Creator" />
+      <Property Name="LeftFooterPicture" />
+      <Property Name="LeftHeaderPicture" />
+      <Property Name="Order" />
+      <Property Name="Orientation" />
+      <Property Name="PaperSize" />
+      <Property Name="PrintComments" />
+      <Property Name="PrintErrors" />
+      <Property Name="RightFooterPicture" />
+      <Property Name="RightHeaderPicture" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Moca.Office.Excel.RangeWrapper" Collapsed="true">
+    <Position X="13.5" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAoAAAEAkEAAAEQAEiEAAgIEBQAgSAgiAAA=</HashCode>
+      <FileName>Excel\RangeWrapper.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_sheet" />
+      <Property Name="App" />
+      <Property Name="Sheet" />
+      <Property Name="EntireRow" />
+      <Property Name="End(Moca.Office.Excel.XlDirection)" />
+      <Property Name="Font" />
+      <Property Name="Columns" />
+      <Property Name="Borders" />
+      <Property Name="Borders(Moca.Office.Excel.XlBordersIndex)" />
+      <Property Name="Characters(System.Object, System.Object)" />
+      <Property Name="Interior" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Moca.Office.Excel.SelectionWrapper" Collapsed="true">
+    <Position X="23.5" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAIAAAQAAAAABAAAEgAAAAIEAAAAAAAAAAA=</HashCode>
+      <FileName>Excel\SelectionWrapper.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_xls" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Moca.Office.Excel.ShapeRangeWrapper" Collapsed="true">
+    <Position X="34" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAEAAEAAAAAAEAAAAAAAAAAE=</HashCode>
+      <FileName>Excel\ShapeRangeWrapper.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_shapes" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Moca.Office.Excel.ShapesWrapper" Collapsed="true">
+    <Position X="44.5" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>QAgQIAAAACIACBAAAAIAAUQEkAAAAAAkVABAAAAAQgA=</HashCode>
+      <FileName>Excel\ShapesWrapper.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_sheet" />
+      <Property Name="Creator" />
+      <Property Name="Range(System.Object)" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Moca.Office.Excel.ShapeWrapper" Collapsed="true">
+    <Position X="54.75" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAEAgAAAAIAIAAAAAAAAEAAEBAAAAAEAAAAQAAAAAA=</HashCode>
+      <FileName>Excel\ShapeWrapper.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_shapes" />
+      <Property Name="Shapes" />
+      <Property Name="Adjustments" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Moca.Office.Excel.SheetContents" Collapsed="true">
+    <Position X="1.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAQIAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Excel\SheetContents.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="contents" />
+      <Field Name="sheet" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Moca.Office.Excel.SheetContentsFactory" Collapsed="true">
+    <Position X="63.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Excel\SheetContentsFactory.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Moca.Office.Excel.SheetContentsUseTemplate" Collapsed="true">
+    <Position X="0.75" Y="5.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAgAAAIAAAIAAAAAAAAAAAAAAAACAAAAAAAAIAA=</HashCode>
+      <FileName>Excel\SheetContentsUseTemplate.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Moca.Office.Excel.SheetContentsUseTemplateMakeCsv" Collapsed="true">
+    <Position X="0.5" Y="7" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAIAIAYAAQAAAAAiAAgAAABAAAAAAAAAIAA=</HashCode>
+      <FileName>Excel\SheetContentsUseTemplateMakeCsv.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Moca.Office.Excel.SheetsWrapper" Collapsed="true">
+    <Position X="16" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAIAAACAAIIQABBAAAgAAAYMEgEAAAAMAAAgQAAgAAA=</HashCode>
+      <FileName>Excel\SheetsWrapper.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_book" />
+      <Property Name="App" />
+      <Property Name="Book" />
+      <Property Name="Item(System.String)" />
+      <Property Name="Item(System.Int32)" />
+      <Property Name="VPageBreaks" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Moca.Office.Excel.SheetWrapper" Collapsed="true">
+    <Position X="26" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAEBACABAIACABAAAoAAAQAEAEAAAAEBAAAQQggAAA=</HashCode>
+      <FileName>Excel\SheetWrapper.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_book" />
+      <Property Name="App" />
+      <Property Name="Book" />
+      <Property Name="Range(Moca.Office.Excel.RangeWrapper, Moca.Office.Excel.RangeWrapper)" />
+      <Property Name="Range(System.String, System.String)" />
+      <Property Name="Cells(System.Int32, System.Int32)" />
+      <Property Name="Columns" />
+      <Property Name="PageSetup" />
+      <Property Name="Shapes" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Moca.Office.Excel.VPageBreaksWrapper" Collapsed="true">
+    <Position X="36.75" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAIAABEAgAAAAAQEEAAAAAAEFAAAAAAAAAA=</HashCode>
+      <FileName>Excel\VPageBreaksWrapper.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_sheet" />
+      <Property Name="Sheet" />
+      <Property Name="Creator" />
+      <Property Name="Item(System.Int32)" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Moca.Office.Excel.VPageBreakWrapper" Collapsed="true">
+    <Position X="47" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAIAAAAAgAIAAAAAEAEAAAAEEQAAAAABAAA=</HashCode>
+      <FileName>Excel\VPageBreakWrapper.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_vPageBreaks" />
+      <Property Name="Creator" />
+      <Property Name="Extent" />
+      <Property Name="Location" />
+      <Property Name="Type" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Moca.Office.Excel.WorksheetsWrapper" Collapsed="true">
+    <Position X="57.25" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAIAAACAAAIAABBAAAgAAAQEEAAAAEBEAAAgAAAgAAA=</HashCode>
+      <FileName>Excel\WorksheetsWrapper.vb</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_book" />
+      <Property Name="App" />
+      <Property Name="Book" />
+      <Property Name="Item(System.String)" />
+      <Property Name="Item(System.Int32)" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Moca.Office.My.MySettings" Collapsed="true">
+    <Position X="6.75" Y="8" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="defaultInstance" />
+      <Property Name="Default" />
+    </ShowAsAssociation>
+  </Class>
+  <Interface Name="Moca.Office.Excel.ISheetContents" Collapsed="true">
+    <Position X="7" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAgAEAAAAAA=</HashCode>
+      <FileName>Excel\ISheetContents.vb</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Moca.Office.Excel.ISheetContentsUseTemplate" Collapsed="true">
+    <Position X="4.75" Y="5.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAEABAAAAAAAAAgAAAAACAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Excel\ISheetContentsUseTemplate.vb</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Moca.Office.Excel.ISheetContentsUseTemplateMakeCsv" Collapsed="true">
+    <Position X="8" Y="5.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAEABAAAAAAAAAAAQAAACAAAAAAAAAAAAAQAQAAAAAA=</HashCode>
+      <FileName>Excel\ISheetContentsUseTemplateMakeCsv.vb</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Moca.Office.Excel.XlPlatform" Collapsed="true">
+    <Position X="63.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAACAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.XlTextParsingType" Collapsed="true">
+    <Position X="60.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.XlTextQualifier" Collapsed="true">
+    <Position X="62" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAQAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.XlColumnDataType" Collapsed="true">
+    <Position X="69" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAACAAAAAAAgAAAAAAAAIAIAAACACAAABAAAAQBAA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.XlRangeValueDataType" Collapsed="true">
+    <Position X="67.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAIAACAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.XlDirection" Collapsed="true">
+    <Position X="60.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAGAAAAAEABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.XlPasteSpecialOperation" Collapsed="true">
+    <Position X="60.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAEAAAAAAASAAgAAAAAAAAA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.XlPasteType" Collapsed="true">
+    <Position X="62" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAgCQAQAAAAAAECAAAAAABAAAgAAAAAAAQAAAAA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.Constants" Collapsed="true">
+    <Position X="60.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>4CgZJWTUXLH7ChpC3KNt5wrsl/dj/M5k7AnwQsFjhjQ=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.XlLineStyle" Collapsed="true">
+    <Position X="44.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAQAAAADAAAAAAAAAAQAAAAAAIAAAAAAEAAAACA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.XlBorderWeight" Collapsed="true">
+    <Position X="67.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAQAAAIAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.XlBordersIndex" Collapsed="true">
+    <Position X="65.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAgAAAABAAAEAAAAAAAYAAAAAAAgAAAAAEA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.XlObjectSize" Collapsed="true">
+    <Position X="65.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAQAAAAAACAAAA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.XlCreator" Collapsed="true">
+    <Position X="31.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.XlOrder" Collapsed="true">
+    <Position X="67.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.XlPageOrientation" Collapsed="true">
+    <Position X="2.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.XlPaperSize" Collapsed="true">
+    <Position X="69" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AGgwAAMgAARAggGAABAJDSQACAAEBoAAC4QIAAAAAWA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.XlPrintLocation" Collapsed="true">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAgEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.XlPrintErrors" Collapsed="true">
+    <Position X="65.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAgAAAAEAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.MsoPictureColorType" Collapsed="true">
+    <Position X="42" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAgAAAAAAAACAAAAAAAAQAAAAAAAAAgAA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.MsoTriState" Collapsed="true">
+    <Position X="42.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAACCAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.XlBackground" Collapsed="true">
+    <Position X="21.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAACAAACAAAA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.XlUnderlineStyle" Collapsed="true">
+    <Position X="21" Y="4.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAQAAAAAAACAAAAAAAQEAAAAA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.MsoAutoShapeType" Collapsed="true">
+    <Position X="62" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MolkqVARVgHzwSkC1dlAYKjJQPU+1enYw2yTEjIrICY=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.XlXmlLoadOption" Collapsed="true">
+    <Position X="63.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAABAAAAAAAAAAAAAAIAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.XlPageBreakExtent" Collapsed="true">
+    <Position X="47.25" Y="4.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAACAAAA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.XlPageBreak" Collapsed="true">
+    <Position X="47.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAgAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.XlSheetType" Collapsed="true">
+    <Position X="69" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAIAAAAIAAgAAAAAAAAAAAAI=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.XlFillWith" Collapsed="true">
+    <Position X="62" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAACAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.MsoCalloutType" Collapsed="true">
+    <Position X="63.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAEQAACAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.MsoConnectorType" Collapsed="true">
+    <Position X="65.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAgAAAAAAAAAAAAAAAACAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.MsoDiagramType" Collapsed="true">
+    <Position X="67.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgACAAAAAAAAAAIQAAAAAAAAAAAAAAAAAAAAAAAIwAA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.XlFormControl" Collapsed="true">
+    <Position X="63.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAABAAIAAQCAAABAAAAAAAwAAAABAAAAA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.MsoTextOrientation" Collapsed="true">
+    <Position X="63.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAQIAAAAAAAAAAYAAAAAAAAAAAAAAAAAACAEAAAAAAA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.MsoPresetTextEffect" Collapsed="true">
+    <Position X="60.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAEAAAAAAAAAAAAIBKBAAAAEAgAgAA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.MsoSegmentType" Collapsed="true">
+    <Position X="62" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.MsoEditingType" Collapsed="true">
+    <Position X="69" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAACAAAAAAAAAAQAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Moca.Office.Excel.XlPattern" Collapsed="true">
+    <Position X="52.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgEAgEAAAqAAAgCgAAQQAAABAgAAAIAAAAoAAkCAAA=</HashCode>
+      <FileName>Excel\Enums.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Delegate Name="Moca.Office.Excel.PerformStep" Collapsed="true">
+    <Position X="1.75" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Excel\AbstractBookContents.vb</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Module Name="Moca.Office.My.Resources.Resources" Collapsed="true">
+    <Position X="60.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="Moca.Office.My.MySettingsProperty" Collapsed="true">
+    <Position X="6.75" Y="10" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Settings" />
+    </ShowAsAssociation>
+  </Module>
+  <Font Name="メイリオ" Size="9" />
+</ClassDiagram>
