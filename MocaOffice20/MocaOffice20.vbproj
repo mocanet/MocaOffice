@@ -98,6 +98,8 @@
     <Compile Include="Excel\ISheetContents.vb" />
     <Compile Include="Excel\ISheetContentsUseTemplate.vb" />
     <Compile Include="Excel\ISheetContentsUseTemplateMakeCsv.vb" />
+    <Compile Include="Excel\NamesWrapper.vb" />
+    <Compile Include="Excel\NameWrapper.vb" />
     <Compile Include="Excel\PageSetupWrapper.vb" />
     <Compile Include="Excel\RangeWrapper.vb" />
     <Compile Include="Excel\SelectionWrapper.vb" />

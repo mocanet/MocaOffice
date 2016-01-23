@@ -1258,6 +1258,24 @@ Namespace Excel
         none = 99
     End Enum
 
+    ''' <summary>
+    ''' 名前が参照するマクロの種類、または名前がマクロを参照するかどうかを指定
+    ''' </summary>
+    Public Enum XlXLMMacroType As Integer
+        ''' <summary>
+        ''' ユーザー設定の関数
+        ''' </summary>
+        xlFunction = 1
+        ''' <summary>
+        ''' ユーザー設定コマンド
+        ''' </summary>
+        xlCommand
+        ''' <summary>
+        ''' マクロ以外
+        ''' </summary>
+        xlNotXLM
+    End Enum
+
 #End Region
 
 End Namespace

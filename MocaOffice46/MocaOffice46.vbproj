@@ -141,6 +141,12 @@
     <Compile Include="..\MocaOffice20\Excel\ISheetContentsUseTemplateMakeCsv.vb">
       <Link>Excel\ISheetContentsUseTemplateMakeCsv.vb</Link>
     </Compile>
+    <Compile Include="..\MocaOffice20\Excel\NamesWrapper.vb">
+      <Link>Excel\NamesWrapper.vb</Link>
+    </Compile>
+    <Compile Include="..\MocaOffice20\Excel\NameWrapper.vb">
+      <Link>Excel\NameWrapper.vb</Link>
+    </Compile>
     <Compile Include="..\MocaOffice20\Excel\PageSetupWrapper.vb">
       <Link>Excel\PageSetupWrapper.vb</Link>
     </Compile>

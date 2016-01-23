@@ -215,6 +215,26 @@ Namespace Excel
             End Get
         End Property
 
+        ''' <summary>
+        ''' オブジェクトの名前を取得します。値の取得のみ可能です。文字列型 (String) の値を使用します。
+        ''' </summary>
+        ''' <value></value>
+        ''' <returns></returns>
+        ''' <remarks></remarks>
+        Public ReadOnly Property Names() As NamesWrapper
+            Get
+                Dim xl As Object
+                Dim obj As NamesWrapper
+                obj = Nothing
+                xl = InvokeGetProperty(_book, "Names", Nothing)
+                If xl IsNot Nothing Then
+                    obj = New NamesWrapper(Me, xl)
+                    addXlsObject(obj)
+                End If
+                Return obj
+            End Get
+        End Property
+
 #End Region
 #Region " メソッド "
 

@@ -142,13 +142,36 @@ Namespace Excel
 			End Set
 		End Property
 
-		''' <summary>
-		''' 指定したセル範囲に含まれる 1 行または複数の行全体を表す Range オブジェクトを取得します。
-		''' </summary>
-		''' <value></value>
-		''' <returns></returns>
-		''' <remarks></remarks>
-		Public ReadOnly Property EntireRow() As RangeWrapper
+        ''' <summary>
+        ''' セルの値を設定します
+        ''' </summary>
+        ''' <returns></returns>
+        Public Property Value2() As Object
+            Get
+                Return InvokeGetProperty(_range, "Value2", Nothing)
+            End Get
+            Set(ByVal value As Object)
+                InvokeSetProperty(_range, "Value2", New Object() {value})
+            End Set
+        End Property
+
+        ''' <summary>
+        ''' 指定したオブジェクトの文字列を設定します
+        ''' </summary>
+        ''' <returns></returns>
+        Public ReadOnly Property Text() As String
+            Get
+                Return DirectCast(InvokeGetProperty(_range, "Text", Nothing), String)
+            End Get
+        End Property
+
+        ''' <summary>
+        ''' 指定したセル範囲に含まれる 1 行または複数の行全体を表す Range オブジェクトを取得します。
+        ''' </summary>
+        ''' <value></value>
+        ''' <returns></returns>
+        ''' <remarks></remarks>
+        Public ReadOnly Property EntireRow() As RangeWrapper
 			Get
 				Dim range As Object
 				Dim wrap As RangeWrapper
@@ -232,13 +255,23 @@ Namespace Excel
 			End Set
 		End Property
 
-		''' <summary>
-		''' 指定したセル範囲の列を表す Range オブジェクトを取得します。
-		''' </summary>
-		''' <value></value>
-		''' <returns></returns>
-		''' <remarks></remarks>
-		Public ReadOnly Property Columns() As RangeWrapper
+        ''' <summary>
+        ''' 指定されたセル範囲の最初の領域で、最初の列番号を数値で取得します
+        ''' </summary>
+        ''' <returns></returns>
+        ReadOnly Property Column() As Integer
+            Get
+                Return DirectCast(InvokeGetProperty(_range, "Column", Nothing), Integer)
+            End Get
+        End Property
+
+        ''' <summary>
+        ''' 指定したセル範囲の列を表す Range オブジェクトを取得します。
+        ''' </summary>
+        ''' <value></value>
+        ''' <returns></returns>
+        ''' <remarks></remarks>
+        Public ReadOnly Property Columns() As RangeWrapper
 			Get
 				Dim range As Object
 				Dim wrap As RangeWrapper
