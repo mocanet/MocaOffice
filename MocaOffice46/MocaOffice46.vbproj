@@ -10,7 +10,7 @@
     <RootNamespace>Moca.Office</RootNamespace>
     <AssemblyName>MocaOffice</AssemblyName>
     <MyType>Windows</MyType>
-    <OptionStrict>On</OptionStrict>
+    <OptionStrict>Off</OptionStrict>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
@@ -47,8 +47,10 @@
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>MocaOffice.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
     <Prefer32Bit>false</Prefer32Bit>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -57,8 +59,10 @@
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>MocaOffice.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
     <Prefer32Bit>false</Prefer32Bit>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
@@ -191,6 +195,24 @@
     </Compile>
     <Compile Include="..\MocaOffice20\Excel\WorksheetsWrapper.vb">
       <Link>Excel\WorksheetsWrapper.vb</Link>
+    </Compile>
+    <Compile Include="..\MocaOffice20\Word\AbstractAppWrapper.vb">
+      <Link>Word\AbstractAppWrapper.vb</Link>
+    </Compile>
+    <Compile Include="..\MocaOffice20\Word\DocumentsWrapper.vb">
+      <Link>Word\DocumentsWrapper.vb</Link>
+    </Compile>
+    <Compile Include="..\MocaOffice20\Word\DocumentWrapper.vb">
+      <Link>Word\DocumentWrapper.vb</Link>
+    </Compile>
+    <Compile Include="..\MocaOffice20\Word\Enums.vb">
+      <Link>Word\Enums.vb</Link>
+    </Compile>
+    <Compile Include="..\MocaOffice20\Word\OfficeException.vb">
+      <Link>Word\OfficeException.vb</Link>
+    </Compile>
+    <Compile Include="..\MocaOffice20\Word\WordWrapper.vb">
+      <Link>Word\WordWrapper.vb</Link>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

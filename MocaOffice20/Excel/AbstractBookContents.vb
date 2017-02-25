@@ -317,56 +317,57 @@ Namespace Excel
 
 			' 自動保存
 			If Save Then
-				If Not _autoSave(xlBook) Then
-					Exit Function
-				End If
-			End If
+                If Not _autoSave(xlBook) Then
+                    Return False
+                End If
+            End If
 			' 自動印刷
 			If Print Then
 				If Not _autoPrint() Then
-					Exit Function
-				End If
-			End If
-			' 画面表示
-			If Display Then
-				If Not _autoDisplay() Then
-					Exit Function
-				End If
-			End If
-		End Function
+                    Return False
+                End If
+            End If
+            ' 画面表示
+            If Display Then
+                If Not _autoDisplay() Then
+                    Return False
+                End If
+            End If
+            Return True
+        End Function
 
-		''' <summary>
-		''' 自動保存
-		''' </summary>
-		''' <returns></returns>
-		''' <remarks>
-		''' <see cref="SaveFilename" /> に指定されている名前で保存します。
-		''' </remarks>
-		Private Function _autoSave(ByVal xlBook As BookWrapper) As Boolean
-			' 保存ファイル名が指定していないときは無視
-			If _saveFilename.Length = 0 Then
-				Exit Function
-			End If
+        ''' <summary>
+        ''' 自動保存
+        ''' </summary>
+        ''' <returns></returns>
+        ''' <remarks>
+        ''' <see cref="SaveFilename" /> に指定されている名前で保存します。
+        ''' </remarks>
+        Private Function _autoSave(ByVal xlBook As BookWrapper) As Boolean
+            ' 保存ファイル名が指定していないときは無視
+            If _saveFilename.Length = 0 Then
+                Return False
+            End If
 
-			Try
-				_app.DisplayAlerts = False
-				xlBook.SaveAs(_saveFilename)
-				_app.DisplayAlerts = True
-				Return True
-			Catch ex As ExcelException
-				Throw ex
-			Catch ex As Exception
-				Throw New ExcelException(_app, ex, "Excel 自動保存時にエラーが発生しました。")
-			End Try
-		End Function
+            Try
+                _app.DisplayAlerts = False
+                xlBook.SaveAs(_saveFilename)
+                _app.DisplayAlerts = True
+                Return True
+            Catch ex As ExcelException
+                Throw ex
+            Catch ex As Exception
+                Throw New ExcelException(_app, ex, "Excel 自動保存時にエラーが発生しました。")
+            End Try
+        End Function
 
-		''' <summary>
-		''' 自動印刷
-		''' </summary>
-		''' <returns></returns>
-		''' <remarks>
-		''' </remarks>
-		Private Function _autoPrint() As Boolean
+        ''' <summary>
+        ''' 自動印刷
+        ''' </summary>
+        ''' <returns></returns>
+        ''' <remarks>
+        ''' </remarks>
+        Private Function _autoPrint() As Boolean
 			_app.ActiveWorkbook.PrintOut()	' 印刷
 			Return True
 		End Function

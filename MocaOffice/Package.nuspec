@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Moca.NETOffice</id>
-    <version>2.2.0</version>
+    <version>2.3.0</version>
     <title>Moca.NET Office</title>
     <authors>MiYABiS</authors>
     <owners>MiYABiS</owners>
@@ -12,9 +12,7 @@
       we do not have wrapping all of the functions.
     </description>
     <releaseNotes>
-      GitHub issues: #4, #5, #6, #7
-      added Names, Name object.
-      added Range property Value2, Text.
+      GitHub issues: #8
     </releaseNotes>
     <summary>
       Wrapper library of Excel. without the memory release of the Excel object .
