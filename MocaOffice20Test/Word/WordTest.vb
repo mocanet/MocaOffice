@@ -25,6 +25,8 @@ Public Class WordTest
             Assert.AreEqual(app, document.App)
 
             Assert.IsFalse(app.Visible)
+
+            document.Close()
         End Using
     End Sub
 
@@ -39,6 +41,7 @@ Public Class WordTest
             document.ExportAsFixedFormat("C:\Temp\Test.pdf", WdExportFormat.wdExportFormatPDF)
 
             'document.Saved = True
+            document.Close()
         End Using
     End Sub
 

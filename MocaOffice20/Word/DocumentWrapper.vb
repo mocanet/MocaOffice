@@ -132,6 +132,29 @@ Namespace Word
 #Region " Method "
 
         ''' <summary>
+        ''' 指定された文書を閉じます
+        ''' </summary>
+        ''' <param name="SaveChanges"></param>
+        ''' <param name="OriginalFormat"></param>
+        ''' <param name="RouteDocument"></param>
+        ''' <remarks>
+        ''' https://msdn.microsoft.com/ja-jp/library/office/ff196343.aspx?f=255&MSPPError=-2147217396
+        ''' </remarks>
+        Public Sub Close(Optional ByVal SaveChanges As WdSaveOptions? = Nothing,
+                         Optional ByVal OriginalFormat As WdOriginalFormat? = Nothing,
+                         Optional ByVal RouteDocument As Boolean? = Nothing)
+            argsClear()
+            argsAdd("SaveChanges", SaveChanges)
+            argsAdd("OriginalFormat", OriginalFormat)
+            argsAdd("RouteDocument", RouteDocument)
+
+            InvokeMethod(_document, "Close",
+                         argsV.ToArray,
+                         DirectCast(argsN.ToArray(GetType(String)), String())
+                         )
+        End Sub
+
+        ''' <summary>
         ''' 文書を PDF 形式または XPS 形式で保存
         ''' </summary>
         ''' <remarks>
@@ -171,7 +194,6 @@ Namespace Word
             argsAdd("BitmapMissingFonts", BitmapMissingFonts)
             argsAdd("UseISO19005_1", UseISO19005_1)
             argsAdd("FixedFormatExtClassPtr", FixedFormatExtClassPtr)
-
 
             InvokeMethod(_document, "ExportAsFixedFormat",
                          argsV.ToArray,

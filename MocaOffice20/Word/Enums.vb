@@ -115,3 +115,4 @@ Public Enum WdOriginalFormat As Integer
     wdOriginalDocumentFormat
     wdPromptUser
 End Enum
+
