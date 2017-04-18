@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{8FC476B5-16D1-448C-B051-2144B77CBE96}</ProjectGuid>
+    <ProjectGuid>{3A2BE760-1E8F-4243-8D27-44430C301FCD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Moca.Office</RootNamespace>
     <AssemblyName>MocaOffice</AssemblyName>
@@ -21,7 +21,7 @@
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <PublishUrl>http://localhost/kmCommonLibOffice/</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>

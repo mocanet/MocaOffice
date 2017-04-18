@@ -8,10 +8,10 @@ Imports System.Runtime.InteropServices
 
 ' アセンブリ属性の値を確認します。
 
-<Assembly: AssemblyTitle("Moca Office")> 
-<Assembly: AssemblyDescription("Moca Office .NET 4.0")> 
-<Assembly: AssemblyCompany("MiYABiS")> 
-<Assembly: AssemblyProduct("Moca Office")> 
+<Assembly: AssemblyTitle("Moca.NET Office")>
+<Assembly: AssemblyDescription("Moca.NET Office")>
+<Assembly: AssemblyCompany("MiYABiS")>
+<Assembly: AssemblyProduct("Moca.NET Office")>
 <Assembly: AssemblyCopyright("Copyright © 2011 MiYABiS All Rights Reserved.")> 
 <Assembly: AssemblyTrademark("")> 
 
@@ -31,8 +31,8 @@ Imports System.Runtime.InteropServices
 ' 既定値にすることができます:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("4.6.1")>
-<Assembly: AssemblyFileVersion("4.6.1")>
+<Assembly: AssemblyVersion("4.6.0.0")>
+<Assembly: AssemblyFileVersion("4.6.0.0")>
 
 ' プログラム要素が CLS (Common Language Specification) に準拠しているかどうかを示します
 <Assembly: System.CLSCompliant(True)> 
