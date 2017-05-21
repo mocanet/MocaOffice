@@ -104,7 +104,7 @@ Namespace Word
         ''' </summary>
         ''' <value></value>
         ''' <returns>
-        ''' このプロパティを使用すると、<see cref="Path"/> プロパティ、現在のファイル システムの区切り文字、<see cref="Name"/> プロパティを続けて記述するのと同じ結果が得られます。
+        ''' このプロパティを使用すると、<see cref="System.IO.Path"/> プロパティ、現在のファイル システムの区切り文字、<see cref="Name"/> プロパティを続けて記述するのと同じ結果が得られます。
         ''' </returns>
         ''' <remarks></remarks>
         Public ReadOnly Property FullName() As String
@@ -138,7 +138,7 @@ Namespace Word
         ''' <param name="OriginalFormat"></param>
         ''' <param name="RouteDocument"></param>
         ''' <remarks>
-        ''' https://msdn.microsoft.com/ja-jp/library/office/ff196343.aspx?f=255&MSPPError=-2147217396
+        ''' https://msdn.microsoft.com/ja-jp/library/office/ff196343.aspx?f=255&amp;MSPPError=-2147217396
         ''' </remarks>
         Public Sub Close(Optional ByVal SaveChanges As WdSaveOptions? = Nothing,
                          Optional ByVal OriginalFormat As WdOriginalFormat? = Nothing,

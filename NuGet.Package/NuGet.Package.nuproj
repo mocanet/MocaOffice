@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|AnyCPU">
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|AnyCPU">
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MocaOffice20\MocaOffice20.vbproj" />
+    <ProjectReference Include="..\MocaOffice35\MocaOffice35.vbproj" />
+    <ProjectReference Include="..\MocaOffice40\MocaOffice40.vbproj" />
+    <ProjectReference Include="..\MocaOffice452\MocaOffice452.vbproj" />
+    <ProjectReference Include="..\MocaOffice45\MocaOffice45.vbproj" />
+    <ProjectReference Include="..\MocaOffice462\MocaOffice462.vbproj" />
+    <ProjectReference Include="..\MocaOffice46\MocaOffice46.vbproj" />
+    <ProjectReference Include="..\MocaOffice47\MocaOffice47.vbproj" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>f1d1c084-39ac-4a85-bbd1-45f3bb644748</ProjectGuid>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Id>Moca.NETOffice</Id>
+    <Version>2.3.2</Version>
+    <Title>Moca.NET Office</Title>
+    <Authors>MiYABiS</Authors>
+    <Owners>MiYABiS</Owners>
+    <Summary>Wrapper library of Excel. without the memory release of the Excel object .
+      References of excel library is not required .
+      we do not have wrapping all of the functions.</Summary>
+    <Description>Wrapper library of Excel. without the memory release of the Excel object .
+      References of excel library is not required .
+      we do not have wrapping all of the functions.</Description>
+    <ReleaseNotes>GitHub issues: #9</ReleaseNotes>
+    <ProjectUrl>https://github.com/mocanet/MocaOffice</ProjectUrl>
+    <LicenseUrl>https://opensource.org/licenses/MS-PL</LicenseUrl>
+    <Copyright>Copyright © 2011 MiYABiS All Rights Reserved.</Copyright>
+    <Tags>Moca Excel</Tags>
+    <IconUrl>https://avatars1.githubusercontent.com/u/14543303</IconUrl>
+    <EmbedSourceFiles>true</EmbedSourceFiles>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NuProjPath>..\packages\NuProj.0.11.14-beta\tools\</NuProjPath>
+  </PropertyGroup>
+  <Import Project="$(NuProjPath)\NuProj.props" Condition="Exists('$(NuProjPath)\NuProj.props')" />
+  <Import Project="$(NuProjPath)\NuProj.targets" />
+</Project>
