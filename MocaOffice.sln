@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MocaOffice20", "MocaOffice20\MocaOffice20.vbproj", "{63989A91-5C1B-442F-ACB5-EE809D5DAB6B}"
 EndProject
@@ -13,9 +13,6 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MocaOffice45", "MocaOffice4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{57B3BE47-D2EB-421B-B21D-BBFE3F0FBBC6}"
 	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
 EndProject
@@ -85,5 +82,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B9E70E67-093B-40BD-8115-BB9B43FC07B8}
 	EndGlobalSection
 EndGlobal

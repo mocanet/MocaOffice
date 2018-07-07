@@ -39,12 +39,13 @@
     <ProjectUrl>https://github.com/mocanet/MocaOffice</ProjectUrl>
     <LicenseUrl>https://opensource.org/licenses/MS-PL</LicenseUrl>
     <Copyright>Copyright © 2011 MiYABiS All Rights Reserved.</Copyright>
-    <Tags>Moca Excel</Tags>
-    <IconUrl>https://avatars1.githubusercontent.com/u/14543303</IconUrl>
+    <Tags>Moca.NET Excel</Tags>
+    <IconUrl>https://avatars3.githubusercontent.com/u/14543303?s=256</IconUrl>
     <EmbedSourceFiles>true</EmbedSourceFiles>
+    <GenerateSymbolPackage>true</GenerateSymbolPackage>
   </PropertyGroup>
   <PropertyGroup>
-    <NuProjPath>..\packages\NuProj.0.11.14-beta\tools\</NuProjPath>
+    <NuProjPath>..\packages\NuProj.0.11.30\tools\</NuProjPath>
   </PropertyGroup>
   <Import Project="$(NuProjPath)\NuProj.props" Condition="Exists('$(NuProjPath)\NuProj.props')" />
   <Import Project="$(NuProjPath)\NuProj.targets" />
