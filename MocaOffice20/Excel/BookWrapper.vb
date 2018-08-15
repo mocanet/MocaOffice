@@ -235,6 +235,16 @@ Namespace Excel
             End Get
         End Property
 
+        ''' <summary>
+        ''' ブックに Microsoft Visual Basic for Applications (VBA) プロジェクトがアタッチされているかどうかを示す値を取得します
+        ''' </summary>
+        ''' <returns></returns>
+        Public ReadOnly Property HasVBProject As Boolean
+            Get
+                Return DirectCast(InvokeGetProperty(_book, "HasVBProject", Nothing), Boolean)
+            End Get
+        End Property
+
 #End Region
 #Region " メソッド "
 
@@ -325,12 +335,26 @@ Namespace Excel
         ''' </summary>
         ''' <param name="filename">ファイル名</param>
         ''' <remarks></remarks>
-        Public Sub SaveAs(ByVal filename As String)
+        Public Sub SaveAs(ByVal filename As String,
+                          Optional ByVal fileFormat As XlFileFormat = XlFileFormat.xlWorkbookDefault,
+                          Optional ByVal password As String = Nothing)
             If Saved Then
                 Exit Sub
             End If
 
-            InvokeMethod(_book, "SaveAs", New Object() {filename})
+            Dim argsV As New List(Of Object)
+            Dim argsN As New List(Of String)
+
+            argsV.Add(filename)
+            argsN.Add("Filename")
+
+            argsV.Add(fileFormat)
+            argsN.Add("FileFormat")
+
+            argsV.Add(password)
+            argsN.Add("Password")
+
+            InvokeMethod(_book, "SaveAs", argsV.ToArray, argsN.ToArray)
         End Sub
 
         ''' <summary>

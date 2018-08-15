@@ -25,7 +25,7 @@
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
     <Id>Moca.NETOffice</Id>
-    <Version>2.3.2</Version>
+    <Version>2.3.3</Version>
     <Title>Moca.NET Office</Title>
     <Authors>MiYABiS</Authors>
     <Owners>MiYABiS</Owners>

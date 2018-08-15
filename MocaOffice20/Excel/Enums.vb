@@ -1276,6 +1276,64 @@ Namespace Excel
         xlNotXLM
     End Enum
 
+    Public Enum XlFileFormat As Integer
+        xlAddIn = 18 'Microsoft Excel 97-2003 アドイン	*.xla
+        xlAddIn8 = 18 'Microsoft Excel 97-2003 アドイン	*.xla
+        xlCSV = 6 'CSV	*.csv
+        xlCSVMac = 22 'Macintosh CSV	*.csv
+        xlCSVMSDOS = 24 'MSDOS CSV	*.csv
+        xlCSVWindows = 23 'Windows CSV	*.csv
+        xlCurrentPlatformText = -4158 '現在のプラットフォームのテキスト	*.txt
+        xlDBF2 = 7 'Dbase 2 形式	*.dbf
+        xlDBF3 = 8 'Dbase 3 形式	*.dbf
+        xlDBF4 = 11 'Dbase 4 形式	*.dbf
+        xlDIF = 9 'DIF ファイル	*.dif
+        xlExcel12 = 50 'Excel バイナリ ブック	*.xlsb
+        xlExcel2 = 16 'Excel バージョン 2.0 (1987)	*.xls
+        xlExcel2FarEast = 27 'Excel バージョン 2.0 far east (1987)	*.xls
+        xlExcel3 = 29 'Excel バージョン 3.0 (1990)	*.xls
+        xlExcel4 = 33 'Excel バージョン 4.0 (1992)	*.xls
+        xlExcel4Workbook = 35 'Excel バージョン 4.0ブックの形式 (1992)	*.xlw
+        xlExcel5 = 39 'Excel バージョン 5.0 (1994)	*.xls
+        xlExcel7 = 39 'Excel 95 (バージョン 7.0)	*.xls
+        xlExcel8 = 56 'Excel 97-2003 ブック	*.xls
+        xlExcel9795 = 43 'Excel バージョン 95 およびバージョン 97	*.xls
+        xlHtml = 44 'HTML 形式	.htm。.html
+        xlIntlAddIn = 26 'International Add-In	ファイル拡張子なし
+        xlIntlMacro = 25 'International Macro	ファイル拡張子なし
+        xlOpenDocumentSpreadsheet = 60 'OpenDocument スプレッドシート	*.ods
+        xlOpenXMLAddIn = 55 'XML アドインを開く	*.xlam
+        xlOpenXMLStrictWorkbook = 61 '(&;H3D) XML ファイルを厳密に開く	*.xlsx
+        xlOpenXMLTemplate = 54 'XML テンプレートを開く	*.xltx
+        xlOpenXMLTemplateMacroEnabled = 53 'マクロを有効にした XML テンプレートを開く	*.xltm
+        xlOpenXMLWorkbook = 51 'XML ブックを開く	*.xlsx
+        xlOpenXMLWorkbookMacroEnabled = 52 'マクロを有効にした XML ブックを開く	*.xlsm
+        xlSYLK = 2 'シンボリック リンク形式	*.slk
+        xlTemplate = 17 'Excel テンプレート形式	*.xlt
+        xlTemplate8 = 17 'テンプレート 8	*.xlt
+        xlTextMac = 19 'Macintosh テキスト	*.txt
+        xlTextMSDOS = 21 'MSDOS テキスト	*.txt
+        xlTextPrinter = 36 'プリンター テキスト	*.prn
+        xlTextWindows = 20 'Windows テキスト	*.txt
+        xlUnicodeText = 42 'Unicode テキスト	ファイル拡張子なし。*.txt
+        xlWebArchive = 45 'Web アーカイブ	.mht。.mhtml
+        xlWJ2WD1 = 14 'Japanese 1-2-3	*.wj2
+        xlWJ3 = 40 'Japanese 1-2-3	*.wj3
+        xlWJ3FJ3 = 41 'Japanese 1-2-3 形式	*.wj3
+        xlWK1 = 5 'Lotus 1-2-3 形式	*.wk1
+        xlWK1ALL = 31 'Lotus 1-2-3 形式	*.wk1
+        xlWK1FMT = 30 'Lotus 1-2-3 形式	*.wk1
+        xlWK3 = 15 'Lotus 1-2-3 形式	WK3
+        xlWK3FM3 = 32 'Lotus 1-2-3 形式	WK3
+        xlWK4 = 38 'Lotus 1-2-3 形式	*.wk4
+        xlWKS = 4 'Lotus 1-2-3 形式	*.wks
+        xlWorkbookDefault = 51 'ブックの既定	*.xlsx
+        xlWorkbookNormal = -4143 'ブックの標準	*.xls
+        xlWorks2FarEast = 28 'Microsoft Works 2.0 far east 形式	*.wks
+        xlWQ1 = 34 'Quattro Pro 形式	*.wq1
+        xlXMLSpreadsheet = 46 'XML スプレッドシート	*.xml
+    End Enum
+
 #End Region
 
 End Namespace

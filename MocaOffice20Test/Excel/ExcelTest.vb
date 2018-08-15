@@ -102,4 +102,30 @@ Imports Moca.Office.Excel
         End Using
     End Sub
 
+    <TestMethod()>
+    Public Sub SaveAs1Test()
+        Using xlsx As ExcelWrapper = New ExcelWrapper()
+            Dim book As BookWrapper
+            xlsx.DisplayAlerts = False
+            book = xlsx.Workbooks.Open(Path.Combine(My.Application.Info.DirectoryPath, "Doc\Book1.xls"))
+
+            book.SaveAs("Doc\Book1_1.xlsx", XlFileFormat.xlOpenXMLWorkbook)
+
+            Assert.AreEqual(False, book.HasVBProject)
+        End Using
+    End Sub
+
+    <TestMethod()>
+    Public Sub SaveAs2Test()
+        Using xlsx As ExcelWrapper = New ExcelWrapper()
+            Dim book As BookWrapper
+            xlsx.DisplayAlerts = False
+            book = xlsx.Workbooks.Open(Path.Combine(My.Application.Info.DirectoryPath, "Doc\Book2.xls"))
+
+            book.SaveAs("Doc\Book2_1.xlsm", XlFileFormat.xlOpenXMLWorkbookMacroEnabled)
+
+            Assert.AreEqual(True, book.HasVBProject)
+        End Using
+    End Sub
+
 End Class
