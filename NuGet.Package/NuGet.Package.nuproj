@@ -37,7 +37,7 @@
     <Description>Wrapper library of Excel. without the memory release of the Excel object .
       References of excel library is not required .
       we do not have wrapping all of the functions.</Description>
-    <ReleaseNotes>GitHub issues: #9</ReleaseNotes>
+    <ReleaseNotes>GitHub issues: #10</ReleaseNotes>
     <ProjectUrl>https://github.com/mocanet/MocaOffice</ProjectUrl>
     <LicenseUrl>https://opensource.org/licenses/MS-PL</LicenseUrl>
     <Copyright>Copyright © 2011 MiYABiS All Rights Reserved.</Copyright>
