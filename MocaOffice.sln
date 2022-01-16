@@ -1,22 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2035
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32106.194
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MocaOffice20", "MocaOffice20\MocaOffice20.vbproj", "{63989A91-5C1B-442F-ACB5-EE809D5DAB6B}"
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MocaOffice35", "MocaOffice35\MocaOffice35.vbproj", "{FDE77265-157B-4CC9-BD04-C974C1DC9E17}"
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MocaOffice40", "MocaOffice40\MocaOffice40.vbproj", "{D036333C-FE27-4E37-8B07-995C9FF8C1B4}"
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MocaOffice45", "MocaOffice45\MocaOffice45.vbproj", "{8FC476B5-16D1-448C-B051-2144B77CBE96}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MocaOffice20", "MocaOffice\MocaOffice20.vbproj", "{63989A91-5C1B-442F-ACB5-EE809D5DAB6B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{57B3BE47-D2EB-421B-B21D-BBFE3F0FBBC6}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MocaOffice46", "MocaOffice46\MocaOffice46.vbproj", "{64143661-1C3B-426B-A517-AD02965D8A2D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0A8E4CD9-6ACA-41AD-97FB-D380C565514A}"
 	ProjectSection(SolutionItems) = preProject
@@ -26,13 +18,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MocaOffice20Test", "MocaOffice20Test\MocaOffice20Test.vbproj", "{8864DD7C-17BF-4166-8FEF-BEDE2DE88908}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MocaOffice47", "MocaOffice47\MocaOffice47.vbproj", "{3A2BE760-1E8F-4243-8D27-44430C301FCD}"
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MocaOffice452", "MocaOffice452\MocaOffice452.vbproj", "{0977609D-FD2F-4411-A301-0B2A310B7E39}"
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MocaOffice462", "MocaOffice462\MocaOffice462.vbproj", "{045A00B0-8689-4EB5-A1FD-A99884878F4B}"
-EndProject
 Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "NuGet.Package", "NuGet.Package\NuGet.Package.nuproj", "{F1D1C084-39AC-4A85-BBD1-45F3BB644748}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MocaOffice35", "MocaOffice\MocaOffice35.vbproj", "{FDE77265-157B-4CC9-BD04-C974C1DC9E17}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MocaOffice40", "MocaOffice\MocaOffice40.vbproj", "{D036333C-FE27-4E37-8B07-995C9FF8C1B4}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MocaOffice45", "MocaOffice\MocaOffice45.vbproj", "{8FC476B5-16D1-448C-B051-2144B77CBE96}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MocaOffice46", "MocaOffice\MocaOffice46.vbproj", "{64143661-1C3B-426B-A517-AD02965D8A2D}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MocaOffice47", "MocaOffice\MocaOffice47.vbproj", "{3A2BE760-1E8F-4243-8D27-44430C301FCD}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MocaOffice452", "MocaOffice\MocaOffice452.vbproj", "{0977609D-FD2F-4411-A301-0B2A310B7E39}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MocaOffice462", "MocaOffice\MocaOffice462.vbproj", "{045A00B0-8689-4EB5-A1FD-A99884878F4B}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MocaOffice472", "MocaOffice\MocaOffice472.vbproj", "{77B1FC38-4C48-4B11-BBF4-A08487AED915}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MocaOffice48", "MocaOffice\MocaOffice48.vbproj", "{D1BA2137-2784-4F93-9CBB-1CA08F5D4FA8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +48,13 @@ Global
 		{63989A91-5C1B-442F-ACB5-EE809D5DAB6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63989A91-5C1B-442F-ACB5-EE809D5DAB6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63989A91-5C1B-442F-ACB5-EE809D5DAB6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8864DD7C-17BF-4166-8FEF-BEDE2DE88908}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8864DD7C-17BF-4166-8FEF-BEDE2DE88908}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8864DD7C-17BF-4166-8FEF-BEDE2DE88908}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1D1C084-39AC-4A85-BBD1-45F3BB644748}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1D1C084-39AC-4A85-BBD1-45F3BB644748}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1D1C084-39AC-4A85-BBD1-45F3BB644748}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1D1C084-39AC-4A85-BBD1-45F3BB644748}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FDE77265-157B-4CC9-BD04-C974C1DC9E17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FDE77265-157B-4CC9-BD04-C974C1DC9E17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDE77265-157B-4CC9-BD04-C974C1DC9E17}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -60,9 +71,6 @@ Global
 		{64143661-1C3B-426B-A517-AD02965D8A2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64143661-1C3B-426B-A517-AD02965D8A2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64143661-1C3B-426B-A517-AD02965D8A2D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8864DD7C-17BF-4166-8FEF-BEDE2DE88908}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8864DD7C-17BF-4166-8FEF-BEDE2DE88908}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8864DD7C-17BF-4166-8FEF-BEDE2DE88908}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A2BE760-1E8F-4243-8D27-44430C301FCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3A2BE760-1E8F-4243-8D27-44430C301FCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A2BE760-1E8F-4243-8D27-44430C301FCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -75,10 +83,14 @@ Global
 		{045A00B0-8689-4EB5-A1FD-A99884878F4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{045A00B0-8689-4EB5-A1FD-A99884878F4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{045A00B0-8689-4EB5-A1FD-A99884878F4B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F1D1C084-39AC-4A85-BBD1-45F3BB644748}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F1D1C084-39AC-4A85-BBD1-45F3BB644748}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F1D1C084-39AC-4A85-BBD1-45F3BB644748}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F1D1C084-39AC-4A85-BBD1-45F3BB644748}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77B1FC38-4C48-4B11-BBF4-A08487AED915}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77B1FC38-4C48-4B11-BBF4-A08487AED915}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77B1FC38-4C48-4B11-BBF4-A08487AED915}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77B1FC38-4C48-4B11-BBF4-A08487AED915}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1BA2137-2784-4F93-9CBB-1CA08F5D4FA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1BA2137-2784-4F93-9CBB-1CA08F5D4FA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1BA2137-2784-4F93-9CBB-1CA08F5D4FA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1BA2137-2784-4F93-9CBB-1CA08F5D4FA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

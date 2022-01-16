@@ -11,21 +11,23 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MocaOffice20\MocaOffice20.vbproj" />
-    <ProjectReference Include="..\MocaOffice35\MocaOffice35.vbproj" />
-    <ProjectReference Include="..\MocaOffice40\MocaOffice40.vbproj" />
-    <ProjectReference Include="..\MocaOffice452\MocaOffice452.vbproj" />
-    <ProjectReference Include="..\MocaOffice45\MocaOffice45.vbproj" />
-    <ProjectReference Include="..\MocaOffice462\MocaOffice462.vbproj" />
-    <ProjectReference Include="..\MocaOffice46\MocaOffice46.vbproj" />
-    <ProjectReference Include="..\MocaOffice47\MocaOffice47.vbproj" />
+    <ProjectReference Include="..\MocaOffice\MocaOffice20.vbproj" />
+    <ProjectReference Include="..\MocaOffice\MocaOffice35.vbproj" />
+    <ProjectReference Include="..\MocaOffice\MocaOffice40.vbproj" />
+    <ProjectReference Include="..\MocaOffice\MocaOffice45.vbproj" />
+    <ProjectReference Include="..\MocaOffice\MocaOffice452.vbproj" />
+    <ProjectReference Include="..\MocaOffice\MocaOffice46.vbproj" />
+    <ProjectReference Include="..\MocaOffice\MocaOffice462.vbproj" />
+    <ProjectReference Include="..\MocaOffice\MocaOffice47.vbproj" />
+    <ProjectReference Include="..\MocaOffice\MocaOffice472.vbproj" />
+    <ProjectReference Include="..\MocaOffice\MocaOffice48.vbproj" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>f1d1c084-39ac-4a85-bbd1-45f3bb644748</ProjectGuid>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
     <Id>Moca.NETOffice</Id>
-    <Version>2.3.3</Version>
+    <Version>3.0.0</Version>
     <Title>Moca.NET Office</Title>
     <Authors>MiYABiS</Authors>
     <Owners>MiYABiS</Owners>

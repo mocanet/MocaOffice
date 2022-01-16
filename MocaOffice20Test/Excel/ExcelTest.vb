@@ -20,8 +20,24 @@ Imports Moca.Office.Excel
             book.ActiveSheet.Cells(10, 5).Value = 34
             book.ActiveSheet.Cells(10, 6).Value = 44
 
-            book.ExportAsFixedFormat(FixedFormatType.XPS, "C:\Temp\Test.xps")
-            book.ExportAsFixedFormat(FixedFormatType.PDF, "C:\Temp\Test.pdf", , , , , , True)
+            'book.ExportAsFixedFormat(FixedFormatType.XPS, "C:\Temp\Test.xps")
+            'book.ExportAsFixedFormat(FixedFormatType.PDF, "C:\Temp\Test.pdf", , , , , , True)
+
+            book.Saved = True
+            xlsx.DisplayAlerts = False
+        End Using
+    End Sub
+
+    <TestMethod()>
+    Public Sub ExportAsFixedFormatTest2()
+        Using xlsx As ExcelWrapper = New ExcelWrapper()
+            Dim book As BookWrapper
+            book = xlsx.Workbooks.Open(Path.Combine(My.Application.Info.DirectoryPath, "Doc\Book1.xlsx"))
+
+            'book.Sheets(New String() {"Sheet1", "Sheet2"}).Select()
+
+            book.ActiveSheet.ExportAsFixedFormat(FixedFormatType.XPS, "C:\Temp\Test.xps")
+            book.ActiveSheet.ExportAsFixedFormat(FixedFormatType.PDF, "C:\Temp\Test.pdf", , , , , , True)
 
             book.Saved = True
             xlsx.DisplayAlerts = False

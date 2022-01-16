@@ -133,12 +133,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MocaOffice20\MocaOffice20.vbproj">
-      <Project>{63989a91-5c1b-442f-acb5-ee809d5dab6b}</Project>
-      <Name>MocaOffice</Name>
+    <ProjectReference Include="..\MocaOffice\MocaOffice35.vbproj">
+      <Project>{fde77265-157b-4cc9-bd04-c974c1dc9e17}</Project>
+      <Name>MocaOffice35</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

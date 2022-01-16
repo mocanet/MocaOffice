@@ -1,6 +1,5 @@
 # Moca.NET Office
 
-[![Build status](https://ci.appveyor.com/api/projects/status/4903crpjjo64th3s?svg=true)](https://ci.appveyor.com/project/miyabis/mocaoffice-dsr0a)
 [![NuGet](https://img.shields.io/nuget/v/Moca.NETOffice.svg)](https://www.nuget.org/packages/Moca.NETOffice/)
 [![NuGet Pre Release](https://img.shields.io/nuget/vpre/Moca.NETOffice.svg)](https://www.nuget.org/packages/Moca.NETOffice/)
 [![NuGet](https://img.shields.io/nuget/dt/Moca.NETOffice.svg)](https://www.nuget.org/packages/Moca.NETOffice/)
@@ -21,6 +20,8 @@ we do not have wrapping all of the functions.
 * 4.6
 * 4.6.2
 * 4.7
+* 4.7.2
+* 4.8
 
 ## How to get
 
@@ -75,7 +76,7 @@ End Using
 
 ## For Development
 
-* Visual Studio 2017
+* Visual Studio 2019
 
 ## License
 
